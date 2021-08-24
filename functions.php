@@ -182,3 +182,113 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function add_menu_link_class( $atts, $item, $args ) {
+    if (property_exists($args, 'link_class')) {
+        $atts['class'] = $args->link_class;
+    }
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 1, 3 );
+
+
+add_action( 'init', 'create_media_taxonomies' );
+function create_media_taxonomies(){
+    register_taxonomy('category', array('media'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Плейлисты', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Плейлист', 'taxonomy singular name' ),
+            'search_items'      =>  __( 'Поиск плейлистов' ),
+            'all_items'         => __( 'Все плейлисты' ),
+            'edit_item'         => __( 'Изменить плейлист' ),
+            'update_item'       => __( 'Обновить плейлист' ),
+            'add_new_item'      => __( 'Добавить новый плейлист' ),
+            'new_item_name'     => __( 'Новый плейлист' ),
+            'menu_name'         => __( 'Плейлисты' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+}
+add_action( 'init', 'register_media' );
+function register_media(){
+    $args = [
+        'labels' => [
+            'name' => 'Медиа',
+            'singular_name' => 'Медиа',
+            'add_new' => 'Добавить новое медиа',
+            'search_items' => 'Поиск медиа',
+            'not_found' => 'Медиа не было найдено',
+        ],
+        'description' => 'Медиа',
+        'menu_icon' => 'dashicons-video-alt3',
+        'public'             => true,
+        'publicly_queryable' => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => true,
+        'query_var'          => true,
+        'rewrite'            => false,
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'supports'           => array('title'),
+    ];
+    register_post_type( 'media', $args );
+}
+
+function parse_video_youtube($iframe){
+    preg_match('/src="(.+?)"/', $iframe, $matches);
+    $src = $matches[1];
+
+    $id = preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/\s]{11})%i', $src, $match) ? $match[1] : '';
+
+    return $id;
+}
+
+add_action('admin_footer', function () {
+    ?>
+    <script type="text/javascript">
+        function youtube_parser(url){
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            var match = url.match(regExp);
+            return (match&&match[7].length==11)? match[7] : false;
+        }
+        function covtime(youtube_time){
+            array = youtube_time.match(/(\d+)(?=[MHS])/ig)||[];
+            var formatted = array.map(function(item){
+                if(item.length < 2) return '0'+item;
+                return item;
+            }).join(':');
+            return formatted;
+        }
+        jQuery(function($){
+            $(document).ready(function(){
+                $('#link_media .input-search').on('input', e => {
+                    var currentValueOfInput = e.target.value;
+                    let parsedLink = youtube_parser(currentValueOfInput);
+
+                    if(parsedLink){
+                        let urlForResponse = "https://www.googleapis.com/youtube/v3/videos?id=" + parsedLink + "&key=AIzaSyDQzTvyA6rUKaDor8DX7Y1cWYO0h1-bNzs&part=snippet,contentDetails";
+                        $.ajax({
+                            'async': false,
+                            'global': false,
+                            'url': urlForResponse,
+                            'dataType': "jsonp",
+                            crossDomain: true,
+                            'success': function (data) {
+                                let youtube_time = data.items[0].contentDetails.duration;
+                                let duration = covtime(youtube_time);
+
+                                $('#acf-field_6124a334ca01f').val(duration);
+                            }
+                        });
+                    }
+                })
+            });
+        });
+    </script>
+    <?php
+});

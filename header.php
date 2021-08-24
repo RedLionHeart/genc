@@ -26,38 +26,38 @@
 <header>
     <div class="margin">
         <div class="d-flex">
-            <a href="index.html" class="top-logo">
+            <a href="<?=get_home_url();?>" class="top-logo">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/logo.svg">
             </a>
             <nav>
-                <ul class="d-flex justify-content-between">
-                    <li>
-                        <a class="h3" href="catalog.html">Каталог</a>
-                    </li>
-                    <li>
-                        <a class="h3" href="#">О компании</a>
-                    </li>
-                    <li>
-                        <a class="h3" href="#">Контакты</a>
-                    </li>
-                    <li>
-                        <a class="h3" href="#">Тех. поддержка</a>
-                    </li>
-                    <li>
-                        <a class="h3" href="media.html">Медиа</a>
-                    </li>
-                </ul>
+                <?php wp_nav_menu( [
+                    'menu' => 'Меню',
+                    'container' => false,
+                    'menu_class' => "d-flex justify-content-between",
+                    'link_class' => 'h3',
+                ] ); ?>
             </nav>
             <div class="d-flex justify-content-between ico-top">
-                <a href="#">
-                    <img src="<?= get_template_directory_uri() ?>/assets/img/fb.svg">
-                </a>
-                <a href="#">
-                    <img src="<?= get_template_directory_uri() ?>/assets/img/tw.svg">
-                </a>
-                <a href="#">
-                    <img src="<?= get_template_directory_uri() ?>/assets/img/inst.svg">
-                </a>
+                <?php
+                $facebook = get_field('facebook', 'options');
+                $twitter = get_field('twitter', 'options');
+                $instagram = get_field('instagram', 'options');
+                ?>
+                <?php if($facebook):?>
+                    <a href="<?=$facebook?>">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/fb.svg">
+                    </a>
+                <?php endif;?>
+                <?php if($twitter):?>
+                    <a href="<?=$twitter?>">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/tw.svg">
+                    </a>
+                <?php endif;?>
+                <?php if($instagram):?>
+                    <a href="<?=$instagram?>">
+                        <img src="<?= get_template_directory_uri() ?>/assets/img/inst.svg">
+                    </a>
+                <?php endif;?>
             </div>
             <div class="d-flex align-items-center login">
                 <svg width="31" height="33" viewBox="0 0 31 33" fill="none" xmlns="http://www.w3.org/2000/svg">

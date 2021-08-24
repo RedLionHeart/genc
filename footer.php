@@ -9,6 +9,9 @@
  * @package genc
  */
 
+$facebook = get_field('facebook', 'options');
+$twitter = get_field('twitter', 'options');
+$instagram = get_field('instagram', 'options');
 ?>
 
 <footer>
@@ -17,7 +20,7 @@
     </div>
     <div class="margin">
         <div class="d-flex justify-content-between logo-login">
-            <a href="#" class="top-logo">
+            <a href="<?=get_home_url();?>" class="top-logo">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/logo_blue.svg">
             </a>
             <div class="d-flex align-items-center login">
@@ -29,34 +32,29 @@
             </div>
         </div>
         <nav>
-            <ul class="d-flex flex-column justify-content-between">
-                <li>
-                    <a class="h5" href="#">Каталог</a>
-                </li>
-                <li>
-                    <a class="h5" href="#">О компании</a>
-                </li>
-                <li>
-                    <a class="h5" href="#">Контакты</a>
-                </li>
-                <li>
-                    <a class="h5" href="#">Тех. поддержка</a>
-                </li>
-                <li>
-                    <a class="h5" href="#">Медиа</a>
-                </li>
-            </ul>
+            <?php wp_nav_menu( [
+                'menu' => 'Меню',
+                'container' => false,
+                'menu_class' => "d-flex flex-column justify-content-between",
+                'link_class' => 'h5',
+            ] ); ?>
         </nav>
         <div class="d-flex justify-content-between ico-top">
-            <a href="#">
+            <?php if($facebook):?>
+            <a href="<?=$facebook?>">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/fb.svg">
             </a>
-            <a href="#">
+            <?php endif;?>
+            <?php if($twitter):?>
+            <a href="<?=$twitter?>">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/tw.svg">
             </a>
-            <a href="#">
+            <?php endif;?>
+            <?php if($instagram):?>
+            <a href="<?=$instagram?>">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/inst.svg">
             </a>
+            <?php endif;?>
         </div>
         <h6 class="h6">Кроваво-черное ничто пустилось вить систему клеток, связанных внутри, клеток, связанных внутри,
             клеток в едином стебле. И явственно, до жути, на фоне тьмы, ввысь белым бил фонтан
