@@ -4,6 +4,12 @@ Template Name: Главная
 */
 
 get_header();
+
+$medias = get_posts(array(
+    'post_type' => 'media',
+    'post_status' => 'publish',
+    'numberposts' => 3,
+));
 ?>
 
     <section class="back-top">
@@ -545,63 +551,11 @@ get_header();
         <div class="margin">
             <h2 class="h1">Медиа</h2>
             <div class="d-flex justify-content-between">
-                <div class="d-flex flex-column box-media">
-                    <div class="box-video">
-                        <div class="video__link">
-                            <img class="video__media" src="https://i.ytimg.com/vi/cdf1OpL7-_4/maxresdefault.jpg">
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center flex-grow-1 box-video-desc">
-                        <div class="d-flex align-items-center name-video">
-                            <div class="time-video">
-                                <div>
-                                    <img src="<?= get_template_directory_uri() ?>/assets/img/video.svg">
-                                </div>
-                                <p class="h6">5:04</p>
-                            </div>
-                            <h3 class="h4">Как подобрать цвет
-                                и не ошибиться с выбором?</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column box-media">
-                    <div class="box-video">
-                        <div class="video__link">
-                            <img class="video__media" src="https://i.ytimg.com/vi/cdf1OpL7-_4/maxresdefault.jpg">
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center flex-grow-1 box-video-desc">
-                        <div class="d-flex align-items-center name-video">
-                            <div class="time-video">
-                                <div>
-                                    <img src="<?= get_template_directory_uri() ?>/assets/img/video.svg">
-                                </div>
-                                <p class="h6">5:04</p>
-                            </div>
-                            <h3 class="h4">Как подобрать цвет
-                                и не ошибиться с выбором?</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column box-media">
-                    <div class="box-video">
-                        <div class="video__link">
-                            <img class="video__media" src="https://i.ytimg.com/vi/cdf1OpL7-_4/maxresdefault.jpg">
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center flex-grow-1 box-video-desc">
-                        <div class="d-flex align-items-center name-video">
-                            <div class="time-video">
-                                <div>
-                                    <img src="<?= get_template_directory_uri() ?>/assets/img/video.svg">
-                                </div>
-                                <p class="h6">5:04</p>
-                            </div>
-                            <h3 class="h4">Как подобрать цвет
-                                и не ошибиться с выбором?</h3>
-                        </div>
-                    </div>
-                </div>
+                <?php foreach ($medias as $post):
+                    setup_postdata($post);
+                    get_template_part('template-parts/content', 'media');
+                endforeach;
+                wp_reset_postdata();?>
             </div>
         </div>
     </section>

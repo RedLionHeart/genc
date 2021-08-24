@@ -239,6 +239,127 @@ function register_media(){
     register_post_type( 'media', $args );
 }
 
+add_action( 'init', 'create_paint_taxonomies' );
+function create_paint_taxonomies(){
+    register_taxonomy('chemical', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Химическая основа', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Химическая основа', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('diluent_type', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Тип разбавителя', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Тип разбавителя', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('material_type', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Тип материала', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Тип материала', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('tinting_system', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Колеровочная система', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Колеровочная система', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('special_materials', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Специальные материалы', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Специальные материалы', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('type_finishing', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Вид отделки', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Вид отделки', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('special_application_methods', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Особые методы нанесения', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Особые методы нанесения', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('special_category', array('paint'), array(
+        'hierarchical'  => true,
+        'labels'        => array(
+            'name'              => _x( 'Особые категории продукта', 'taxonomy general name' ),
+            'singular_name'     => _x( 'Особые категории продукта', 'taxonomy singular name' ),
+        ),
+        'show_ui'       => true,
+        'query_var'     => true,
+        'publicly_queryable' => false,
+    ));
+
+
+}
+
+add_action( 'init', 'register_paint' );
+function register_paint(){
+    $args = [
+        'labels' => [
+            'name' => 'Продукция',
+            'singular_name' => 'Продукция',
+            'add_new' => 'Добавить новую продукцию',
+            'search_items' => 'Поиск продукции',
+            'not_found' => 'Продукции не было найдено',
+        ],
+        'description' => 'Продукция',
+        'menu_icon' => 'dashicons-admin-customizer',
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => true,
+        'query_var'          => true,
+        'rewrite'            => true,
+        'capability_type'    => 'post',
+        'has_archive'        => false,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'supports'           => array('title', 'thumbnail'),
+    ];
+    register_post_type( 'paint', $args );
+}
+
 function parse_video_youtube($iframe){
     preg_match('/src="(.+?)"/', $iframe, $matches);
     $src = $matches[1];
@@ -292,3 +413,40 @@ add_action('admin_footer', function () {
     </script>
     <?php
 });
+
+function kriesi_pagination($pages = '', $range = 2)
+{
+    $showitems = ($range * 2)+1;
+
+    global $paged;
+    if(empty($paged)) $paged = 1;
+
+    if($pages == '')
+    {
+        global $wp_query;
+        $pages = $wp_query->max_num_pages;
+        if(!$pages)
+        {
+            $pages = 1;
+        }
+    }
+
+    if(1 != $pages)
+    {
+        echo "<div class='pagination'>";
+        if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
+        if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
+
+        for ($i=1; $i <= $pages; $i++)
+        {
+            if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+            {
+                echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+            }
+        }
+
+        if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";
+        if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
+        echo "</div>\n";
+    }
+}
