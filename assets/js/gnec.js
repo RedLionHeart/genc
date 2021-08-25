@@ -195,24 +195,41 @@ $('.playlist button').click(function () {
     });
 
     $('#filter-entry').click(function () {
-        let filter = $('.accordion');
+        let filter = $('#filter-form');
         $.ajax({
             url: filter.attr('action'),
             data: filter.serialize(), // form data
             type: filter.attr('method'), // POST
             success: function (data) {
-                // $('.projects__items--works').html(data);
-                // makeGridProjects(true);
-                console.log(data);
+                $('.container-card').html(data);
+                //console.log(data);
             },
             error: function (error) {
-                $('.echo').html(filter.serialize());
                 console.log(error);
-                console.log(filter.serialize());
             }
         });
+        return false;
     });
 
+    $('#reset-filter').click(function () {
+        $('#filter-form input[type="checkbox"]').each(function () {
+            $(this).prop('checked',false);
+        });
+
+        let filter = $('#filter-form');
+        $.ajax({
+            url: filter.attr('action'),
+            data: filter.serialize(), // form data
+            type: filter.attr('method'), // POST
+            success: function (data) {
+                $('.container-card').html(data);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+        return false;
+    });
 
     let videos = document.querySelectorAll('.box-video');
     for (let i = 0; i < videos.length; i++) {

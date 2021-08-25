@@ -2,7 +2,7 @@
 $term = $args['term'];?>
 
 <label>
-    <input type="checkbox" name="<?=$name;?>" value="<?=$term->name;?>">
+    <input type="checkbox" name="<?=$name.'[]';?>" value="<?=$term->name;?>">
     <div class="box-check">
         <div class="box-plus">
             <div></div>

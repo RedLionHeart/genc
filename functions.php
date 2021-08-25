@@ -450,3 +450,79 @@ function kriesi_pagination($pages = '', $range = 2)
         echo "</div>\n";
     }
 }
+
+add_action('wp_ajax_filter_catalog', 'filter_function');
+add_action('wp_ajax_nopriv_filter_catalog', 'filter_function');
+
+function filter_function(){
+    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $args = array(
+        'orderby' => 'date', // we will sort posts by date
+        'order'	=> 'ASC',
+        'paged' => $paged,
+        'post_type' => 'paint',
+        'posts_per_page' => 13,
+    );
+
+    // for taxonomies / categories
+    if( isset( $_POST['chemical'] ) || isset( $_POST['diluent_type']) || isset( $_POST['material_type'] )
+        || isset( $_POST['tinting_system'] ) || isset( $_POST['special_materials'] ) || isset( $_POST['type_finishing'] )
+        || isset( $_POST['special_application_methods'] ) || isset( $_POST['special_category'] )){
+        $args['tax_query'] = array(
+            'relation' => 'OR',
+            array(
+                'taxonomy' => 'chemical',
+                'field' => 'name',
+                'terms' => $_POST['chemical'],
+            ),
+            array(
+                'taxonomy' => 'diluent_type',
+                'field' => 'name',
+                'terms' => $_POST['diluent_type'],
+            ),
+            array(
+                'taxonomy' => 'material_type',
+                'field' => 'name',
+                'terms' => $_POST['material_type'],
+            ),
+            array(
+                'taxonomy' => 'tinting_system',
+                'field' => 'name',
+                'terms' => $_POST['tinting_system'],
+            ),
+            array(
+                'taxonomy' => 'special_materials',
+                'field' => 'name',
+                'terms' => $_POST['special_materials'],
+            ),
+            array(
+                'taxonomy' => 'type_finishing',
+                'field' => 'name',
+                'terms' => $_POST['type_finishing'],
+            ),
+            array(
+                'taxonomy' => 'special_application_methods',
+                'field' => 'name',
+                'terms' => $_POST['special_application_methods'],
+            ),
+            array(
+                'taxonomy' => 'special_category',
+                'field' => 'name',
+                'terms' => $_POST['special_category'],
+            ),
+        );
+    }
+
+    $query = new WP_Query( $args );
+
+    if( $query->have_posts() ) :
+        while( $query->have_posts() ): $query->the_post();
+            get_template_part('template-parts/catalog/item', '');
+        endwhile;
+        wp_reset_postdata();
+    else :
+        echo '<h2>Продукции не найдено</h2>';
+    endif;
+
+    die();
+}

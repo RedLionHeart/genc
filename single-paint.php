@@ -4,7 +4,7 @@ get_header();
 
 <section class="back-top">
     <div class="video-back">
-        <img src="<?= get_template_directory_uri() ?>/assets/img/back_card.jpg">
+        <img src="<?php the_field('izobrazhenie-fon');?>">
         <div class="back-gradient"></div>
     </div>
 </section>
@@ -85,19 +85,25 @@ get_header();
             </div>
             <div class="drying-time mb-56">
                 <h3 class="h3 mb-16">Время сушки</h3>
-                <?php $drying_time = get_field('vremya_sushki');?>
+                <?php $drying_time = get_field('vremya_sushki');
+                $vysyhanie_na_otlip = $drying_time['vysyhanie_na_otlip'];
+                $suhoj_dlya_shlifovki = $drying_time['suhoj_dlya_shlifovki'];
+                ?>
                 <div class="row">
                     <h5 class="col-lg-6 h5">Температура</h5>
                     <h5 class="col-lg-3 h5">20°С</h5>
                     <h5 class="col-lg-3 h5">50°С</h5>
                 </div>
-                <?php foreach ($drying_time as $item):?>
                 <div class="row">
-                    <h4 class="col-lg-6 h4"><?= $item['temperatura']?></h4>
-                    <h4 class="col-lg-3 h4"><?= $item['20']?></h4>
-                    <h4 class="col-lg-3 h4"><?= $item['50s']?></h4>
+                    <h4 class="col-lg-6 h4">Высыхание на отлип</h4>
+                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['20'];?></h4>
+                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['50s'];?></h4>
                 </div>
-                <?php endforeach;?>
+                <div class="row">
+                    <h4 class="col-lg-6 h4">Сухой для шлифовки</h4>
+                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['20s'];?></h4>
+                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['50s'];?></h4>
+                </div>
             </div>
             <div class="documentation">
                 <?php $documentation = get_field('dokumentacziya');

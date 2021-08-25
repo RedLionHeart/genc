@@ -17,9 +17,6 @@
     <!-- Disable screen scaling-->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
-    <link rel="stylesheet" href="./css/style.css">
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
