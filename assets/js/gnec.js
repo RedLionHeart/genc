@@ -1,4 +1,13 @@
-
+$(".categories-search label").click(function () {
+    if ($('#input-card').prop('checked') === true) {
+        $('#seacrh-container-video').hide();
+        $('#container-card').show();
+    }
+    if ($('#input-video').prop('checked') === true) {
+        $('#container-card').hide();
+        $('#seacrh-container-video').show();
+    }
+});
 
 var massivevideo = Array.from(document.getElementsByClassName('box-media'));
 var boxmenu = document.getElementById('container-video');

@@ -41,10 +41,6 @@ button {
   font-family: "Circe-Bold", sans-serif;
   font-size: 64px;
   line-height: 72px; }
-  @media screen and (max-width: 991px) {
-    .h1 {
-      font-size: 50px;
-      line-height: 63px; } }
 
 .h2 {
   font-family: "Circe-Regular", sans-serif;
@@ -52,8 +48,8 @@ button {
   line-height: 48px; }
   @media screen and (max-width: 991px) {
     .h2 {
-      font-size: 23px;
-      line-height: 29px; } }
+      font-size: 25px;
+      line-height: 33px; } }
 
 .h3 {
   font-family: "Circe-Regular", sans-serif;
@@ -61,8 +57,8 @@ button {
   line-height: 32px; }
   @media screen and (max-width: 991px) {
     .h3 {
-      font-size: 23px;
-      line-height: 29px; } }
+      font-size: 16px;
+      line-height: 22px; } }
 
 .h3-bold {
   font-family: "Circe-Bold", sans-serif;
@@ -324,104 +320,72 @@ header {
     height: 253px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 49.27%, #FFFFFF 100%); }
 .back-top .back-catalog {
-  height: 665px; }
+  height: auto; }
+  .back-top .back-catalog .back-gradient {
+    height: 406px; }
+.back-top .back-about {
+  height: auto; }
 
-.catalog {
+.catalog, .search-results {
   margin-top: -167px;
   margin-bottom: 100px;
   position: relative;
   z-index: 3; }
-  .catalog .margin .h1 {
+  .catalog .margin .h1, .search-results .margin .h1 {
     margin-bottom: 35px;
     border-bottom: 2px solid #5C87AF; }
-  .catalog .margin .filters {
+  .catalog .margin .filters, .search-results .margin .filters {
     padding: 44px 70px 50px 45px;
     border: 2px solid #5C87AF;
     border-radius: 4px; }
-    .catalog .margin .filters .h2 {
+    .catalog .margin .filters .h2, .search-results .margin .filters .h2 {
       margin-bottom: 26px; }
-    .catalog .margin .filters .accordion {
+    .catalog .margin .filters .accordion, .search-results .margin .filters .accordion {
       width: 346px; }
-    .catalog .margin .filters .accordion-item {
+    .catalog .margin .filters .accordion-item, .search-results .margin .filters .accordion-item {
       margin-bottom: 24px; }
-    .catalog .margin .filters .accordion-button {
+    .catalog .margin .filters .accordion-button, .search-results .margin .filters .accordion-button {
       padding: 10px 0;
       border-radius: 0;
       border: none;
       border-bottom: 1px solid #5C87AF !important;
       background: transparent !important;
-      color: black !important; }
-    .catalog .margin .filters .accordion-button:focus {
+      color: black;
+      transition: 0.5s; }
+    .catalog .margin .filters .accordion-button:focus, .search-results .margin .filters .accordion-button:focus {
       border-radius: 0;
       border: none;
       box-shadow: none !important; }
-    .catalog .margin .filters .accordion-button:after {
+    .catalog .margin .filters .accordion-button:after, .search-results .margin .filters .accordion-button:after {
       width: 16px;
       height: 10px;
       background-image: url("../img/arrow_button.svg");
       background-position: center;
       background-size: contain; }
-    .catalog .margin .filters .accordion-collapse, .catalog .margin .filters .separate-input {
+    .catalog .margin .filters .accordion-button:hover, .search-results .margin .filters .accordion-button:hover {
+      color: #00AEEF;
+      border-bottom: 1px solid #00AEEF !important; }
+    .catalog .margin .filters .accordion-button:hover:after, .search-results .margin .filters .accordion-button:hover:after {
+      background-image: url("../img/arrow_button_blue.svg"); }
+    .catalog .margin .filters .accordion-collapse, .catalog .margin .filters .separate-input, .search-results .margin .filters .accordion-collapse, .search-results .margin .filters .separate-input {
       border: none;
       border-bottom: 1px solid #D5E1EC; }
-      .catalog .margin .filters .accordion-collapse .accordion-body, .catalog .margin .filters .separate-input .accordion-body {
+      .catalog .margin .filters .accordion-collapse .accordion-body, .catalog .margin .filters .separate-input .accordion-body, .search-results .margin .filters .accordion-collapse .accordion-body, .search-results .margin .filters .separate-input .accordion-body {
         padding: 16px 0 20px; }
-      .catalog .margin .filters .accordion-collapse label:last-child, .catalog .margin .filters .separate-input label:last-child {
+      .catalog .margin .filters .accordion-collapse label:last-child, .catalog .margin .filters .separate-input label:last-child, .search-results .margin .filters .accordion-collapse label:last-child, .search-results .margin .filters .separate-input label:last-child {
         margin-bottom: 0; }
-      .catalog .margin .filters .accordion-collapse label, .catalog .margin .filters .separate-input label {
-        cursor: pointer;
-        margin-bottom: 16px; }
-        .catalog .margin .filters .accordion-collapse label input, .catalog .margin .filters .separate-input label input {
-          display: none; }
-        .catalog .margin .filters .accordion-collapse label .box-check, .catalog .margin .filters .separate-input label .box-check {
-          display: flex;
-          align-items: center; }
-          .catalog .margin .filters .accordion-collapse label .box-check .box-plus, .catalog .margin .filters .separate-input label .box-check .box-plus {
-            border: 1px solid #426189;
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            position: relative;
-            transition: 0.5s; }
-            .catalog .margin .filters .accordion-collapse label .box-check .box-plus div, .catalog .margin .filters .separate-input label .box-check .box-plus div {
-              transition: 0.5s;
-              opacity: 0; }
-            .catalog .margin .filters .accordion-collapse label .box-check .box-plus div:nth-child(1), .catalog .margin .filters .separate-input label .box-check .box-plus div:nth-child(1) {
-              width: 2px;
-              height: 12px;
-              background-color: #6DCFF6;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%); }
-            .catalog .margin .filters .accordion-collapse label .box-check .box-plus div:nth-child(2), .catalog .margin .filters .separate-input label .box-check .box-plus div:nth-child(2) {
-              width: 12px;
-              height: 2px;
-              background-color: #6DCFF6;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%); }
-          .catalog .margin .filters .accordion-collapse label .box-check .box-plus:hover, .catalog .margin .filters .separate-input label .box-check .box-plus:hover {
-            border: 1px solid #00AEEF; }
-            .catalog .margin .filters .accordion-collapse label .box-check .box-plus:hover div, .catalog .margin .filters .separate-input label .box-check .box-plus:hover div {
-              opacity: 1; }
-        .catalog .margin .filters .accordion-collapse label input:active + .box-check .box-plus, .catalog .margin .filters .separate-input label input:active + .box-check .box-plus {
-          background-color: #D5E1EC; }
-        .catalog .margin .filters .accordion-collapse label input:checked + .box-check .box-plus div, .catalog .margin .filters .separate-input label input:checked + .box-check .box-plus div {
-          opacity: 1; }
-    .catalog .margin .filters .separate-input {
+    .catalog .margin .filters .separate-input, .search-results .margin .filters .separate-input {
       padding: 10px 0 0;
       border-bottom: none;
       margin-bottom: 104px; }
-    .catalog .margin .filters .button-blue {
+    .catalog .margin .filters .button-blue, .search-results .margin .filters .button-blue {
       margin-bottom: 23px; }
-  .catalog .container-search-card {
+  .catalog .container-search-card, .search-results .container-search-card {
     width: 950px; }
-    .catalog .container-search-card form {
+    .catalog .container-search-card form, .search-results .container-search-card form {
       position: relative;
       margin-bottom: 35px; }
-      .catalog .container-search-card form input {
+      .catalog .container-search-card form input, .search-results .container-search-card form input {
         width: 100%;
         height: 51px;
         padding: 0 110px 0 20px;
@@ -429,69 +393,128 @@ header {
         box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2);
         border-radius: 4px;
         transition: 5s; }
-      .catalog .container-search-card form input::-webkit-search-cancel-button {
+      .catalog .container-search-card form input::-webkit-search-cancel-button, .search-results .container-search-card form input::-webkit-search-cancel-button {
         display: none; }
-      .catalog .container-search-card form input:focus {
+      .catalog .container-search-card form input:focus, .search-results .container-search-card form input:focus {
         border: 2px solid #00AEEF;
         box-shadow: 2px 2px 0 #00AEEF; }
-      .catalog .container-search-card form button {
+      .catalog .container-search-card form button, .search-results .container-search-card form button {
         position: absolute;
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
         background-color: transparent;
         border: none; }
-        .catalog .container-search-card form button p {
+        .catalog .container-search-card form button p, .search-results .container-search-card form button p {
           margin-right: 15px;
           opacity: 0;
           color: #00AEEF; }
-        .catalog .container-search-card form button .img-search {
+        .catalog .container-search-card form button .img-search, .search-results .container-search-card form button .img-search {
           width: 44px;
           height: 44px;
           border-radius: 50%; }
-        .catalog .container-search-card form button path, .catalog .container-search-card form button svg, .catalog .container-search-card form button p, .catalog .container-search-card form button .img-search {
+        .catalog .container-search-card form button path, .catalog .container-search-card form button svg, .catalog .container-search-card form button p, .catalog .container-search-card form button .img-search, .search-results .container-search-card form button path, .search-results .container-search-card form button svg, .search-results .container-search-card form button p, .search-results .container-search-card form button .img-search {
           transition: 0.5s; }
-      .catalog .container-search-card form button:hover p {
+      .catalog .container-search-card form button:hover p, .search-results .container-search-card form button:hover p {
         opacity: 1; }
-      .catalog .container-search-card form button:hover .img-search {
+      .catalog .container-search-card form button:hover .img-search, .search-results .container-search-card form button:hover .img-search {
         background-color: #00AEEF; }
-      .catalog .container-search-card form button:hover path {
+      .catalog .container-search-card form button:hover path, .search-results .container-search-card form button:hover path {
         fill: #00AEEF;
         stroke: white; }
-      .catalog .container-search-card form button:active p {
+      .catalog .container-search-card form button:active p, .search-results .container-search-card form button:active p {
         opacity: 0; }
-      .catalog .container-search-card form button:active .img-search {
+      .catalog .container-search-card form button:active .img-search, .search-results .container-search-card form button:active .img-search {
         width: 33px;
         height: 33px; }
-      .catalog .container-search-card form button:active svg {
+      .catalog .container-search-card form button:active svg, .search-results .container-search-card form button:active svg {
         width: 20px;
         height: 20px; }
-    .catalog .container-search-card .container-card .box-card {
-      width: 462px;
+    .catalog .container-search-card .container-card .box-card, .search-results .container-search-card .container-card .box-card {
+      width: 458px;
       padding: 32px 75px 18px 34px;
       margin-bottom: 17px; }
-      .catalog .container-search-card .container-card .box-card .img-card {
+      .catalog .container-search-card .container-card .box-card .img-card, .search-results .container-search-card .container-card .box-card .img-card {
         width: 62px;
         height: 80px;
         object-fit: contain;
         margin-right: 25px;
         flex: 0 0 62px; }
-        .catalog .container-search-card .container-card .box-card .img-card img {
+        .catalog .container-search-card .container-card .box-card .img-card img, .search-results .container-search-card .container-card .box-card .img-card img {
           display: block; }
-  .catalog .navigation {
+  .catalog .navigation, .search-results .navigation {
     margin-top: 15px; }
-  .catalog .nav-links .prev {
+  .catalog .nav-links .prev, .search-results .nav-links .prev {
     margin-right: 15px; }
-  .catalog .nav-links .next {
+  .catalog .nav-links .next, .search-results .nav-links .next {
     margin-left: 15px; }
-  .catalog .nav-links .page-numbers {
+  .catalog .nav-links .page-numbers, .search-results .nav-links .page-numbers {
     height: 20px;
     width: 21px;
     text-align: center;
     color: #808080;
     transition: 0.5s; }
-  .catalog .nav-links .current {
+  .catalog .nav-links .current, .search-results .nav-links .current {
     color: #5C87AF; }
+
+.search-results .container-search-card {
+  width: 100%; }
+.search-results .categories-search {
+  margin-bottom: 20px; }
+  .search-results .categories-search label {
+    margin-right: 20px;
+    margin-bottom: 0; }
+.search-results .container-card, .search-results .container-video {
+  display: flex; }
+  .search-results .container-card .box-media, .search-results .container-video .box-media {
+    margin-bottom: 17px; }
+  .search-results .container-card .box-card:nth-child(3n+1), .search-results .container-card .box-media:nth-child(3n+1), .search-results .container-video .box-card:nth-child(3n+1), .search-results .container-video .box-media:nth-child(3n+1) {
+    margin-right: 30.5px; }
+  .search-results .container-card .box-card:nth-child(3n+2), .search-results .container-card .box-media:nth-child(3n+2), .search-results .container-video .box-card:nth-child(3n+2), .search-results .container-video .box-media:nth-child(3n+2) {
+    margin-right: 30.5px; }
+
+.check-filter {
+  cursor: pointer;
+  margin-bottom: 16px; }
+  .check-filter input {
+    display: none; }
+  .check-filter .box-check {
+    display: flex;
+    align-items: center; }
+    .check-filter .box-check .box-plus {
+      border: 1px solid #426189;
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+      position: relative;
+      transition: 0.5s; }
+      .check-filter .box-check .box-plus div {
+        transition: 0.5s;
+        opacity: 0; }
+      .check-filter .box-check .box-plus div:nth-child(1) {
+        width: 2px;
+        height: 12px;
+        background-color: #6DCFF6;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+      .check-filter .box-check .box-plus div:nth-child(2) {
+        width: 12px;
+        height: 2px;
+        background-color: #6DCFF6;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+    .check-filter .box-check .box-plus:hover {
+      border: 1px solid #00AEEF; }
+      .check-filter .box-check .box-plus:hover div {
+        opacity: 1; }
+  .check-filter input:active + .box-check .box-plus {
+    background-color: #D5E1EC; }
+  .check-filter input:checked + .box-check .box-plus div {
+    opacity: 1; }
 
 .media {
   padding: 0 0 44px; }
@@ -759,68 +782,142 @@ footer {
   .media-container .video-show {
     display: flex !important; }
 
-.form-passwork {
+.form-passwork, .form-sta {
   padding: 126px 0 150px;
   position: relative;
   z-index: 3; }
-  .form-passwork .h1 {
+  .form-passwork .h1, .form-sta .h1 {
     margin-bottom: 16px;
     max-width: 585px; }
-  .form-passwork form {
+  .form-passwork .h2, .form-sta .h2 {
+    margin-bottom: 20px; }
+  .form-passwork .h3, .form-sta .h3 {
+    margin-bottom: 25px; }
+
+.modal-backdrop .show {
+  background: radial-gradient(34.42% 72.32% at 67.69% 27.68%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), rgba(235, 239, 242, 0.9); }
+
+.form-passwork form .input-valid, .form-sta form .input-valid, #formModalpasswork form .input-valid {
+  position: relative;
+  margin-bottom: 24px; }
+  .form-passwork form .input-valid .entryfield, .form-sta form .input-valid .entryfield, #formModalpasswork form .input-valid .entryfield {
+    box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2);
+    border-radius: 4px;
+    border: 2px solid #5C87AF;
+    width: 100%;
+    resize: none;
+    background: none;
+    padding: 10px;
+    color: #3F3F3F;
+    overflow: hidden;
+    transition: 0.5s; }
+  .form-passwork form .input-valid .entryfield::placeholder, .form-sta form .input-valid .entryfield::placeholder, #formModalpasswork form .input-valid .entryfield::placeholder {
+    color: #808080;
+    font-family: "Circe-Light", sans-serif;
+    font-size: 18px;
+    line-height: 27px; }
+  .form-passwork form .input-valid .entryfield:hover, .form-sta form .input-valid .entryfield:hover, #formModalpasswork form .input-valid .entryfield:hover {
+    border: 2px solid #6DCFF6; }
+  .form-passwork form .input-valid .entryfield:focus, .form-sta form .input-valid .entryfield:focus, #formModalpasswork form .input-valid .entryfield:focus {
+    border: 2px solid #00AEEF;
+    box-shadow: 2px 2px 0 #00AEEF; }
+  .form-passwork form .input-valid .valid, .form-sta form .input-valid .valid, #formModalpasswork form .input-valid .valid {
+    border: 2px solid #5C946E;
+    box-shadow: inset 6px 6px 0 rgba(92, 148, 110, 0.2); }
+  .form-passwork form .input-valid .invalid, .form-sta form .input-valid .invalid, #formModalpasswork form .input-valid .invalid {
+    box-shadow: 2px 2px 0 #EC5B70;
+    border: 2px solid #EC5B70; }
+  .form-passwork form .input-valid .entryfield:-webkit-autofill, .form-sta form .input-valid .entryfield:-webkit-autofill, #formModalpasswork form .input-valid .entryfield:-webkit-autofill {
+    -webkit-background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    color: #3F3F3F !important;
+    -webkit-text-fill-color: #3F3F3F !important; }
+.form-passwork form .input-valid img, .form-sta form .input-valid img, #formModalpasswork form .input-valid img {
+  position: absolute;
+  display: none;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%); }
+.form-passwork form .input-valid .entryfield:focus + img, .form-sta form .input-valid .entryfield:focus + img, #formModalpasswork form .input-valid .entryfield:focus + img {
+  display: block; }
+.form-passwork form .input-valid .entryfield:focus + img + img, .form-sta form .input-valid .entryfield:focus + img + img, #formModalpasswork form .input-valid .entryfield:focus + img + img {
+  display: none; }
+.form-passwork form .input-valid .entryfield:focus + img + img + img, .form-sta form .input-valid .entryfield:focus + img + img + img, #formModalpasswork form .input-valid .entryfield:focus + img + img + img {
+  display: none; }
+.form-passwork form .input-valid .valid + img + img, .form-sta form .input-valid .valid + img + img, #formModalpasswork form .input-valid .valid + img + img {
+  display: block; }
+.form-passwork form .input-valid .invalid + img + img + img, .form-sta form .input-valid .invalid + img + img + img, #formModalpasswork form .input-valid .invalid + img + img + img {
+  display: block; }
+.form-passwork form button, .form-sta form button, #formModalpasswork form button {
+  width: 240px; }
+
+.form-passwork form {
+  border: 2px solid #426189;
+  border-radius: 4px;
+  padding: 70px 60px;
+  width: 585px; }
+
+#formModalpasswork .modal-dialog {
+  max-width: 704px; }
+  #formModalpasswork .modal-dialog .modal-body {
+    background: white;
     border: 2px solid #426189;
     border-radius: 4px;
-    padding: 70px 60px;
-    width: 585px; }
-    .form-passwork form .input-valid {
-      position: relative;
-      margin-bottom: 24px; }
-      .form-passwork form .input-valid .entryfield {
-        box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2);
-        border-radius: 4px;
-        border: 2px solid #5C87AF;
-        width: 100%;
-        resize: none;
-        background: none;
-        padding: 10px;
-        color: #3F3F3F;
-        overflow: hidden;
-        transition: 0.5s; }
-      .form-passwork form .input-valid .entryfield::placeholder {
-        color: #808080;
-        font-family: "Circe-Light", sans-serif;
-        font-size: 18px;
-        line-height: 27px; }
-      .form-passwork form .input-valid .entryfield:hover {
-        border: 2px solid #6DCFF6; }
-      .form-passwork form .input-valid .entryfield:focus {
-        border: 2px solid #00AEEF;
-        box-shadow: 2px 2px 0 #00AEEF; }
-      .form-passwork form .input-valid .valid {
-        border: 2px solid #5C946E;
-        box-shadow: inset 6px 6px 0 rgba(92, 148, 110, 0.2); }
-      .form-passwork form .input-valid .invalid {
-        box-shadow: 2px 2px 0 #EC5B70;
-        border: 2px solid #EC5B70; }
-      .form-passwork form .input-valid .entryfield:-webkit-autofill {
-        -webkit-background-color: transparent !important;
-        -webkit-box-shadow: 0 0 0 1000px white inset;
-        color: #3F3F3F !important;
-        -webkit-text-fill-color: #3F3F3F !important; }
-    .form-passwork form .input-valid img {
+    padding: 0; }
+    #formModalpasswork .modal-dialog .modal-body .button-burger {
+      cursor: pointer;
+      background: transparent;
       position: absolute;
-      display: none;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%); }
-    .form-passwork form .input-valid .entryfield:focus + img {
-      display: block; }
-    .form-passwork form .input-valid .entryfield:focus + img + img {
-      display: none; }
-    .form-passwork form .input-valid .entryfield:focus + img + img + img {
-      display: none; }
-    .form-passwork form .input-valid .valid + img + img {
-      display: block; }
-    .form-passwork form .input-valid .invalid + img + img + img {
-      display: block; }
-    .form-passwork form button {
-      width: 240px; }
+      top: 64px;
+      right: 60px;
+      width: 16px;
+      height: 16px;
+      padding: 0;
+      opacity: 1; }
+      #formModalpasswork .modal-dialog .modal-body .button-burger div {
+        position: absolute;
+        width: 140%;
+        height: 2px;
+        background-color: #5C87AF;
+        border-radius: 2px;
+        transition: 0.5s; }
+      #formModalpasswork .modal-dialog .modal-body .button-burger div:nth-child(1) {
+        transform: translate(-50%, -50%) rotate(45deg);
+        top: 50%;
+        left: 50%; }
+      #formModalpasswork .modal-dialog .modal-body .button-burger div:nth-child(2) {
+        transform: translate(-50%, -50%) rotate(-45deg);
+        top: 50%;
+        left: 50%; }
+    #formModalpasswork .modal-dialog .modal-body .button-burger:hover div {
+      background-color: #00AEEF;
+      height: 3px; }
+    #formModalpasswork .modal-dialog .modal-body .flexform {
+      background: transparent;
+      box-shadow: none;
+      padding: 64px 60px; }
+      #formModalpasswork .modal-dialog .modal-body .flexform .h1 {
+        margin-bottom: 35px;
+        color: #3F3F3F; }
+      #formModalpasswork .modal-dialog .modal-body .flexform form {
+        margin-bottom: 20px; }
+        #formModalpasswork .modal-dialog .modal-body .flexform form .button-blue {
+          width: 55%; }
+        #formModalpasswork .modal-dialog .modal-body .flexform form .button-discard {
+          width: 40%;
+          padding: 14px 40px; }
+      #formModalpasswork .modal-dialog .modal-body .flexform a {
+        transition: 0.5s; }
+      #formModalpasswork .modal-dialog .modal-body .flexform a:hover {
+        color: #5C87AF; }
+
+.form-sta .check-filter {
+  margin-bottom: 24px; }
+
+.about .h1 {
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #5C87AF; }
+.about .banner-about-top {
+  margin-bottom: 45px;
+  width: 100%; }
