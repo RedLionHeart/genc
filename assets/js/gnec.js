@@ -172,7 +172,7 @@ $('.playlist button').click(function () {
 
 
     $('.ajax-form button').click(function () {
-        thanks.show()
+        //thanks.show()
         // $.ajax({
         //     url: './js/action_ajax_form.php',
         //     data: $('.modal').serialize(),

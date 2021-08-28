@@ -75,7 +75,8 @@ $instagram = get_field('instagram', 'options');
                 </div>
                 <div class="d-flex flex-column flexform">
                     <h2 class="h1">Вход</h2>
-                    <form action="/" class="d-flex flex-column ajax-form" method="post">
+                    <form action="login" class="d-flex flex-column ajax-form" method="post">
+                        <p class="status"></p>
                         <div class="d-flex flex-column">
                             <div class="input-valid">
                                 <input class="entryfield input-mask__mail mail h4" type="email"
@@ -90,7 +91,7 @@ $instagram = get_field('instagram', 'options');
                             </div>
                             <div class="input-valid">
                                 <input class="entryfield h4" type="password" id="passwork"
-                                       placeholder="Пароль" name="passwork" required>
+                                       placeholder="Пароль" name="password" required>
                                 <img class="entry-img"
                                      src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
                                 <img class="valid-img"
@@ -103,6 +104,7 @@ $instagram = get_field('instagram', 'options');
                             <button type="submit" name="submit" class="button-blue h5">Войти</button>
                             <a class="button-discard h5" href="<?= get_permalink(73);?>">Получить пароль</a>
                         </div>
+                        <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
                     </form>
                     <a target="_blank" href="<?= wp_lostpassword_url(); ?>" class="h4">Забыли пароль?</a>
                 </div>
