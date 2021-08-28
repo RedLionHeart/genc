@@ -12,13 +12,13 @@ get_header();
 $medias = get_posts([
     'post_type' => 'media',
     's' => $_GET['s'],
-    'numberposts' => 30,
+    'numberposts' => -1,
 ]);
 
 $paints = get_posts([
     'post_type' => 'paint',
     's' => $_GET['s'],
-    'numberposts' => 30,
+    'numberposts' => -1,
 ]);
 
 $count_paints = count($paints);
@@ -65,36 +65,40 @@ $count_medias = count($medias);
                             <?php if (isset($paints) && $count_paints !== 0): ?>
                                 <div class="flex-wrap container-card">
                                     <?php
+                                    $paged_paints = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 
-                                    foreach ($paints as $post):
-                                        setup_postdata($post);
-                                        get_template_part('template-parts/catalog/item', '');
-                                    endforeach;
+                                    $args = array(
+                                        'post_type' => 'paint',
+                                        'posts_per_page' => '9',
+                                        's' => $_GET['s'],
+                                        'paged' => $paged_paints,
+                                    );
+
+                                    $paints = new WP_Query($args);
+                                    if ($paints->have_posts()) {
+
+                                        while ($paints->have_posts()) {
+
+                                            $paints->the_post();
+
+                                            get_template_part('template-parts/catalog/item', '');
+                                        }
+                                    }
+
                                     wp_reset_postdata(); ?>
 
                                 </div>
                                 <div>
-                                    <nav class="navigation pagination" role="navigation">
-                                        <div class="d-flex align-items-center nav-links">
-                                            <a class="prev" href="http://wptest.ru/page/2/">
-                                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_pagination_prev.svg">
-                                            </a>
-                                            <span class="page-numbers current h4"><span
-                                                        class="meta-nav screen-reader-text"></span>1</span>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/2/"><span
-                                                        class="meta-nav screen-reader-text"></span>2</a>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/3/"><span
-                                                        class="meta-nav screen-reader-text"></span>3</a>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/4/"><span
-                                                        class="meta-nav screen-reader-text"></span>4</a>
-                                            <span class="page-numbers dots h4">…</span>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/6/"><span
-                                                        class="meta-nav screen-reader-text"></span>6</a>
-                                            <a class="next" href="http://wptest.ru/page/2/">
-                                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_pagination_next.svg">
-                                            </a>
-                                        </div>
-                                    </nav>
+                                    <?php
+                                    if ($paints->max_num_pages > 1) :?>
+                                        <script>
+                                            var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                                            var true_posts_paints = `<?php echo serialize($paints->query_vars); ?>`;
+                                            var current_page_paints = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+                                            var max_pages_paints = <?php echo $paints->max_num_pages; ?>;
+                                        </script>
+                                        <button class="btn btn-loadmore btn-loadmore-paints">Загрузить еще</button>
+                                    <?php endif; ?>
                                 </div>
                             <?php else:
                                 echo '<p>Нет результатов по данной категории</p>';
@@ -104,34 +108,39 @@ $count_medias = count($medias);
                             <?php if (isset($medias) && $count_medias !== 0): ?>
                                 <div class="flex-wrap container-video">
                                     <?php
-                                    foreach ($medias as $post):
-                                        setup_postdata($post);
-                                        get_template_part('template-parts/content', 'media');
-                                    endforeach;
+                                    $paged_medias = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+
+                                    $args = array(
+                                        'post_type' => 'media',
+                                        'posts_per_page' => '9',
+                                        's' => $_GET['s'],
+                                        'paged' => $paged_medias,
+                                    );
+
+                                    $medias = new WP_Query($args);
+                                    if ($medias->have_posts()) {
+
+                                        while ($medias->have_posts()) {
+
+                                            $medias->the_post();
+
+                                            get_template_part('template-parts/content', 'media');
+                                        }
+                                    }
+
                                     wp_reset_postdata(); ?>
                                 </div>
                                 <div>
-                                    <nav class="navigation pagination" role="navigation">
-                                        <div class="d-flex align-items-center nav-links">
-                                            <a class="prev" href="http://wptest.ru/page/2/">
-                                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_pagination_prev.svg">
-                                            </a>
-                                            <span class="page-numbers current h4"><span
-                                                        class="meta-nav screen-reader-text"></span>1</span>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/2/"><span
-                                                        class="meta-nav screen-reader-text"></span>2</a>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/3/"><span
-                                                        class="meta-nav screen-reader-text"></span>3</a>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/4/"><span
-                                                        class="meta-nav screen-reader-text"></span>4</a>
-                                            <span class="page-numbers dots h4">…</span>
-                                            <a class="page-numbers h4" href="http://wptest.ru/page/6/"><span
-                                                        class="meta-nav screen-reader-text"></span>6</a>
-                                            <a class="next" href="http://wptest.ru/page/2/">
-                                                <img src="<?php echo get_template_directory_uri() ?>/assets/img/arrow_pagination_next.svg">
-                                            </a>
-                                        </div>
-                                    </nav>
+                                    <?php
+                                    if ($medias->max_num_pages > 1) :?>
+                                        <script>
+                                            var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                                            var true_posts_medias = `<?php echo serialize($medias->query_vars); ?>`;
+                                            var current_page_medias = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+                                            var max_pages_medias = <?php echo $medias->max_num_pages; ?>;
+                                        </script>
+                                        <button class="btn btn-loadmore btn-loadmore-medias">Загрузить еще</button>
+                                    <?php endif; ?>
                                 </div>
                             <?php
                             else:
