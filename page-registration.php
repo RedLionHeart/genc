@@ -8,8 +8,8 @@ get_header(); ?>
 <section class="form-passwork">
     <div class="margin">
         <h1 class="h1">Форма получения пароля</h1>
-        <form action="/" class="d-flex flex-column ajax-form" method="post">
-            <input type="hidden" name="email_to" value="<?= get_field('email_для_заявок', 'options'); ?>">
+        <form action="/" class="d-flex flex-column ajax-form" method="post" id="registration">
+            <input type="hidden" name="email_to" value="<?= get_field('email_dlya_zayavok', 'options'); ?>">
 
             <div class="d-flex flex-column">
                 <div class="input-valid">

@@ -578,3 +578,23 @@ function ajax_login()
 
     die();
 }
+
+/*редирект если пользователь заходит на страницу регистрации и залогинен*/
+add_action( 'template_redirect', function() {
+    if( is_page(73) && is_user_logged_in() ){
+        wp_redirect( home_url());
+        exit;
+    }
+} );
+
+add_action( 'wp_enqueue_scripts', 'myajax_data', 99 );
+function myajax_data(){
+
+    wp_localize_script( 'genc-script', 'myajax',
+        array(
+            'url' => admin_url('admin-ajax.php'),
+            'url_send_registration' => get_template_directory_uri() . '/assets/mail/action_ajax_form_registration.php'
+        )
+    );
+
+}
