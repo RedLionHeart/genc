@@ -11,7 +11,7 @@ $parsed_id = parse_video_youtube($video_link);
             <img class="video__media" src="https://i.ytimg.com/vi/<?=$parsed_id;?>/maxresdefault.jpg">
         </div>
     </div>
-    <div class="d-flex align-items-center flex-grow-1 box-video-desc">
+    <div class="d-flex align-items-center box-video-desc">
         <div class="d-flex align-items-center name-video">
             <div class="time-video">
                 <div>

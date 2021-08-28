@@ -51,25 +51,22 @@ button
   font-family: 'Circe-Bold', sans-serif
   font-size: 64px
   line-height: 72px
-  @media screen and (max-width: 991px)
-    font-size: 50px
-    line-height: 63px
 
 .h2
   font-family: 'Circe-Regular', sans-serif
   font-size: 36px
   line-height: 48px
   @media screen and (max-width: 991px)
-    font-size: 23px
-    line-height: 29px
+    font-size: 25px
+    line-height: 33px
 
 .h3
   font-family: 'Circe-Regular', sans-serif
   font-size: 24px
   line-height: 32px
   @media screen and (max-width: 991px)
-    font-size: 23px
-    line-height: 29px
+    font-size: 16px
+    line-height: 22px
 
 .h3-bold
   font-family: 'Circe-Bold', sans-serif
@@ -84,8 +81,8 @@ button
   font-size: 18px
   line-height: 24px
   @media screen and (max-width: 991px)
-    font-size: 32px
-    line-height: 40px
+    font-size: 12px
+    line-height: 16px
 
 .h5
   font-family: 'Circe-Light', sans-serif
@@ -233,7 +230,7 @@ button
     width: 940px
   @media screen and (max-width: 991px)
     width: 100%
-    padding: 0 16px
+    padding: 0 20px
 
 header
   transition: .5s
@@ -245,13 +242,23 @@ header
   backdrop-filter: blur(40px)
   -webkit-backdrop-filter: blur(40px)
   .margin
-    margin: 0 0 0 24px
+    margin: 0 204px 0 24px
     width: auto
+    @media screen and (max-width: 1640px)
+      margin: 0 24px 0 24px
+    .button-burger
+      display: none
+      @media screen and (max-width: 1300px)
+        display: block
     .top-logo
-      margin-right: 62px
+      //margin-right: 62px
+    img
+      display: block
     nav
       width: 865px
-      margin-right: 241px
+      //margin-right: 241px
+      @media screen and (max-width: 1300px)
+        display: none
       a
         transition: .5s
         border-bottom: 2px solid transparent
@@ -260,17 +267,23 @@ header
         color: $black
     .ico-top
       width: 133px
-      margin-right: 137px
+      //margin-right: 137px
+      @media screen and (max-width: 1300px)
+        display: none!important
 .login
   cursor: pointer
   svg
     margin-right: 16px
     flex: 0 0 30px
+    @media screen and (max-width: 1300px)
+      margin-right: 0
     path
       transition: .5s
   p
     color: $gray50
     transition: .5s
+    @media screen and (max-width: 1300px)
+      display: none
 .login:hover
     path
       fill: $blue
@@ -281,6 +294,28 @@ header
       fill: $forest
     p
       color: $forest
+
+#burgerModal
+  .modal-header
+    padding: 34px 36px 27px 30px
+    border-bottom: none
+  .modal-body
+    padding: 0 36px 43px 30px
+    nav
+      li
+        border-bottom: 1px solid $smokey
+        margin-bottom: 16px
+      li:last-child
+        margin-bottom: 32px
+  .button-burger
+    width: 12px
+    height: 12px
+    img
+      width: 100%
+      height: 100%
+      display: block
+  .ico-top
+    width: 133px
 
 .header-scroll
   padding: 12px 0
@@ -295,8 +330,9 @@ header
   .video-back
     position: relative
     width: 100%
-    height: 836px
-    video
+    max-height: 836px
+    overflow: hidden
+    iframe
       position: absolute
       top: 0
       left: 0
@@ -311,10 +347,15 @@ header
       height: 253px
       background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 49.27%, #FFFFFF 100%)
   .back-catalog
-    height: 665px
+    height: auto
+    .back-gradient
+      height: 406px
+  .back-about
+    height: auto
 
 
-.catalog
+
+.catalog, .search-results
   margin-top: -167px
   margin-bottom: 100px
   position: relative
@@ -324,13 +365,19 @@ header
       margin-bottom: 35px
       border-bottom: 2px solid $smokey
     .filters
-      padding: 44px 70px 50px 45px
+      padding: 44px 70px 50px 44px
       border: 2px solid $smokey
       border-radius: 4px
+      @media screen and (max-width: 1440px)
+        padding: 44px 40px 50px 20px
+      @media screen and (max-width: 1240px)
+        padding: 44px 20px 50px 20px
       .h2
         margin-bottom: 26px
       .accordion
         width: 346px
+        @media screen and (max-width: 1440px)
+          width: 330px
       .accordion-item
         margin-bottom: 24px
       .accordion-button
@@ -339,7 +386,8 @@ header
         border: none
         border-bottom: 1px solid $smokey!important
         background: transparent!important
-        color: $black!important
+        color: $black
+        transition: .5s
       .accordion-button:focus
         border-radius: 0
         border: none
@@ -350,6 +398,11 @@ header
         background-image: url("../img/arrow_button.svg")
         background-position: center
         background-size: contain
+      .accordion-button:hover
+        color: $blue
+        border-bottom: 1px solid $blue!important
+      .accordion-button:hover:after
+        background-image: url("../img/arrow_button_blue.svg")
       .accordion-collapse, .separate-input
         border: none
         border-bottom: 1px solid $winter
@@ -357,48 +410,6 @@ header
           padding: 16px 0 20px
         label:last-child
           margin-bottom: 0
-        label
-          cursor: pointer
-          margin-bottom: 16px
-          input
-            display: none
-          .box-check
-            display: flex
-            align-items: center
-            .box-plus
-              border: 1px solid $forest
-              width: 24px
-              height: 24px
-              margin-right: 12px
-              position: relative
-              transition: .5s
-              div
-                transition: .5s
-                opacity: 0
-              div:nth-child(1)
-                width: 2px
-                height: 12px
-                background-color: $light
-                position: absolute
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
-              div:nth-child(2)
-                width: 12px
-                height: 2px
-                background-color: $light
-                position: absolute
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
-            .box-plus:hover
-              border: 1px solid $blue
-              div
-                opacity: 1
-          input:active + .box-check .box-plus
-            background-color: $winter
-          input:checked + .box-check .box-plus div
-            opacity: 1
       .separate-input
         padding: 10px 0 0
         border-bottom: none
@@ -407,6 +418,10 @@ header
         margin-bottom: 23px
   .container-search-card
     width: 950px
+    @media screen and (max-width: 1440px)
+      width: 780px
+    @media screen and (max-width: 1240px)
+      width: 550px
     form
       position: relative
       margin-bottom: 35px
@@ -459,17 +474,27 @@ header
           height: 20px
     .container-card
       .box-card
-        width: 462px
-        padding: 32px 75px 18px 34px
+        width: 458px
+        padding: 18px 10px 18px 10px
         margin-bottom: 17px
+        @media screen and (max-width: 1440px)
+          width: 380px
+          padding: 18px 10px 18px 10px
+        @media screen and (max-width: 1240px)
+          width: 100%
         .img-card
           width: 62px
           height: 80px
           object-fit: contain
           margin-right: 25px
           flex: 0 0 62px
+          @media screen and (max-width: 1440px)
+            margin-right: 10px
           img
             display: block
+            width: 100%
+            height: 100%
+            object-fit: contain
   .navigation
     margin-top: 15px
   .nav-links
@@ -485,6 +510,69 @@ header
       transition: .5s
     .current
       color: $smokey
+
+.search-results
+  .container-search-card
+    width: 100%
+  .categories-search
+    margin-bottom: 20px
+    label
+      margin-right: 20px
+      margin-bottom: 0
+      //input:checked + .box-check
+      //    .h2
+      //      color: $blue
+  .container-card, .container-video
+    display: flex
+    .box-media
+      margin-bottom: 17px
+    .box-card:nth-child(3n+1), .box-media:nth-child(3n+1)
+      margin-right: 30.5px
+    .box-card:nth-child(3n+2), .box-media:nth-child(3n+2)
+      margin-right: 30.5px
+.check-filter
+  cursor: pointer
+  margin-bottom: 16px
+  input
+    display: none
+  .box-check
+    display: flex
+    align-items: center
+    .box-plus
+      border: 1px solid $forest
+      width: 24px
+      height: 24px
+      margin-right: 12px
+      position: relative
+      transition: .5s
+      div
+        transition: .5s
+        opacity: 0
+      div:nth-child(1)
+        width: 2px
+        height: 12px
+        background-color: $light
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+      div:nth-child(2)
+        width: 12px
+        height: 2px
+        background-color: $light
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    .box-plus:hover
+      border: 1px solid $blue
+      div
+        opacity: 1
+  input:active + .box-check .box-plus
+    background-color: $winter
+  input:checked + .box-check .box-plus div
+    opacity: 1
+
 
 .media
   padding: 0 0 44px
@@ -522,6 +610,8 @@ header
           width: 36px
           height: 36px
           transition: .5s
+  .box-video-desc
+    padding: 40px 32px
 
 .box-video
   //background: black
@@ -760,18 +850,24 @@ footer
   .video-show
     display: flex!important
 
-.form-passwork
+.form-passwork, .form-sta
   padding: 126px 0 150px
   position: relative
   z-index: 3
   .h1
     margin-bottom: 16px
     max-width: 585px
+  .h2
+    margin-bottom: 20px
+  .h3
+    margin-bottom: 25px
+
+.modal-backdrop
+  .show
+    background: radial-gradient(34.42% 72.32% at 67.69% 27.68%, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%), rgba(235, 239, 242, 0.9)
+
+.form-passwork, .form-sta, #formModalpasswork
   form
-    border: 2px solid $forest
-    border-radius: 4px
-    padding: 70px 60px
-    width: 585px
     .input-valid
       position: relative
       margin-bottom: 24px
@@ -827,5 +923,131 @@ footer
     button
       width: 240px
 
+.form-passwork
+  form
+    border: 2px solid $forest
+    border-radius: 4px
+    padding: 70px 60px
+    width: 585px
+
+#formModalpasswork
+  .modal-dialog
+    max-width: 704px
+    .modal-body
+      background: $white
+      border: 2px solid $forest
+      border-radius: 4px
+      padding: 0
+      .button-burger
+        cursor: pointer
+        background: transparent
+        position: absolute
+        top: 64px
+        right: 60px
+        width: 16px
+        height: 16px
+        padding: 0
+        opacity: 1
+        div
+          position: absolute
+          width: 140%
+          height: 2px
+          background-color: $smokey
+          border-radius: 2px
+          transition: .5s
+        div:nth-child(1)
+          transform: translate(-50%, -50%) rotate(45deg)
+          top: 50%
+          left: 50%
+        div:nth-child(2)
+          transform: translate(-50%, -50%) rotate(-45deg)
+          top: 50%
+          left: 50%
+      .button-burger:hover
+        div
+          background-color: $blue
+          height: 3px
+        //img
+        //  display: block
+      .flexform
+        background: transparent
+        box-shadow: none
+        padding: 64px 60px
+        .h1
+          margin-bottom: 35px
+          color: $gray
+        form
+          margin-bottom: 20px
+          .button-blue
+            width: 55%
+          .button-discard
+            width: 40%
+            padding: 14px 40px
+        a
+          transition: .5s
+        a:hover
+          color: $smokey
+  .status
+    margin-bottom: 20px
+
+.form-sta
+  .check-filter
+    margin-bottom: 24px
+
+.about, .support
+  .h1
+    padding-bottom: 24px
+    margin-bottom: 32px
+    border-bottom: 2px solid $smokey
+  .banner-top
+    margin-bottom: 45px
+    width: 100%
+    @media screen and (max-width: 991px)
+      margin-bottom: 17px
+      height: 131px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  .img
+    width: 100%
+
+    img
+      width: 100%
+      object-fit: cover
+  .col-lg-6:nth-child(1)
+    h4, ul
+      margin-bottom: 40px
+      @media screen and (max-width: 991px)
+        margin-bottom: 17px
+    li
+      display: flex
+      margin-bottom: 10px
+    li:before
+      content: ""
+      width: 3px
+      height: 3px
+      margin: 10px
+      background-color: $gray
+    .img
+      display: none
+      @media screen and (max-width: 991px)
+        display: block
+        margin-bottom: 17px
+  .col-lg-6:nth-child(2)
+    padding-left: 42px
+    @media screen and (max-width: 991px)
+      display: none
+    .img:nth-child(1)
+      margin-bottom: 63px
+
+.about, .support
+  .margin
+    width: 1200px
+    @media screen and (max-width: 1240px)
+      width: 940px
+    @media screen and (max-width: 991px)
+      width: 100%
+      padding: 0 16px
 
 

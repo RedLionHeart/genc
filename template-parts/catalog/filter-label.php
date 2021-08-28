@@ -1,7 +1,7 @@
 <?php $name = $args['name'];
 $term = $args['term'];?>
 
-<label>
+<label class="check-filter">
     <input type="checkbox" name="<?=$name.'[]';?>" value="<?=$term->name;?>">
     <div class="box-check">
         <div class="box-plus">

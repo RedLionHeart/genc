@@ -76,7 +76,7 @@ $instagram = get_field('instagram', 'options');
                 <div class="d-flex flex-column flexform">
                     <h2 class="h1">Вход</h2>
                     <form action="login" class="d-flex flex-column ajax-form" method="post">
-                        <p class="status"></p>
+                        <p class="status h3">Неверное имя пользователя</p>
                         <div class="d-flex flex-column">
                             <div class="input-valid">
                                 <input class="entryfield input-mask__mail mail h4" type="email"

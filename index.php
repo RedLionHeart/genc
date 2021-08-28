@@ -14,10 +14,10 @@ $medias = get_posts(array(
 
     <section class="back-top">
         <div class="video-back">
-            <video autoplay playsinline loop muted>
-                <source src="<?= get_template_directory_uri() ?>/assets/img/waves.mp4" type="video/mp4">
-                <source src="<?= get_template_directory_uri() ?>/assets/img/waves.webm" type="video/webm">
-            </video>
+            <div style="padding:56.49% 0 0 0;position:relative;">
+                <iframe src="https://player.vimeo.com/video/593213120?h=6d9c4360d0&autoplay=1&loop=1&background=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
             <div class="back-gradient"></div>
         </div>
     </section>

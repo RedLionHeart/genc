@@ -22,7 +22,12 @@
 <body <?php body_class(); ?>>
 <header>
     <div class="margin">
-        <div class="d-flex">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="button-burger btn btn-primary" data-bs-toggle="modal" data-bs-target="#burgerModal">
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 0.680176V2.48018H0V0.680176H18ZM0 11.4802H18V9.68017H0V11.4802ZM0 6.98018H18V5.18018H0V6.98018Z" fill="#808080"/>
+                </svg>
+            </div>
             <a href="<?=get_home_url();?>" class="top-logo">
                 <img src="<?= get_template_directory_uri() ?>/assets/img/logo.svg">
             </a>
@@ -69,3 +74,51 @@
         </div>
     </div>
 </header>
+<div class="modal fade" id="burgerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="margin">
+                    <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="h3">Меню</h3>
+                        <div class="button-burger" data-bs-toggle="modal" data-bs-target="#burgerModal">
+                            <img alt="certification" src="<?= get_template_directory_uri() ?>/assets/img/close.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <nav>
+                    <?php wp_nav_menu( [
+                        'menu' => 'Меню',
+                        'container' => false,
+                        'menu_class' => "d-flex flex-column justify-content-between",
+                        'link_class' => 'h3',
+                    ] ); ?>
+                </nav>
+                <div class="d-flex justify-content-between ico-top">
+                    <?php
+                    $facebook = get_field('facebook', 'options');
+                    $twitter = get_field('twitter', 'options');
+                    $instagram = get_field('instagram', 'options');
+                    ?>
+                    <?php if($facebook):?>
+                        <a href="<?=$facebook?>">
+                            <img src="<?= get_template_directory_uri() ?>/assets/img/fb.svg">
+                        </a>
+                    <?php endif;?>
+                    <?php if($twitter):?>
+                        <a href="<?=$twitter?>">
+                            <img src="<?= get_template_directory_uri() ?>/assets/img/tw.svg">
+                        </a>
+                    <?php endif;?>
+                    <?php if($instagram):?>
+                        <a href="<?=$instagram?>">
+                            <img src="<?= get_template_directory_uri() ?>/assets/img/inst.svg">
+                        </a>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
