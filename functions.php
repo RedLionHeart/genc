@@ -587,14 +587,40 @@ add_action( 'template_redirect', function() {
     }
 } );
 
+/*редирект если заходим на страницу заказа без id товара*/
+add_action( 'template_redirect', function() {
+    if( is_page(77) && empty($_GET) ){
+        wp_redirect( home_url());
+        exit;
+    }
+} );
+
 add_action( 'wp_enqueue_scripts', 'myajax_data', 99 );
 function myajax_data(){
 
     wp_localize_script( 'genc-script', 'myajax',
         array(
             'url' => admin_url('admin-ajax.php'),
-            'url_send_registration' => get_template_directory_uri() . '/assets/mail/action_ajax_form_registration.php'
+            'url_send_registration' => get_template_directory_uri() . '/assets/mail/action_ajax_form_registration.php',
+            'url_send_order' => get_template_directory_uri() . '/assets/mail/action_ajax_form_order.php',
         )
     );
 
+}
+
+/**
+ * Проверяет роль определенного пользователя.
+ * Возвращает true при совпадении.
+ *
+ * @param строка $role Название роли.
+ * @param логический $user_id (не обязательный) ID пользователя, роль которого нужно проверить.
+ * @return bool
+ */
+function is_user_role( $role, $user_id = null ) {
+    $user = is_numeric( $user_id ) ? get_userdata( $user_id ) : wp_get_current_user();
+
+    if( ! $user )
+        return false;
+
+    return in_array( $role, (array) $user->roles );
 }

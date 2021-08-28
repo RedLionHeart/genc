@@ -170,11 +170,32 @@ var load = new bootstrap.Modal(document.getElementById('formModalDownload'), {
 })
 
 
-form.on('submit', function (e) {
+$('#registration').on('submit', function (e) {
     let formData = new FormData(this);
 
     $.ajax({
-        url: myajax.url_send,
+        url: myajax.url_send_registration,
+        data: formData,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if (data === 'ok') {
+                /*обработка успешной отправки формы*/
+            }
+        },
+        error: function (data) {
+            alert("Данные не отправленны");
+        }
+    });
+    return false;
+});
+
+$('#order').on('submit', function (e) {
+    let formData = new FormData(this);
+
+    $.ajax({
+        url: myajax.url_send_order,
         data: formData,
         type: 'POST',
         contentType: false,

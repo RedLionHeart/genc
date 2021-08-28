@@ -4,7 +4,7 @@ get_header();
 
 <section class="back-top">
     <div class="video-back">
-        <img src="<?php the_field('izobrazhenie-fon');?>">
+        <img src="<?php the_field('izobrazhenie-fon'); ?>">
         <div class="back-gradient"></div>
     </div>
 </section>
@@ -62,26 +62,26 @@ get_header();
                 <h3 class="h3 mb-16">Нанесение</h3>
                 <div class="d-flex box-application-ico">
                     <?php $nanesenie = get_field('nanesenie'); ?>
-                    <?php foreach ($nanesenie as $item):?>
-                    <div class="application-ico">
-                        <?= $item;?>
-                    </div>
-                    <?php endforeach;?>
+                    <?php foreach ($nanesenie as $item): ?>
+                        <div class="application-ico">
+                            <?= $item; ?>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="mixing-ratio mb-56">
                 <h3 class="h3 mb-16">Пропорции смешивания</h3>
-                <?php $proportions = get_field('proporczii_smeshivaniya');?>
+                <?php $proportions = get_field('proporczii_smeshivaniya'); ?>
                 <div class="row">
                     <h5 class="col-lg-9 h5">Смешивание</h5>
                     <h5 class="col-lg-3 h5">По объему</h5>
                 </div>
-                <?php foreach ($proportions as $proportion):?>
-                <div class="row">
-                    <h4 class="col-lg-9 h4"><?=$proportion['smeshivanie'];?></h4>
-                    <h4 class="col-lg-3 h4"><?=$proportion['po_obemu'];?></h4>
-                </div>
-                <?php endforeach;?>
+                <?php foreach ($proportions as $proportion): ?>
+                    <div class="row">
+                        <h4 class="col-lg-9 h4"><?= $proportion['smeshivanie']; ?></h4>
+                        <h4 class="col-lg-3 h4"><?= $proportion['po_obemu']; ?></h4>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div class="drying-time mb-56">
                 <h3 class="h3 mb-16">Время сушки</h3>
@@ -96,49 +96,55 @@ get_header();
                 </div>
                 <div class="row">
                     <h4 class="col-lg-6 h4">Высыхание на отлип</h4>
-                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['20'];?></h4>
-                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['50s'];?></h4>
+                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['20']; ?></h4>
+                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['50s']; ?></h4>
                 </div>
                 <div class="row">
                     <h4 class="col-lg-6 h4">Сухой для шлифовки</h4>
-                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['20s'];?></h4>
-                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['50s'];?></h4>
+                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['20s']; ?></h4>
+                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['50s']; ?></h4>
                 </div>
             </div>
+            <?php $documentation = get_field('dokumentacziya');
+            $tds = $documentation['tds'];
+            $msds = $documentation['msds'];
+            ?>
+
             <div class="documentation">
-                <?php $documentation = get_field('dokumentacziya');
-                    $tds = $documentation['tds'];
-                    $msds = $documentation['msds'];
-                ?>
-                <h3 class="h3 mb-16">Документация</h3>
-                <?php if($tds):?>
-                <a download href="<?= $tds?>" class="button-download mb-16">
-                    <div class="tds">
-                        <h3 class="h3-bold">TDS</h3>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center download-box">
-                        <div class="img-download">
-                            <img src="<?= get_template_directory_uri() ?>/assets/img/download.svg">
-                        </div>
-                        <h5 class="h5">Скачать пдф</h5>
-                    </div>
-                </a>
-                <?php endif;
-                if($msds):?>
-                <a download href="<?= $msds?>" class="button-download mb-56">
-                    <div class="tds">
-                        <h3 class="h3-bold">MSDS</h3>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center download-box">
-                        <div class="img-download">
-                            <img src="<?= get_template_directory_uri() ?>/assets/img/download.svg">
-                        </div>
-                        <h5 class="h5">Скачать пдф</h5>
-                    </div>
-                </a>
-                <?php endif;?>
-                <button class="button-blue h5" id="filter-entry">Оставить заявку</button>
+                <?php if (is_user_role('tds') || is_user_role('msds') || is_user_role('administrator')): ?>
+                    <h3 class="h3 mb-16">Документация</h3>
+                    <?php if ($tds): ?>
+                        <a download href="<?= $tds ?>" class="button-download mb-16">
+                            <div class="tds">
+                                <h3 class="h3-bold">TDS</h3>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center download-box">
+                                <div class="img-download">
+                                    <img src="<?= get_template_directory_uri() ?>/assets/img/download.svg">
+                                </div>
+                                <h5 class="h5">Скачать пдф</h5>
+                            </div>
+                        </a>
+                    <?php endif;
+                    if (is_user_role('msds') || is_user_role('administrator')):
+                        if ($msds):?>
+                            <a download href="<?= $msds ?>" class="button-download mb-56">
+                                <div class="tds">
+                                    <h3 class="h3-bold">MSDS</h3>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center download-box">
+                                    <div class="img-download">
+                                        <img src="<?= get_template_directory_uri() ?>/assets/img/download.svg">
+                                    </div>
+                                    <h5 class="h5">Скачать пдф</h5>
+                                </div>
+                            </a>
+                        <?php endif;
+                    endif;
+                endif; ?>
+                <a href="<?= get_permalink(77) . '?id=' . get_the_ID(); ?>" class="button-blue h5">Оставить заявку</a>
             </div>
+
         </div>
     </div>
 </section>
