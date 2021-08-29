@@ -50,41 +50,41 @@ $('nav [href]').each(function () {
 });
 
 
-$('nav a').click(function () {
-    let scroll_el = $(this).attr('href');
-    if ($(scroll_el).length !== 0) {
-        $('html, body').animate({
-            scrollTop: $(scroll_el).offset().top - 100
-        }, 500);
-    }
-});
+// $('nav a').click(function () {
+//     let scroll_el = $(this).attr('href');
+//     if ($(scroll_el).length !== 0) {
+//         $('html, body').animate({
+//             scrollTop: $(scroll_el).offset().top - 100
+//         }, 500);
+//     }
+// });
+//
+// let positions = [],
+//     currentActive = null,
+//     links = $('header nav a');
+//
+// $("section").each(function () {
+//     positions.push({
+//         top: $(this).position().top - 500,
+//         a: links.filter('[href="#' + $(this).attr('id') + '"]')
+//     });
+// });
+//
+// positions = positions.reverse();
 
-let positions = [],
-    currentActive = null,
-    links = $('header nav a');
-
-$("section").each(function () {
-    positions.push({
-        top: $(this).position().top - 500,
-        a: links.filter('[href="#' + $(this).attr('id') + '"]')
-    });
-});
-
-positions = positions.reverse();
-
-$(window).on('scroll', function () {
-    var winTop = $(window).scrollTop();
-    for (var i = 0; i < positions.length; i++) {
-        if (positions[i].top < winTop) {
-            if (currentActive !== i) {
-                currentActive = i;
-                links.filter('.active-nav').removeClass('active-nav');
-                positions[i].a.addClass("active-nav");
-            }
-            break;
-        }
-    }
-});
+// $(window).on('scroll', function () {
+//     var winTop = $(window).scrollTop();
+//     for (var i = 0; i < positions.length; i++) {
+//         if (positions[i].top < winTop) {
+//             if (currentActive !== i) {
+//                 currentActive = i;
+//                 links.filter('.active-nav').removeClass('active-nav');
+//                 positions[i].a.addClass("active-nav");
+//             }
+//             break;
+//         }
+//     }
+// });
 
 
 window.onscroll = function () {
@@ -99,6 +99,7 @@ window.onscroll = function () {
 
 $('.input-mask__phone').inputmask('+375 (99) 999-99-99');
 $('.input-mask__mail').inputmask({alias: "email"});
+let qwer = document.getElementsByClassName('input-mask__mail')
 
 $('.phone').on('blur', function () {
     var phone = this
@@ -161,13 +162,16 @@ $('.organization').on('blur', function () {
 });
 
 
+
 var thanks = new bootstrap.Modal(document.getElementById('formModalThanks'), {
+    keyboard: false,
+    backdrop: 'static'
+})
+
+var passwork = new bootstrap.Modal(document.getElementById('formModalpassworkTDS'), {
     keyboard: true
 })
 
-var load = new bootstrap.Modal(document.getElementById('formModalDownload'), {
-    keyboard: true
-})
 
 
 $('#registration').on('submit', function (e) {
@@ -182,6 +186,8 @@ $('#registration').on('submit', function (e) {
         success: function (data) {
             if (data === 'ok') {
                 /*обработка успешной отправки формы*/
+                thanks.show();
+                request.hide();
             }
         },
         error: function (data) {
@@ -193,7 +199,8 @@ $('#registration').on('submit', function (e) {
 
 $('#order').on('submit', function (e) {
     let formData = new FormData(this);
-
+    console.log(formData)
+    thanks.show();
     $.ajax({
         url: myajax.url_send_order,
         data: formData,
@@ -203,6 +210,7 @@ $('#order').on('submit', function (e) {
         success: function (data) {
             if (data === 'ok') {
                 /*обработка успешной отправки формы*/
+                thanks.show();
             }
         },
         error: function (data) {
@@ -228,8 +236,8 @@ $('#formModalBuy button').click(function () {
     // });
 });
 
-$('#filter-entry').click(function () {
-    let filter = $('#filter-form');
+$('.filter-entry').click(function () {
+    let filter = $('.filter-form');
     $.ajax({
         url: filter.attr('action'),
         data: filter.serialize(), // form data
@@ -245,12 +253,12 @@ $('#filter-entry').click(function () {
     return false;
 });
 
-$('#reset-filter').click(function () {
-    $('#filter-form input[type="checkbox"]').each(function () {
+$('.reset-filter').click(function () {
+    $('.filter-form input[type="checkbox"]').each(function () {
         $(this).prop('checked', false);
     });
 
-    let filter = $('#filter-form');
+    let filter = $('.filter-form');
     $.ajax({
         url: filter.attr('action'),
         data: filter.serialize(), // form data

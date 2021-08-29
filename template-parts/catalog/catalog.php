@@ -34,7 +34,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
             <div class="d-flex justify-content-between">
                 <div class="d-flex flex-column filters">
                     <h2 class="h2">Фильтр</h2>
-                    <form class="accordion" action="<?= site_url() ?>/wp-admin/admin-ajax.php" method="post" id="filter-form">
+                    <form class="accordion filter-form" action="<?= site_url() ?>/wp-admin/admin-ajax.php" method="post">
                         <div class="accordion-item">
                             <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse1">
@@ -132,8 +132,8 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                                 get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $special_category));
                             endforeach;?>
                         </div>
-                        <button class="button-blue w-100 h5" id="filter-entry">Применить</button>
-                        <button class="button-discard w-100 h5" id="reset-filter">Сбросить фильтр</button>
+                        <button class="button-blue w-100 h5 filter-entry">Применить</button>
+                        <button class="button-discard w-100 h5 reset-filter">Сбросить фильтр</button>
                         <input type="hidden" name="action" value="filter_catalog">
                     </form>
                 </div>

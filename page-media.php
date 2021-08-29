@@ -38,6 +38,34 @@ $medias = get_posts(array(
         </div>
     </div>
 </section>
+<div class="button-bottom-filters">
+    <div class="margin">
+    <button class="button-blue w-100 h5" data-bs-toggle="modal" data-bs-target="#formModalplaylist">Плейлисты</button>
+    </div>
+</div>
+<div class="modal fade" id="formModalplaylist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="margin">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2 class="h2">Плейлисты</h2>
+                        <div class="button-burger" data-bs-dismiss="modal" aria-label="Close">
+                            <img alt="certification" src="<?= get_template_directory_uri() ?>/assets/img/close.svg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                    <div class="playlist">
+                        <?php foreach ($terms_playlists as $key => $term):?>
+                            <button class="button-playlist h4 <?= $key === 0 ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
+                        <?php endforeach;?>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 get_footer();
 ?>

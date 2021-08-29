@@ -23,14 +23,20 @@ $post_id = $_GET['id'];
                 <div class="input-valid">
                     <input class="entryfield name h4" type="text" autocomplete="off" id="volume" placeholder="Объем"
                            name="volume">
+                    <img class="entry-img"
+                         src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
                 </div>
                 <div class="input-valid">
                     <input class="entryfield name h4" type="text" autocomplete="off" id="colour" placeholder="Цвет"
                            name="colour">
+                    <img class="entry-img"
+                         src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
                 </div>
                 <div class="input-valid">
                     <input class="entryfield name h4" type="text" autocomplete="off" id="shine" placeholder="Блеск"
                            name="shine">
+                    <img class="entry-img"
+                         src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
                 </div>
                 <label class="check-filter">
                     <input type="checkbox" name="hardener">
@@ -75,7 +81,7 @@ $post_id = $_GET['id'];
                 </div>
                 <div class="input-valid">
                     <input class="entryfield input-mask__mail mail h4" type="text"
-                           pattern="(\w+[.]?\w+?@\w+?\.[a-z]{2,4})" id="mail" placeholder="Email"
+                           pattern="(\w+[.]?\w+?@\w+?\.[a-z]{2,4})" id="mail-order" placeholder="Email"
                            name="mail">
                     <img class="entry-img"
                          src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">

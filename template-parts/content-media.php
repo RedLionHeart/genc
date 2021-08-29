@@ -19,7 +19,7 @@ $parsed_id = parse_video_youtube($video_link);
                 </div>
                 <p class="h6"><?= get_field('prodolzhitelnost');?></p>
             </div>
-            <h3 class="h4"><?php the_title();?></h3>
+            <h4 class="h4"><?php the_title();?></h4>
         </div>
     </div>
 </div>

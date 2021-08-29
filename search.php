@@ -32,7 +32,7 @@ $count_medias = count($medias);
             <div class="back-gradient"></div>
         </div>
     </section>
-    <section class="search-results">
+    <section class="search-results-box">
         <div class="margin">
             <div class="d-flex flex-column">
                 <h1 class="h1"><?php printf(esc_html__('Результаты поиска для: %s', 'mebel'), get_search_query()); ?></h1>

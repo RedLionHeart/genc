@@ -14,7 +14,12 @@ get_header();
             <img src="<?= get_template_directory_uri() ?>/assets/img/img_card.svg">
         </div>
         <div class="info-card">
-            <h1 class="h1"><?php the_field('artikul'); ?></h1>
+            <div class="d-flex align-items-end justify-content-between box-h1">
+                <h1 class="h1"><?php the_field('artikul'); ?></h1>
+                <div class="img-card">
+                    <img src="<?= get_template_directory_uri() ?>/assets/img/img_card.svg">
+                </div>
+            </div>
             <h2 class="h2 mb-64"><?php the_title(); ?></h2>
             <h3 class="h3 mb-16">Область применения</h3>
             <h4 class="h4 mb-30"><?php the_field('oblast_primeneniya'); ?></h4>
@@ -73,13 +78,13 @@ get_header();
                 <h3 class="h3 mb-16">Пропорции смешивания</h3>
                 <?php $proportions = get_field('proporczii_smeshivaniya'); ?>
                 <div class="row">
-                    <h5 class="col-lg-9 h5">Смешивание</h5>
-                    <h5 class="col-lg-3 h5">По объему</h5>
+                    <h5 class="col-9 h5">Смешивание</h5>
+                    <h5 class="col-3 h5">По объему</h5>
                 </div>
                 <?php foreach ($proportions as $proportion): ?>
                     <div class="row">
-                        <h4 class="col-lg-9 h4"><?= $proportion['smeshivanie']; ?></h4>
-                        <h4 class="col-lg-3 h4"><?= $proportion['po_obemu']; ?></h4>
+                        <h4 class="col-9 h4"><?= $proportion['smeshivanie']; ?></h4>
+                        <h4 class="col-3 h4"><?= $proportion['po_obemu']; ?></h4>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -90,19 +95,19 @@ get_header();
                 $suhoj_dlya_shlifovki = $drying_time['suhoj_dlya_shlifovki'];
                 ?>
                 <div class="row">
-                    <h5 class="col-lg-6 h5">Температура</h5>
-                    <h5 class="col-lg-3 h5">20°С</h5>
-                    <h5 class="col-lg-3 h5">50°С</h5>
+                    <h5 class="col-6 h5">Температура</h5>
+                    <h5 class="col-3 h5">20°С</h5>
+                    <h5 class="col-3 h5">50°С</h5>
                 </div>
                 <div class="row">
-                    <h4 class="col-lg-6 h4">Высыхание на отлип</h4>
-                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['20']; ?></h4>
-                    <h4 class="col-lg-3 h4"><?= $vysyhanie_na_otlip['50s']; ?></h4>
+                    <h4 class="col-6 h4">Высыхание на отлип</h4>
+                    <h4 class="col-3 h4"><?= $vysyhanie_na_otlip['20']; ?></h4>
+                    <h4 class="col-3 h4"><?= $vysyhanie_na_otlip['50s']; ?></h4>
                 </div>
                 <div class="row">
-                    <h4 class="col-lg-6 h4">Сухой для шлифовки</h4>
-                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['20s']; ?></h4>
-                    <h4 class="col-lg-3 h4"><?= $suhoj_dlya_shlifovki['50s']; ?></h4>
+                    <h4 class="col-6 h4">Сухой для шлифовки</h4>
+                    <h4 class="col-3 h4"><?= $suhoj_dlya_shlifovki['20s']; ?></h4>
+                    <h4 class="col-3 h4"><?= $suhoj_dlya_shlifovki['50s']; ?></h4>
                 </div>
             </div>
             <?php $documentation = get_field('dokumentacziya');
