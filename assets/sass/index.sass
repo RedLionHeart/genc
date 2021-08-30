@@ -446,6 +446,7 @@ header
         transition: 5s
         @media screen and (max-width: 991px)
           height: 25px
+          padding: 0
           box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
       input::-webkit-search-cancel-button
         display: none
@@ -469,6 +470,9 @@ header
           width: 44px
           height: 44px
           border-radius: 50%
+          svg
+            width: 100%
+            height: 100%
           @media screen and (max-width: 991px)
             width: 12px
             height: 12px
@@ -529,6 +533,14 @@ header
       transition: .5s
     .current
       color: $smokey
+
+.search-results-box
+  .container-card
+    @media screen and (max-width: 1240px)
+      justify-content: space-between
+  .box-card
+    @media screen and (max-width: 1240px)
+      width: 380px!important
 
 .catalog, .search-results-box, #formModalfilters
   .filters
@@ -611,6 +623,7 @@ header
     width: 100%
   .categories-search
     margin-bottom: 20px
+    flex-wrap: wrap
     label
       margin-right: 20px
       margin-bottom: 0
@@ -623,8 +636,12 @@ header
       margin-bottom: 17px
     .box-card:nth-child(3n+1), .box-media:nth-child(3n+1)
       margin-right: 30.5px
+      @media screen and (max-width: 1240px)
+        margin-right: 0
     .box-card:nth-child(3n+2), .box-media:nth-child(3n+2)
       margin-right: 30.5px
+      @media screen and (max-width: 1240px)
+        margin-right: 0
 .check-filter
   cursor: pointer
   margin-bottom: 16px
@@ -640,6 +657,7 @@ header
       margin-right: 12px
       position: relative
       transition: .5s
+      flex: 0 0 24px
       div
         transition: .5s
         opacity: 0
