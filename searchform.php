@@ -5,8 +5,8 @@
         </svg>
         <p class="h4">Фильтр</p>
     </div>
-<form class="form-search" method="get">
-    <input class="р5" type="search" name="s" placeholder="Поиск товара">
+<form class="form-search" method="get" action="<?php echo home_url( '/' ); ?>">
+    <input class="р5" type="search" value="" name="s" placeholder="Поиск товара">
     <button type="submit">
         <div class="d-flex align-items-center">
             <p class="h4">Найти!</p>
