@@ -186,8 +186,7 @@ $('#registration').on('submit', function (e) {
         success: function (data) {
             if (data === 'ok') {
                 /*обработка успешной отправки формы*/
-                thanks.show();
-                request.hide();
+                passwork.show();
             }
         },
         error: function (data) {
@@ -220,21 +219,6 @@ $('#order').on('submit', function (e) {
     return false;
 });
 
-$('#formModalBuy button').click(function () {
-    load.show()
-    // $.ajax({
-    //     url: './js/action_ajax_form.php',
-    //     data: $('.modal').serialize(),
-    //     type: 'POST',
-    //     success: function (data) {
-    //         alert("Данные отправленны")
-    //         load.show()
-    //     },
-    //     error: function(data) { // Данные не отправлены
-    //         alert("Данные не отправленны")
-    //     }
-    // });
-});
 
 $('.filter-entry').click(function () {
     let filter = $('.filter-form');

@@ -109,11 +109,11 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                 <div class="d-flex flex-column flexform">
                     <h2 class="h1">Вход</h2>
                     <form action="login" class="d-flex flex-column ajax-form" method="post">
-                        <p class="status h3">Неверное имя пользователя</p>
+                        <p class="status h3"></p>
                         <div class="d-flex flex-column">
                             <div class="input-valid">
                                 <input class="entryfield input-mask__mail mail h4"
-                                       pattern="(\w+[.]?\w+?@\w+?\.[a-z]{2,4})" id="mail" placeholder="Email"
+                                       pattern="(\w+[.]?\w+?@\w+?\.[a-z]{2,4})" id="mail-passwork" placeholder="Email"
                                        name="mail" required>
                                 <img class="entry-img"
                                      src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
@@ -281,14 +281,14 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
         </div>
     </div>
 </div>
-<div class="modal fade" id="formModalThanks" data-bs-backdrop="static" [config]="{backdrop: 'static'}" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="formModalThanks" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="d-flex flex-column modal-body">
                 <p>Спасибо!
                     <br>
                     <br>Ваша заявка принята, с вами свяжутся в скором времени!</p>
-                <a class="button-discard h5" data-bs-dismiss="modal" href="<?=get_home_url();?>">Ok</a>
+                <a class="button-discard h5" href="<?=get_home_url();?>">Ok</a>
                 <svg width="99" height="22" viewBox="0 0 99 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M92.6131 19.9388H81.9916V21.8473H92.6131V19.9388ZM14.6315 18.8417C18.5681 18.8417 23.0777 17.8978 24.902 16.6138V12.4137V9.86161H15.2769V12.4137V12.8864H18.82V14.8236C17.0303 15.3075 16.2795 15.4049 14.7763 15.4049C10.9058 15.4049 8.00491 14.2662 6.86217 12.4137C6.51589 11.8499 6.33173 11.2223 6.33173 10.5403C6.33173 8.0953 8.65812 5.33564 15.2784 5.33564C18.2848 5.33564 21.2912 5.8435 24.4046 6.8608V3.25312C21.9712 2.45461 18.428 1.89725 14.7779 1.89725C6.07988 1.89884 0.0671387 5.3596 0.0671387 10.395C0.0671387 11.0993 0.189912 11.7749 0.426015 12.4137H3.27656H0.426015C1.84263 16.2625 7.32965 18.8417 14.6315 18.8417ZM27.6801 12.4137H33.7637V11.6279H44.8936V8.60316H33.7637V5.1424H45.4303V2.11604H27.6801V12.4137ZM27.6801 18.6245H45.6806V15.5981H33.7637V12.4137H27.6801V18.6245ZM53.8072 12.4137H47.7237V18.6229H53.8072V12.4137ZM67.2981 18.6245H72.4153V12.4137V2.11604H66.3317V12.2092L53.3051 2.11604H47.7221V12.4153H53.8057V8.0458L59.3761 12.4137L67.2981 18.6245ZM97.7805 3.35054C95.3833 2.38274 92.3407 1.89884 88.9409 1.89884C79.6006 1.89884 74.2679 6.01438 74.2679 10.419C74.2679 11.0913 74.3859 11.7621 74.622 12.4153H75.7364H74.622C75.8797 15.8904 80.49 18.8433 88.475 18.8433C92.0889 18.8433 94.6656 18.3833 98.0654 17.1968V13.5891C94.5585 14.7262 92.4116 15.4049 89.2258 15.4049C85.4355 15.4049 82.4622 14.2343 81.1951 12.4137C80.7638 11.7924 80.5309 11.0961 80.5309 10.3471C80.5309 7.41816 84.181 5.33724 89.3706 5.33724C92.3769 5.33724 95.0968 6.01438 97.7805 7.03168V3.35054ZM97.0911 1.45327H96.9085V1.08915H97.1415C97.2595 1.08915 97.3902 1.11311 97.3902 1.26482C97.3886 1.44689 97.2454 1.45327 97.0911 1.45327ZM97.5901 2.09049L97.2674 1.58423C97.4358 1.56507 97.5649 1.47883 97.5649 1.27281C97.5649 1.05242 97.439 0.945419 97.1698 0.945419H96.7338V2.09049H96.9101V1.5986H97.0958L97.4028 2.09208H97.5901V2.09049ZM97.9285 1.51715C97.9285 1.97869 97.5602 2.3508 97.1069 2.3508C96.6535 2.3508 96.2852 1.9771 96.2852 1.51715C96.2852 1.05721 96.6535 0.683507 97.1069 0.683507C97.5602 0.683507 97.9285 1.05721 97.9285 1.51715ZM98.067 1.51715C98.067 0.978957 97.6373 0.542969 97.1069 0.542969C96.5764 0.542969 96.1467 0.978957 96.1467 1.51715C96.1467 2.05535 96.5764 2.49134 97.1069 2.49134C97.6373 2.49134 98.067 2.05535 98.067 1.51715Z" fill="#CDCDCD"/>
                 </svg>

@@ -14,6 +14,10 @@
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="UTF-8">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <!-- Disable screen scaling-->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
 

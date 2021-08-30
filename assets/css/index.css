@@ -1280,7 +1280,12 @@ footer {
       #formModalpasswork .modal-dialog .modal-body .flexform a:hover {
         color: #5C87AF; }
 #formModalpasswork .status {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  transition: 0.5s; }
+#formModalpasswork .status-red {
+  color: #EC5B70; }
+#formModalpasswork .status-blue {
+  color: #00AEEF; }
 
 .form-sta .check-filter {
   margin-bottom: 24px; }
