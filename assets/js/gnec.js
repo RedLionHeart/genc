@@ -136,8 +136,8 @@ $('.mail').on('blur', function () {
 $('.name').on('blur', function () {
     var name = this
     console.log(name);
-    // if (name.value.match(/^[\D]*([-][\D]*)?\s[\D]*\s[\D]*$/)) {
-    if (name.value.match(/[а-яА-Яa-zA-z]+/)) {
+    if (name.value.match(/^[\D]*([-][\D]*)?\s?[\D]*?\s?[\D]*?$/)) {
+    // if (name.value.match(/[а-яА-Яa-zA-z]+[\-\s]+?/)) {
         $(this).addClass("valid");
         $(this).removeClass("invalid");
     } else {

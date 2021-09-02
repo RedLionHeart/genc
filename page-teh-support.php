@@ -6,16 +6,13 @@ Template Name: Страница техническая поддержка
 get_header(); ?>
 <section class="back-top">
     <div class="video-back back-about">
-        <img src="<?= get_template_directory_uri() ?>/assets/img/back_about.jpg">
+        <img src="<?= get_template_directory_uri() ?>/assets/img/support_top.jpg">
         <!--        <div class="back-gradient"></div>-->
     </div>
 </section>
 <section class="support">
     <div class="margin">
         <h1 class="h1">Техническая поддержка</h1>
-        <div class="banner-top">
-            <img src="<?= get_template_directory_uri() ?>/assets/img/banner_about_top.jpg">
-        </div>
         <div class="d-flex">
             <div class="col-lg-6">
                 <h4 class="h4">Компания «Kayalar Kimya», считающая, что техническая поддержка
