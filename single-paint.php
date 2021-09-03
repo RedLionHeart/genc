@@ -147,7 +147,7 @@ get_header();
                         <?php endif;
                     endif;
                 endif; ?>
-                <a href="<?= get_permalink(77) . '?id=' . get_the_ID(); ?>" class="button-blue h5">Заказать СТА</a>
+                <a href="<?= get_permalink(77) . '?id=' . get_the_ID(); ?>" class="button-blue h5">Оставить заявку</a>
             </div>
 
         </div>
