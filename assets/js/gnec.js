@@ -16,7 +16,7 @@ $('#container-video').empty()
 $.each(massivevideo, function (index, value) {
     if (value.classList.contains(clickid)) {
         $(value).addClass("video-show");
-        console.log(value)
+
         boxmenu.appendChild(value)
     }
 })
@@ -24,16 +24,19 @@ $('.playlist button').click(function () {
     $(".playlist button").removeClass("button-discard-active");
     $(this).addClass("button-discard-active");
     var clickid = $(this).attr('id');
-    console.log(clickid)
-    console.log(massivevideo)
+
     $('#container-video').empty()
     $.each(massivevideo, function (index, value) {
         if (value.classList.contains(clickid)) {
             $(value).addClass("video-show");
-            console.log(value)
             boxmenu.appendChild(value)
         }
     })
+
+    let videos = document.querySelectorAll('.box-video');
+    for (let i = 0; i < videos.length; i++) {
+        setupVideo(videos[i]);
+    }
 });
 
 
@@ -48,44 +51,6 @@ $('nav [href]').each(function () {
         $(this).addClass('active-link');
     }
 });
-
-
-// $('nav a').click(function () {
-//     let scroll_el = $(this).attr('href');
-//     if ($(scroll_el).length !== 0) {
-//         $('html, body').animate({
-//             scrollTop: $(scroll_el).offset().top - 100
-//         }, 500);
-//     }
-// });
-//
-// let positions = [],
-//     currentActive = null,
-//     links = $('header nav a');
-//
-// $("section").each(function () {
-//     positions.push({
-//         top: $(this).position().top - 500,
-//         a: links.filter('[href="#' + $(this).attr('id') + '"]')
-//     });
-// });
-//
-// positions = positions.reverse();
-
-// $(window).on('scroll', function () {
-//     var winTop = $(window).scrollTop();
-//     for (var i = 0; i < positions.length; i++) {
-//         if (positions[i].top < winTop) {
-//             if (currentActive !== i) {
-//                 currentActive = i;
-//                 links.filter('.active-nav').removeClass('active-nav');
-//                 positions[i].a.addClass("active-nav");
-//             }
-//             break;
-//         }
-//     }
-// });
-
 
 window.onscroll = function () {
     let scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -137,7 +102,7 @@ $('.name').on('blur', function () {
     var name = this
     console.log(name);
     if (name.value.match(/^[\D]*([-][\D]*)?\s?[\D]*?\s?[\D]*?$/)) {
-    // if (name.value.match(/[а-яА-Яa-zA-z]+[\-\s]+?/)) {
+        // if (name.value.match(/[а-яА-Яa-zA-z]+[\-\s]+?/)) {
         $(this).addClass("valid");
         $(this).removeClass("invalid");
     } else {
@@ -162,7 +127,6 @@ $('.organization').on('blur', function () {
 });
 
 
-
 var thanks = new bootstrap.Modal(document.getElementById('formModalThanks'), {
     keyboard: false,
     backdrop: 'static'
@@ -171,7 +135,6 @@ var thanks = new bootstrap.Modal(document.getElementById('formModalThanks'), {
 var passwork = new bootstrap.Modal(document.getElementById('formModalpassworkTDS'), {
     keyboard: true
 })
-
 
 
 $('#registration').on('submit', function (e) {
@@ -270,7 +233,6 @@ function setupVideo(video) {
 
     video.addEventListener('click', () => {
         let iframe = this.createIframe(id);
-        console.log(link)
 
         link.remove();
         // button.remove();
