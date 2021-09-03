@@ -519,7 +519,7 @@ header {
         @media screen and (max-width: 991px) {
           .catalog .container-search-card .form-search input, .search-results-box .container-search-card .form-search input {
             height: 25px;
-            padding: 0;
+            padding: 0 0 0 10px;
             -webkit-box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2);
                     box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2); } }
       .catalog .container-search-card .form-search input::-webkit-search-cancel-button, .search-results-box .container-search-card .form-search input::-webkit-search-cancel-button {
@@ -1449,7 +1449,8 @@ footer {
       #formModalpasswork .modal-dialog .modal-body .flexform form {
         margin-bottom: 20px; }
         #formModalpasswork .modal-dialog .modal-body .flexform form .button-blue {
-          width: 55%; }
+          width: 55%;
+          max-width: 55%; }
           @media screen and (max-width: 500px) {
             #formModalpasswork .modal-dialog .modal-body .flexform form .button-blue {
               font-size: 8px;
