@@ -228,8 +228,12 @@ for (let i = 0; i < videos.length; i++) {
 function setupVideo(video) {
     let link = video.querySelector('.video__link');
     let media = video.querySelector('.video__media');
-    // let button = video.querySelector('.video__button');
-    let id = this.parseMediaURL(media);
+    let id;
+    if(media.tagName === 'IMG'){
+         id = this.parseMediaURL(media);
+    } else {
+        return false;
+    }
 
     video.addEventListener('click', () => {
         let iframe = this.createIframe(id);
