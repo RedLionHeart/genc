@@ -677,3 +677,7 @@ function true_load_posts()
 
 add_action('wp_ajax_loadmore', 'true_load_posts');
 add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');
+
+if ( ! current_user_can( 'manage_options' ) ) {
+    show_admin_bar( false );
+}
