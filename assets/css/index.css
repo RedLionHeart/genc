@@ -28,13 +28,13 @@ button {
 .h1, .h2, .h3, .h4, .h5, .h6, p {
   margin: 0; }
 
-.h1, .h2, .h3, .h4 {
+.h3 {
   color: black; }
 
 .h3-bold {
   color: #808080; }
 
-.h4, .h5 {
+.h1, .h2, .h4, .h5 {
   color: #3F3F3F; }
 
 .h1 {
@@ -248,6 +248,8 @@ button {
   border-radius: 4px;
   -webkit-transition: 0.5s;
   transition: 0.5s; }
+  .box-card .h3 {
+    color: #3F3F3F; }
 
 .box-card:hover {
   -webkit-box-shadow: 2px 2px 0 #5C87AF;
@@ -264,7 +266,7 @@ button {
           box-shadow: 3px 3px 0 #5C87AF;
   cursor: pointer;
   background: transparent;
-  padding: 29px 21px 29px 73px;
+  padding: 26px 21px 26px 73px;
   border: 2px solid transparent;
   color: #5C87AF;
   -webkit-transition: 0.5s;
@@ -327,10 +329,12 @@ header {
     @media screen and (max-width: 991px) {
       header .margin {
         margin: 0; } }
-    @media screen and (max-width: 1440px) {
-      header .margin .h3 {
-        font-size: 18px;
-        line-height: 22px; } }
+    header .margin .h3 {
+      font-family: "Circe-Light", sans-serif; }
+      @media screen and (max-width: 1440px) {
+        header .margin .h3 {
+          font-size: 18px;
+          line-height: 22px; } }
     header .margin .button-burger {
       display: none; }
       @media screen and (max-width: 991px) {
@@ -451,9 +455,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover; }
+    height: 100%; }
   .back-top .video-back .back-gradient {
     position: absolute;
     bottom: 0;
@@ -875,6 +877,16 @@ header {
   margin: -3px -3px 0 0;
   -webkit-box-sizing: content-box;
           box-sizing: content-box; }
+  .box-video .box-video-blue {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    background: rgba(92, 135, 175, 0.4); }
   .box-video .video__link {
     cursor: pointer;
     width: 100%;
@@ -895,16 +907,32 @@ header {
     width: 100%;
     height: 100%; }
 
+.box-blue {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background: rgba(92, 135, 175, 0.4); }
+
+.box-blue:hover {
+  background: transparent; }
+
 .box-media:hover {
   border-left: 3px solid #5C87AF; }
   .box-media:hover .box-video {
     margin-left: -3px; }
+    .box-media:hover .box-video .box-video-blue {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 3;
+      background: transparent; }
   .box-media:hover .box-video-desc {
     margin-left: -3px; }
   .box-media:hover .name-video img {
     width: 47px !important;
     height: 47px !important; }
-  .box-media:hover .name-video h3 {
+  .box-media:hover .name-video h4 {
     color: #426189; }
 
 .tinting {
@@ -1116,6 +1144,7 @@ footer {
             .card-description .content-card .info-card .import-info .ico-card-flex .ico-card img {
               margin-right: 10px;
               width: 100%;
+              height: 100%;
               -o-object-fit: contain;
                  object-fit: contain; }
       @media screen and (max-width: 550px) {
@@ -1174,6 +1203,7 @@ footer {
             margin-right: 19px; } }
         .card-description .content-card .info-card .application .application-ico img {
           width: 100%;
+          height: 100%;
           -o-object-fit: contain;
              object-fit: contain; }
       .card-description .content-card .info-card .mixing-ratio, .card-description .content-card .info-card .drying-time {

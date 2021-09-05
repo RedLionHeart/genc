@@ -62,14 +62,15 @@ window.onscroll = function () {
     }
 };
 
-$('.input-mask__phone').inputmask('+375 (99) 999-99-99');
+// $('.input-mask__phone').inputmask('+375 (99) 999-99-99');
 $('.input-mask__mail').inputmask({alias: "email"});
 let qwer = document.getElementsByClassName('input-mask__mail')
 
 $('.phone').on('blur', function () {
     var phone = this
     console.log(phone);
-    if (phone.value.match(/\+375\s?[\(]{0,1}(25|29|33|44)[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}/)) {
+    // if (phone.value.match(/\+375\s?[\(]{0,1}(25|29|33|44)[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}/)) {
+    if (phone.value.match(/[+]?[0-9]{4,}/)) {
         $(this).addClass("valid");
         $(this).removeClass("invalid");
     } else {
@@ -102,7 +103,6 @@ $('.name').on('blur', function () {
     var name = this
     console.log(name);
     if (name.value.match(/^[\D]*([-][\D]*)?\s?[\D]*?\s?[\D]*?$/)) {
-        // if (name.value.match(/[а-яА-Яa-zA-z]+[\-\s]+?/)) {
         $(this).addClass("valid");
         $(this).removeClass("invalid");
     } else {
@@ -139,7 +139,7 @@ var passwork = new bootstrap.Modal(document.getElementById('formModalpassworkTDS
 
 $('#registration').on('submit', function (e) {
     let formData = new FormData(this);
-
+    console.log(formData)
     $.ajax({
         url: myajax.url_send_registration,
         data: formData,
@@ -235,9 +235,10 @@ function setupVideo(video) {
         return false;
     }
 
-    video.addEventListener('click', () => {
+    video.addEventListener('click', (e) => {
         let iframe = this.createIframe(id);
-
+        let blue = e.target
+        blue.closest(".box-media").classList.add('box-blue')
         link.remove();
         // button.remove();
         video.appendChild(iframe);
@@ -262,6 +263,7 @@ function createIframe(id) {
     iframe.setAttribute('allow', 'autoplay');
     iframe.setAttribute('src', this.generateURL(id));
     iframe.classList.add('video__media');
+
 
     return iframe;
 }

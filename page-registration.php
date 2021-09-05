@@ -14,8 +14,8 @@ get_header(); ?>
             <div class="d-flex flex-column">
                 <div class="input-valid">
                     <input class="entryfield name h4" type="text" autocomplete="off"
-                           pattern="([а-яА-Яa-zA-z]+[\-\s]?+)" id="name" placeholder="ФИО"
-                           name="name" required>
+                           pattern="[\D]*([-][\D]*)?\s?[\D]*?\s?[\D]*?" id="name" placeholder="ФИО"
+                           name="name">
                     <img class="entry-img"
                          src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
                     <img class="valid-img"
@@ -46,8 +46,7 @@ get_header(); ?>
                 </div>
                 <div class="input-valid">
                     <input class="entryfield input-mask__phone phone h4" type="text" id="phone"
-                           pattern="\+375\s?[\(]{0,1}(25|29|33|44)[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}"
-                           title="+375 (25/29/33/44) XXX-XX-XX"
+                           pattern="[+]?[0-9]{4,}"
                            placeholder="Телефон" name="phone" required>
                     <img class="entry-img"
                          src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">

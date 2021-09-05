@@ -7,6 +7,7 @@ $parsed_id = parse_video_youtube($video_link);
 
 <div class="d-flex flex-column box-media <?php foreach ($terms_media as $term){echo $term->slug.' ';}?>">
     <div class="box-video">
+        <div class="box-video-blue"></div>
         <div class="video__link">
             <img class="video__media" src="https://i.ytimg.com/vi/<?=$parsed_id;?>/maxresdefault.jpg">
         </div>
