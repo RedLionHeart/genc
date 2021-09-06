@@ -15,7 +15,7 @@ get_header(); ?>
                 <div class="input-valid">
                     <input class="entryfield name h4" type="text" autocomplete="off"
                            pattern="[\D]*([-][\D]*)?\s?[\D]*?\s?[\D]*?" id="name" placeholder="ФИО"
-                           name="name">
+                           name="name" required>
                     <img class="entry-img"
                          src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
                     <img class="valid-img"
