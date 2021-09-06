@@ -32,7 +32,7 @@ img, svg
 
 input, textarea
   -webkit-border-radius: 0
-  -webkit-appearance: none
+  -webkit-appearance: none!important
 
 button
   outline: 0!important
@@ -305,6 +305,15 @@ header
     .ico-top
       width: 133px
       //margin-right: 137px
+      a
+        path
+          transition: .5s
+      a:hover
+        path
+          fill: $blue
+      a:active
+        path
+          fill: $forest
       @media screen and (max-width: 991px)
         display: none!important
 .login, .button-filter-mob
@@ -370,9 +379,17 @@ header
       display: block
   .ico-top
     width: 133px
+    a:hover
+      path
+        fill: $blue
+    a:active
+      path
+        fill: $forest
 
 .header-scroll
   padding: 12px 0
+  @media screen and (max-width: 991px)
+    padding: 7px 0
 
 .active-link
   color: $forest
@@ -448,7 +465,6 @@ header
         border: 2px solid $smokey
         box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2)
         border-radius: 4px
-        transition: 5s
         @media screen and (max-width: 991px)
           height: 25px
           padding: 0 0 0 10px
@@ -714,6 +730,7 @@ header
     justify-content: center!important
 
 .box-media
+  cursor: pointer
   width: 458px
   height: 458px
   //box-shadow: 3px 3px 0 $smokey
@@ -798,7 +815,6 @@ header
     height: 100%
 
 .box-blue
-  transition: .5s
   background: rgba(92, 135, 175, 0.4)
 .box-blue:hover
   background: transparent
@@ -909,6 +925,15 @@ footer
   .ico-top
     width: 135px
     margin-bottom: 32px
+    a
+      path
+        transition: .5s
+    a:hover
+      path
+        fill: $blue
+    a:active
+      path
+        fill: $forest
   .h6
     color: $gray50
   .back-bottom

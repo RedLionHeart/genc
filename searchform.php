@@ -6,7 +6,7 @@
         <p class="h4">Фильтр</p>
     </div>
 <form class="form-search" method="get" action="<?php echo home_url( '/' ); ?>">
-    <input class="р5" type="search" value="" name="s" placeholder="Поиск товара">
+    <input class="р5" type="search" value="" name="s" placeholder="Поиск товара" minlength="2">
     <button type="submit">
         <div class="d-flex align-items-center">
             <p class="h4">Найти!</p>

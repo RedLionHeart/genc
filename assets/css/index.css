@@ -20,7 +20,7 @@ img, svg {
 
 input, textarea {
   -webkit-border-radius: 0;
-  -webkit-appearance: none; }
+  -webkit-appearance: none !important; }
 
 button {
   outline: 0 !important; }
@@ -359,6 +359,13 @@ header {
         color: black; }
     header .margin .ico-top {
       width: 133px; }
+      header .margin .ico-top a path {
+        -webkit-transition: 0.5s;
+        transition: 0.5s; }
+      header .margin .ico-top a:hover path {
+        fill: #00AEEF; }
+      header .margin .ico-top a:active path {
+        fill: #426189; }
       @media screen and (max-width: 991px) {
         header .margin .ico-top {
           display: none !important; } }
@@ -431,9 +438,16 @@ header {
     display: block; }
 #burgerModal .ico-top {
   width: 133px; }
+  #burgerModal .ico-top a:hover path {
+    fill: #00AEEF; }
+  #burgerModal .ico-top a:active path {
+    fill: #426189; }
 
 .header-scroll {
   padding: 12px 0; }
+  @media screen and (max-width: 991px) {
+    .header-scroll {
+      padding: 7px 0; } }
 
 .active-link {
   color: #426189;
@@ -515,9 +529,7 @@ header {
         border: 2px solid #5C87AF;
         -webkit-box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2);
                 box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2);
-        border-radius: 4px;
-        -webkit-transition: 5s;
-        transition: 5s; }
+        border-radius: 4px; }
         @media screen and (max-width: 991px) {
           .catalog .container-search-card .form-search input, .search-results-box .container-search-card .form-search input {
             height: 25px;
@@ -813,6 +825,7 @@ header {
             justify-content: center !important; } }
 
 .box-media {
+  cursor: pointer;
   width: 458px;
   height: 458px;
   border-radius: 12px;
@@ -908,8 +921,6 @@ header {
     height: 100%; }
 
 .box-blue {
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
   background: rgba(92, 135, 175, 0.4); }
 
 .box-blue:hover {
@@ -1042,6 +1053,13 @@ footer {
   footer .ico-top {
     width: 135px;
     margin-bottom: 32px; }
+    footer .ico-top a path {
+      -webkit-transition: 0.5s;
+      transition: 0.5s; }
+    footer .ico-top a:hover path {
+      fill: #00AEEF; }
+    footer .ico-top a:active path {
+      fill: #426189; }
   footer .h6 {
     color: #808080; }
   footer .back-bottom {
