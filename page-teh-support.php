@@ -12,7 +12,7 @@ get_header(); ?>
 </section>
 <section class="support">
     <div class="margin">
-        <h1 class="h1">Техническая поддержка</h1>
+        <h1 class="h1"><?php the_title();?></h1>
         <div class="d-flex">
             <div class="col-lg-6">
                 <h4 class="h4">Компания «Kayalar Kimya», считающая, что техническая поддержка
