@@ -1,5 +1,6 @@
 <?php
 get_header();
+$paint_id = get_the_ID();
 ?>
 
 <section class="back-top">
@@ -11,13 +12,13 @@ get_header();
 <section class="card-description">
     <div class="d-flex justify-content-between content-card">
         <div class="img-card">
-            <img src="<?= get_template_directory_uri() ?>/assets/img/img_card.svg">
+            <img src="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id($paint_id),'full', true)[0];?>">
         </div>
         <div class="info-card">
             <div class="d-flex align-items-end justify-content-between box-h1">
                 <h1 class="h1"><?php the_field('artikul'); ?></h1>
                 <div class="img-card">
-                    <img src="<?= get_template_directory_uri() ?>/assets/img/img_card.svg">
+                    <img src="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id($paint_id),'full', true)[0];?>">
                 </div>
             </div>
             <h2 class="h2 mb-64"><?php the_title(); ?></h2>
