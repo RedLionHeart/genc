@@ -127,7 +127,7 @@ get_header();
                                 <div class="img-download">
                                     <img src="<?= get_template_directory_uri() ?>/assets/img/download.svg">
                                 </div>
-                                <h5 class="h5">Скачать пдф</h5>
+                                <h5 class="h5">Скачать</h5>
                             </div>
                         </a>
                     <?php endif;
@@ -141,7 +141,7 @@ get_header();
                                     <div class="img-download">
                                         <img src="<?= get_template_directory_uri() ?>/assets/img/download.svg">
                                     </div>
-                                    <h5 class="h5">Скачать пдф</h5>
+                                    <h5 class="h5">Скачать</h5>
                                 </div>
                             </a>
                         <?php endif;
