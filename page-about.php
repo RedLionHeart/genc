@@ -13,7 +13,7 @@ get_header(); ?>
 </section>
 <section class="about">
     <div class="margin">
-        <h1 class="h1">О компании</h1>
+        <h1 class="h1"><?php the_title();?></h1>
         <div class="banner-about-top mb-16">
             <img class="w-100" src="<?= get_template_directory_uri() ?>/assets/img/banner_about_top.jpg">
         </div>
