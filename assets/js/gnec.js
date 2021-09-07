@@ -200,6 +200,23 @@ $('.filter-entry').click(function () {
     return false;
 });
 
+
+$('.filter-form input').click(function(){
+    let filterForm = $('.filter-form');
+
+    $.ajax({
+        url: filterForm.attr('action'),
+        data: filterForm.serialize(),
+        type: filterForm.attr('method'),
+        success: function(data){
+            $('.container-card').html(data);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
+
 $('.reset-filter').click(function () {
     $('.filter-form input[type="checkbox"]').each(function () {
         $(this).prop('checked', false);
