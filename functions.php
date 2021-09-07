@@ -194,6 +194,25 @@ function add_menu_link_class($atts, $item, $args)
     if (property_exists($args, 'link_class')) {
         $atts['class'] = $args->link_class;
     }
+
+    global $post;
+
+    $id = (isset($post->ID) ? get_the_ID() : NULL);
+
+    // Checking if post ID exist...
+    if (isset($id)) {
+
+        // Getting the post type of the current post
+        $current_post_type = get_post_type_object(get_post_type($post->ID));
+        $ancestor_slug = $current_post_type->rewrite ? $current_post_type->rewrite['slug'] : '';
+
+        if($ancestor_slug === 'paint'){
+
+            if($item->object_id == 32){
+                $atts['class'] .= ' active-link';
+            }
+        }
+    }
     return $atts;
 }
 
