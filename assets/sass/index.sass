@@ -153,9 +153,10 @@ button
       width: 36px
       height: 36px
       margin-right: 16px
-      img
+      svg
         width: 100%
         object-fit: contain
+
 .button-download:hover
   border: 2px solid $smokey
   box-shadow: 2px 2px 0 $smokey
@@ -166,6 +167,17 @@ button
   background: $white
   color: $gray20
   border: 2px solid $gray20
+.button-download-disabled
+  border: 2px solid $gray20!important
+  box-shadow: none!important
+  color: $gray50
+  .tds
+    border-right: 2px solid $gray20
+  svg
+    path:first-child
+      fill: $gray20
+  .h3-bold
+    color: $gray20
 
 .button-blue
   font-family: 'Circe-Bold', sans-serif

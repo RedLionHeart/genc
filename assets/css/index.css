@@ -170,7 +170,7 @@ button {
       width: 36px;
       height: 36px;
       margin-right: 16px; }
-      .button-download .download-box .img-download img {
+      .button-download .download-box .img-download svg {
         width: 100%;
         -o-object-fit: contain;
            object-fit: contain; }
@@ -188,6 +188,18 @@ button {
   background: white;
   color: #CDCDCD;
   border: 2px solid #CDCDCD; }
+
+.button-download-disabled {
+  border: 2px solid #CDCDCD !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #808080; }
+  .button-download-disabled .tds {
+    border-right: 2px solid #CDCDCD; }
+  .button-download-disabled svg path:first-child {
+    fill: #CDCDCD; }
+  .button-download-disabled .h3-bold {
+    color: #CDCDCD; }
 
 .button-blue {
   font-family: "Circe-Bold", sans-serif;
