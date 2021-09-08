@@ -171,6 +171,7 @@ button
   border: 2px solid $gray20!important
   box-shadow: none!important
   color: $gray50
+  pointer-events: none
   .tds
     border-right: 2px solid $gray20
   svg
@@ -1472,6 +1473,7 @@ footer
 .contacts
   z-index: 3
   position: relative
+  padding-bottom: 74px
   @media screen and (max-width: 991px)
     margin-top: -30px
   .h1
@@ -1485,22 +1487,11 @@ footer
     margin-bottom: 32px
     border-bottom: 2px solid rgba(235, 239, 242, 0.9)
     padding-bottom: 32px
+    min-height: 173px
     @media screen and (max-width: 700px)
       flex-direction: column
       padding-bottom: 16px
       margin-bottom: 8px
-    .contact-gradient
-      width: 100%
-      position: absolute
-      height: 150px
-      left: 0
-      top: 23px
-      display: none
-      transition: 1s
-      background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
-      @media screen and (max-width: 700px)
-        height: 140px
-        top: -30px
     .box-name-city
       width: 475px
       @media screen and (max-width: 700px)
@@ -1508,17 +1499,14 @@ footer
         width: 100%
       .h3-bold
         color: $gray
+        margin-bottom: 10px
         @media screen and (max-width: 700px)
           margin-bottom: 20px
           font-family: 'Circe-Regular', sans-serif
       .h5
         font-family: 'Circe-Regular', sans-serif
     .adress
-      height: 173px
-      overflow: hidden
-      position: relative
       width: 398px
-      transition: 1s
       @media screen and (max-width: 700px)
         max-height: 110px
         height: auto
@@ -1548,23 +1536,6 @@ footer
         padding-top: 0
       .box-adress:last-child
         margin-bottom: 0
-      .button-collapsed
-        text-decoration: underline
-        color: $blue
-        position: absolute
-        top: 120px
-        left: 54px
-        display: none
-        margin-bottom: 0
-        margin-top: 0
-        border-top: 0
-        padding-top: 0
-        cursor: pointer
-        transition: 1s
-        @media screen and (max-width: 700px)
-          top: 90px
-          left: 50%
-          transform: translateX(-50%)
   .h2
     color: $forest
     padding-bottom: 32px
@@ -1576,14 +1547,32 @@ footer
       padding-bottom: 0
   .height-box
     position: relative
-  .collapsed-contact
+    overflow: hidden
+    transition: 1s
     .contact-gradient
-      display: block!important
-  .collapsed-contact
+      width: 100%
+      position: absolute
+      height: 200px
+      left: 0
+      bottom: 0
+      display: none
+      transition: 1s
+      background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
     .button-collapsed
+      text-decoration: underline
+      color: $blue
+      position: absolute
+      bottom: 30px
+      left: 50%
+      transform: translateX(-50%)
+      display: none
+      cursor: pointer
+      transition: 1s
+  .collapsed-contact
+    .contact-gradient, .button-collapsed
       display: block!important
-  .open-contact
-    .contact-gradient
+  .open-collaps
+    .contact-gradient, .button-collapsed
       opacity: 0
       visibility: hidden
 

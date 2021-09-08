@@ -193,7 +193,8 @@ button {
   border: 2px solid #CDCDCD !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  color: #808080; }
+  color: #808080;
+  pointer-events: none; }
   .button-download-disabled .tds {
     border-right: 2px solid #CDCDCD; }
   .button-download-disabled svg path:first-child {
@@ -1689,7 +1690,8 @@ footer {
 
 .contacts {
   z-index: 3;
-  position: relative; }
+  position: relative;
+  padding-bottom: 74px; }
   @media screen and (max-width: 991px) {
     .contacts {
       margin-top: -30px; } }
@@ -1704,7 +1706,8 @@ footer {
   .contacts .box-contact {
     margin-bottom: 32px;
     border-bottom: 2px solid rgba(235, 239, 242, 0.9);
-    padding-bottom: 32px; }
+    padding-bottom: 32px;
+    min-height: 173px; }
     @media screen and (max-width: 700px) {
       .contacts .box-contact {
         -webkit-box-orient: vertical;
@@ -1713,21 +1716,6 @@ footer {
                 flex-direction: column;
         padding-bottom: 16px;
         margin-bottom: 8px; } }
-    .contacts .box-contact .contact-gradient {
-      width: 100%;
-      position: absolute;
-      height: 150px;
-      left: 0;
-      top: 23px;
-      display: none;
-      -webkit-transition: 1s;
-      transition: 1s;
-      background: -webkit-gradient(linear, left bottom, left top, color-stop(31.67%, #FFFFFF), to(rgba(255, 255, 255, 0)));
-      background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%); }
-      @media screen and (max-width: 700px) {
-        .contacts .box-contact .contact-gradient {
-          height: 140px;
-          top: -30px; } }
     .contacts .box-contact .box-name-city {
       width: 475px; }
       @media screen and (max-width: 700px) {
@@ -1735,7 +1723,8 @@ footer {
           margin-bottom: 25px;
           width: 100%; } }
       .contacts .box-contact .box-name-city .h3-bold {
-        color: #3F3F3F; }
+        color: #3F3F3F;
+        margin-bottom: 10px; }
         @media screen and (max-width: 700px) {
           .contacts .box-contact .box-name-city .h3-bold {
             margin-bottom: 20px;
@@ -1743,12 +1732,7 @@ footer {
       .contacts .box-contact .box-name-city .h5 {
         font-family: "Circe-Regular", sans-serif; }
     .contacts .box-contact .adress {
-      height: 173px;
-      overflow: hidden;
-      position: relative;
-      width: 398px;
-      -webkit-transition: 1s;
-      transition: 1s; }
+      width: 398px; }
       @media screen and (max-width: 700px) {
         .contacts .box-contact .adress {
           max-height: 110px;
@@ -1780,26 +1764,6 @@ footer {
         padding-top: 0; }
       .contacts .box-contact .adress .box-adress:last-child {
         margin-bottom: 0; }
-      .contacts .box-contact .adress .button-collapsed {
-        text-decoration: underline;
-        color: #00AEEF;
-        position: absolute;
-        top: 120px;
-        left: 54px;
-        display: none;
-        margin-bottom: 0;
-        margin-top: 0;
-        border-top: 0;
-        padding-top: 0;
-        cursor: pointer;
-        -webkit-transition: 1s;
-        transition: 1s; }
-        @media screen and (max-width: 700px) {
-          .contacts .box-contact .adress .button-collapsed {
-            top: 90px;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-                    transform: translateX(-50%); } }
   .contacts .h2 {
     color: #426189;
     padding-bottom: 32px;
@@ -1811,12 +1775,36 @@ footer {
         line-height: 48px;
         padding-bottom: 0; } }
   .contacts .height-box {
-    position: relative; }
-  .contacts .collapsed-contact .contact-gradient {
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: 1s;
+    transition: 1s; }
+    .contacts .height-box .contact-gradient {
+      width: 100%;
+      position: absolute;
+      height: 200px;
+      left: 0;
+      bottom: 0;
+      display: none;
+      -webkit-transition: 1s;
+      transition: 1s;
+      background: -webkit-gradient(linear, left bottom, left top, color-stop(31.67%, #FFFFFF), to(rgba(255, 255, 255, 0)));
+      background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%); }
+    .contacts .height-box .button-collapsed {
+      text-decoration: underline;
+      color: #00AEEF;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      display: none;
+      cursor: pointer;
+      -webkit-transition: 1s;
+      transition: 1s; }
+  .contacts .collapsed-contact .contact-gradient, .contacts .collapsed-contact .button-collapsed {
     display: block !important; }
-  .contacts .collapsed-contact .button-collapsed {
-    display: block !important; }
-  .contacts .open-contact .contact-gradient {
+  .contacts .open-collaps .contact-gradient, .contacts .open-collaps .button-collapsed {
     opacity: 0;
     visibility: hidden; }
 
