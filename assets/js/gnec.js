@@ -4,22 +4,26 @@
 
 
 $(window).on("load", function() {
-    var boxcontact = $('.height-box');
-
-    boxcontact.each(function(){
-        var heightcontrol = $(this).height();
-        var realheight = heightcontrol + 'px'
-        if(heightcontrol > 173) {
-            $(this).addClass('collapsed-contact').css('height', realheight)
+    $('.height-box').each(function (i, obj) {
+        var landamount = $(this).find('.box-contact').length;
+        var boxamount = $(this).find('.box-contact');
+        var sumheight = 0;
+        $(boxamount).slice(0, 3).each(function () {
+            sumheight += $(this).outerHeight(true);
+        })
+        if(landamount > 3) {
+            $(this).addClass('collapsed-contact').css('height', sumheight)
         }
-        $(".button-collapsed").click(function () {
-            var heightcontrol = $(this).closest('.height-box').height();
-            if(heightcontrol > 173) {
-                $(this).css('opacity', '0').css('visibility', 'hidden')
-                $(this).closest('.adress').css('max-height', heightcontrol).css('height', heightcontrol).addClass('open-contact')
-            }
-        });
+    })
+    $(".button-collapsed").click(function () {
+        var opencollaps = $(this).closest('.height-box');
+        var realheight = 0;
+        $(this).closest('.height-box').find('.box-contact').slice(0).each(function () {
+            realheight += $(this).outerHeight(true);
+        })
+        $(opencollaps).addClass('open-collaps').css('height', realheight)
     });
+
 });
 
 
