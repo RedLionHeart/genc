@@ -119,7 +119,7 @@ $post_id = $_GET['id'];
                     <span class="d-flex align-items-center text-medium-16"></span>
                 </label>
                 <div class="d-flex flex-wrap">
-                    <p class="text-medium-16">Я согласен с</p><a class="text-medium-16" target="_blank" href="<?= get_template_directory_uri() ?>/assets/src/files/kr2a_ru.pdf">Политикой конфиденциальности</a>
+                    <p class="text-medium-16">Я согласен с</p><a class="text-medium-16" target="_blank" href="<?= get_field('politika_konfidenczialnosti', 'options');?>">Политикой конфиденциальности</a>
                 </div>
             </div>
             <button type="submit" name="submit" class="button-blue" disabled>Отправить заявку</button>
