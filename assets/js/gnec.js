@@ -73,7 +73,12 @@ if(massivevideo.length){
 
             let videos = document.querySelectorAll('.box-video');
             for (let i = 0; i < videos.length; i++) {
-                //setupVideo(videos[i]);
+                setupVideo(videos[i]);
+                let playedIframe = videos[i].querySelector('iframe');
+                if(playedIframe){
+                    let srcIframePlayed = playedIframe.src;
+                    playedIframe.src = srcIframePlayed.slice(0, -1) + '0';
+                }
             }
         }
     });
