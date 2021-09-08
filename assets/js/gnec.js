@@ -35,35 +35,50 @@ $(".categories-search label").click(function () {
     }
 });
 
-var massivevideo = Array.from(document.getElementsByClassName('box-media'));
-var boxmenu = document.getElementById('container-video');
-var clickid = $('.button-discard-active').attr('id');
-$('#container-video').empty()
-$.each(massivevideo, function (index, value) {
-    if (value.classList.contains(clickid)) {
-        $(value).addClass("video-show");
+const massivevideo = document.querySelectorAll('.box-media');
 
-        boxmenu.appendChild(value)
-    }
-})
-$('.playlist button').click(function () {
-    $(".playlist button").removeClass("button-discard-active");
-    $(this).addClass("button-discard-active");
-    var clickid = $(this).attr('id');
+if(massivevideo.length){
+    const boxmenu = document.querySelector('#container-video');
+    let clickid = document.querySelector('.button-discard-active').id;
+    const playlistContainer = document.querySelector('.playlist');
 
-    $('#container-video').empty()
-    $.each(massivevideo, function (index, value) {
-        if (value.classList.contains(clickid)) {
-            $(value).addClass("video-show");
-            boxmenu.appendChild(value)
+    boxmenu.innerHTML = "";
+
+    massivevideo.forEach(function(item){
+        if(item.classList.contains(clickid)){
+            item.classList.add("video-show");
+
+            boxmenu.appendChild(item);
         }
-    })
+    });
+    playlistContainer.addEventListener('click', function (evt) {
+        let btn = evt.target.closest('button');
 
-    let videos = document.querySelectorAll('.box-video');
-    for (let i = 0; i < videos.length; i++) {
-        setupVideo(videos[i]);
-    }
-});
+        if(btn){
+            let buttons = playlistContainer.querySelectorAll('button');
+
+            buttons.forEach((item) => item.classList.remove('button-discard-active'));
+            btn.classList.add('button-discard-active');
+
+            clickid = btn.id;
+
+            boxmenu.innerHTML = "";
+            massivevideo.forEach(function(item){
+                if(item.classList.contains(clickid)){
+                    item.classList.add("video-show");
+
+                    boxmenu.appendChild(item);
+                }
+            });
+
+            let videos = document.querySelectorAll('.box-video');
+            for (let i = 0; i < videos.length; i++) {
+                //setupVideo(videos[i]);
+            }
+        }
+    });
+}
+
 
 
 $(".btn-secondary").click(function () {
