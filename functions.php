@@ -700,3 +700,11 @@ add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');
 if ( ! current_user_can( 'manage_options' ) ) {
     show_admin_bar( false );
 }
+
+function parse_phone_number ($phone_number){
+    $output_link = preg_replace('/\s/', '', $phone_number);
+    $output_link = preg_replace('/-/', '', $output_link);
+    $output_link = preg_replace('/–/', '', $output_link);
+
+    return $output_link;
+}
