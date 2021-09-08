@@ -705,6 +705,7 @@ function parse_phone_number ($phone_number){
     $output_link = preg_replace('/\s/', '', $phone_number);
     $output_link = preg_replace('/-/', '', $output_link);
     $output_link = preg_replace('/–/', '', $output_link);
+    $output_link = preg_replace('/\(|\)/', '', $output_link);
 
     return $output_link;
 }
