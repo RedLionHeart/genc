@@ -1,3 +1,29 @@
+
+
+
+
+
+$(window).on("load", function() {
+    var boxcontact = $('.height-box');
+
+    boxcontact.each(function(){
+        var heightcontrol = $(this).height();
+        var realheight = heightcontrol + 'px'
+        if(heightcontrol > 173) {
+            $(this).addClass('collapsed-contact').css('height', realheight)
+        }
+        $(".button-collapsed").click(function () {
+            var heightcontrol = $(this).closest('.height-box').height();
+            if(heightcontrol > 173) {
+                $(this).css('opacity', '0').css('visibility', 'hidden')
+                $(this).closest('.adress').css('max-height', heightcontrol).css('height', heightcontrol).addClass('open-contact')
+            }
+        });
+    });
+});
+
+
+
 $(".categories-search label").click(function () {
     if ($('#input-card').prop('checked') === true) {
         $('#seacrh-container-video').hide();
@@ -182,6 +208,16 @@ $('#order').on('submit', function (e) {
     return false;
 });
 
+function check() {
+    var consent = document.getElementsByClassName('consent');
+    for (var i = 0; i < consent.length; i++) {
+        var form = consent[i].closest("form");
+        if (consent[i].checked)
+            form.querySelector("button").disabled = '';
+        else form.querySelector("button").disabled = 'disabled';
+    }
+}
+
 
 $('.filter-entry').click(function () {
     let filter = $('.filter-form');
@@ -222,7 +258,7 @@ $('.reset-filter').click(function () {
 
 let videos = document.querySelectorAll('.box-video');
 for (let i = 0; i < videos.length; i++) {
-    this.setupVideo(videos[i]);
+    setupVideo(videos[i]);
 }
 
 function setupVideo(video) {
@@ -230,15 +266,15 @@ function setupVideo(video) {
     let media = video.querySelector('.video__media');
     let id;
     if(media.tagName === 'IMG'){
-         id = this.parseMediaURL(media);
+        id = parseMediaURL(media);
     } else {
         return false;
     }
 
     video.addEventListener('click', (e) => {
-        let iframe = this.createIframe(id);
-        // let blue = e.target;
-        // blue.closest(".box-media").classList.add('box-blue');
+        let iframe = createIframe(id);
+        let blue = e.target;
+        blue.closest(".box-media").classList.add('box-blue');
         link.remove();
         // button.remove();
         video.appendChild(iframe);
@@ -261,7 +297,7 @@ function createIframe(id) {
 
     iframe.setAttribute('allowfullscreen', '');
     iframe.setAttribute('allow', 'autoplay');
-    iframe.setAttribute('src', this.generateURL(id));
+    iframe.setAttribute('src', generateURL(id));
     iframe.classList.add('video__media');
 
 

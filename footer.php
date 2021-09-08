@@ -265,7 +265,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                                 get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $special_category));
                             endforeach;?>
                         </div>
-                        <button class="button-blue w-100 h5 filter-entry">Применить</button>
+                        <button class="button-blue w-100 h5 filter-entry" data-bs-dismiss="modal" aria-label="Close">Применить</button>
                         <button class="button-discard w-100 h5 reset-filter">Сбросить фильтр</button>
                         <input type="hidden" name="action" value="filter_catalog">
                     </form>
@@ -278,7 +278,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="d-flex flex-column modal-body">
-                <p>Пароль для скачивания TDS будет выслан
+                <p>Пароль для скачивания будет выслан
                     на указанный Вами адрес почты в течении 3 дней</p>
                 <a class="button-discard h5" href="<?=get_home_url();?>">Ok</a>
                 <svg width="99" height="22" viewBox="0 0 99 22" fill="none" xmlns="http://www.w3.org/2000/svg">

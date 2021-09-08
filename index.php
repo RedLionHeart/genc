@@ -56,10 +56,12 @@ $medias = get_posts(array(
                     краски».</h4>
                 <a class="button-discard h5" href="#">Узнать подробнее</a>
             </div>
+            <div class="padding-video">
             <div class="box-video">
                 <div class="video__link">
                     <img class="video__media" src="https://i.ytimg.com/vi/cdf1OpL7-_4/maxresdefault.jpg">
                 </div>
+            </div>
 <!--                <button class="video__button" aria-label="запустить видео">-->
 <!--                    <svg width="219" height="226" viewBox="0 0 219 226" fill="none" xmlns="http://www.w3.org/2000/svg">-->
 <!--                        <path fill-rule="evenodd" clip-rule="evenodd"-->

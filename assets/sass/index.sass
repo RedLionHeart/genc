@@ -51,6 +51,9 @@ button
   font-family: 'Circe-Bold', sans-serif
   font-size: 64px
   line-height: 72px
+  @media screen and (max-width: 1600px)
+    font-size: 54px
+    line-height: 62px
   @media screen and (max-width: 991px)
     font-size: 28px
     line-height: 32px
@@ -59,6 +62,9 @@ button
   font-family: 'Circe-Regular', sans-serif
   font-size: 36px
   line-height: 48px
+  @media screen and (max-width: 1600px)
+    font-size: 30px
+    line-height: 40px
   @media screen and (max-width: 991px)
     font-size: 25px
     line-height: 33px
@@ -79,7 +85,7 @@ button
   font-size: 24px
   line-height: 32px
   @media screen and (max-width: 991px)
-    font-size: 20px
+    font-size: 16px
     line-height: 132%
 
 .h4
@@ -183,6 +189,7 @@ button
   background: $white
   color: $gray20
   border: 2px solid $gray20
+  box-shadow: none
 
 .button-discard
   font-family: 'Circe-Bold', sans-serif
@@ -250,9 +257,9 @@ button
 .margin
   width: 1435px
   margin: 0 auto
-  @media screen and (max-width: 1440px)
+  @media screen and (max-width: 1600px)
     width: 1200px
-  @media screen and (max-width: 1240px)
+  @media screen and (max-width: 1300px)
     width: 940px
   @media screen and (max-width: 991px)
     width: 100%
@@ -267,18 +274,24 @@ header
   background: rgba(255, 255, 255, 0.9)
   backdrop-filter: blur(40px)
   -webkit-backdrop-filter: blur(40px)
+  @media screen and (max-width: 1600px)
+    padding: 20px 0
   @media screen and (max-width: 991px)
     padding: 7px 0
   .margin
-    margin: 0 204px 0 24px
-    width: auto
-    @media screen and (max-width: 1640px)
-      margin: 0 24px 0 24px
+    width: calc(100vw - ((100vw - 1500px)/2))
+    margin: 0 24px 0
+    @media screen and (max-width: 1600px)
+      width: calc(100vw - ((100vw - 1200px)/2))
+    @media screen and (max-width: 1300px)
+      width: calc(100vw - ((100vw - 920px)/2))
     @media screen and (max-width: 991px)
+      width: 100%
+      padding: 0 20px
       margin: 0
     .h3
       font-family: 'Circe-Light', sans-serif
-      @media screen and (max-width: 1440px)
+      @media screen and (max-width: 1600px)
         font-size: 18px
         line-height: 22px
     .button-burger
@@ -292,7 +305,7 @@ header
     nav
       width: 865px
       //margin-right: 241px
-      @media screen and (max-width: 1440px)
+      @media screen and (max-width: 1600px)
         width: 550px
       @media screen and (max-width: 991px)
         display: none
@@ -418,7 +431,9 @@ header
       left: 0
       width: 100%
       height: 253px
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 49.27%, #FFFFFF 100%)
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 30.27%, #FFFFFF 100%)
+      @media screen and (max-width: 1600px)
+        height: 430px
       @media screen and (max-width: 991px)
         height: 80px
     img
@@ -438,6 +453,8 @@ header
   margin-bottom: 100px
   position: relative
   z-index: 3
+  @media screen and (max-width: 1600px)
+    margin-top: -430px
   @media screen and (max-width: 991px)
     margin-bottom: 50px
     margin-top: -70px
@@ -447,9 +464,9 @@ header
       border-bottom: 2px solid $smokey
   .container-search-card
     width: 950px
-    @media screen and (max-width: 1440px)
+    @media screen and (max-width: 1600px)
       width: 780px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 550px
     @media screen and (max-width: 991px)
       width: 100%
@@ -519,10 +536,10 @@ header
         width: 458px
         padding: 18px 10px 18px 10px
         margin-bottom: 17px
-        @media screen and (max-width: 1440px)
+        @media screen and (max-width: 1600px)
           width: 380px
           padding: 18px 10px 18px 10px
-        @media screen and (max-width: 1240px)
+        @media screen and (max-width: 1300px)
           width: 100%
         .img-card
           width: 62px
@@ -530,7 +547,7 @@ header
           object-fit: contain
           margin-right: 25px
           flex: 0 0 62px
-          @media screen and (max-width: 1440px)
+          @media screen and (max-width: 1600px)
             margin-right: 10px
           img
             display: block
@@ -555,10 +572,10 @@ header
 
 .search-results-box
   .container-card
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       justify-content: space-between
   .box-card
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 380px!important
 
 .catalog, .search-results-box, #formModalfilters
@@ -566,15 +583,15 @@ header
     padding: 44px 70px 50px 44px
     border: 2px solid $smokey
     border-radius: 4px
-    @media screen and (max-width: 1440px)
+    @media screen and (max-width: 1600px)
       padding: 44px 40px 50px 20px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       padding: 44px 20px 50px 20px
     .h2
       margin-bottom: 26px
     .accordion
       width: 346px
-      @media screen and (max-width: 1440px)
+      @media screen and (max-width: 1600px)
         width: 330px
     .accordion-item
       margin-bottom: 24px
@@ -586,6 +603,7 @@ header
       background: transparent!important
       color: $black
       transition: .5s
+      font-family: 'Circe-Light', sans-serif
     .accordion-button:focus
       border-radius: 0
       border: none
@@ -655,11 +673,11 @@ header
       margin-bottom: 17px
     .box-card:nth-child(3n+1), .box-media:nth-child(3n+1)
       margin-right: 30.5px
-      @media screen and (max-width: 1240px)
+      @media screen and (max-width: 1300px)
         margin-right: 0
     .box-card:nth-child(3n+2), .box-media:nth-child(3n+2)
       margin-right: 30.5px
-      @media screen and (max-width: 1240px)
+      @media screen and (max-width: 1300px)
         margin-right: 0
 .check-filter
   cursor: pointer
@@ -707,7 +725,7 @@ header
 
 
 .media
-  padding: 0 0 44px
+  padding: 0 0 134px
   .h1
     padding-bottom: 44px
     margin-bottom: 44px
@@ -716,7 +734,7 @@ header
     @media screen and (max-width: 600px)
       justify-content: center!important
   .box-media
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       margin-bottom: 32px
       width: 277px
       height: 277px
@@ -740,10 +758,10 @@ header
   border-bottom: 3px solid $smokey
   border-left: 0
   //overflow: hidden
-  @media screen and (max-width: 1440px)
+  @media screen and (max-width: 1600px)
     width: 380px
     height: 380px
-  @media screen and (max-width: 1240px)
+  @media screen and (max-width: 1300px)
     width: 100%
     height: 460px
   @media screen and (max-width: 991px)
@@ -769,6 +787,8 @@ header
   .box-video-desc
     padding: 40px 32px
     max-height: 138px
+    @media screen and (max-width: 991px)
+      max-height: 84px
 
 .box-video
   //background: black
@@ -799,6 +819,9 @@ header
     cursor: pointer
     width: 100%
     height: 100%
+    position: absolute
+    top: 0
+    left: 0
   .video__button
     position: absolute
     top: 50%
@@ -813,6 +836,7 @@ header
     right: 0
     width: 100%
     height: 100%
+    z-index: 5
 
 .box-blue
   background: rgba(92, 135, 175, 0.4)
@@ -848,9 +872,9 @@ header
     margin-bottom: 50px
   .tinting-txt
     width: 585px
-    @media screen and (max-width: 1440px)
+    @media screen and (max-width: 1600px)
       width: 500px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 400px
     @media screen and (max-width: 991px)
       width: 100%
@@ -875,13 +899,14 @@ header
   .box-video
     border-radius: 12px
     width: 824px
-    height: 464px
+    height: 0
+    padding-top: 56.25%
     border: 0
     margin: 0
     box-sizing: border-box
-    @media screen and (max-width: 1440px)
+    @media screen and (max-width: 1600px)
       width: 660px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 500px
       height: 330px
     @media screen and (max-width: 991px)
@@ -1127,17 +1152,17 @@ footer
     margin-bottom: 32px
   .col-lg-4
     width: 460px
-    @media screen and (max-width: 1440px)
+    @media screen and (max-width: 1600px)
       width: 350px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 300px
     @media screen and (max-width: 991px)
       display: none
   .col-lg-8
     width: 944px
-    @media screen and (max-width: 1440px)
+    @media screen and (max-width: 1600px)
       width: 800px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 600px
     @media screen and (max-width: 991px)
       width: 100%
@@ -1392,7 +1417,7 @@ footer
 .about, .support
   .margin
     width: 1200px
-    @media screen and (max-width: 1240px)
+    @media screen and (max-width: 1300px)
       width: 940px
     @media screen and (max-width: 991px)
       width: 100%
@@ -1432,3 +1457,156 @@ footer
         line-height: 14px
         margin-bottom: 12px
 
+.contacts
+  z-index: 3
+  position: relative
+  @media screen and (max-width: 991px)
+    margin-top: -30px
+  .h1
+    padding-bottom: 24px
+    margin-bottom: 32px
+    border-bottom: 2px solid $smokey
+    @media screen and (max-width: 991px)
+      padding-bottom: 4px
+      margin-bottom: 30px
+  .box-contact
+    margin-bottom: 32px
+    border-bottom: 2px solid rgba(235, 239, 242, 0.9)
+    padding-bottom: 32px
+    @media screen and (max-width: 700px)
+      flex-direction: column
+      padding-bottom: 16px
+      margin-bottom: 8px
+    .contact-gradient
+      width: 100%
+      position: absolute
+      height: 150px
+      left: 0
+      top: 23px
+      display: none
+      transition: 1s
+      background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
+      @media screen and (max-width: 700px)
+        height: 140px
+        top: -30px
+    .box-name-city
+      width: 475px
+      @media screen and (max-width: 700px)
+        margin-bottom: 25px
+        width: 100%
+      .h3-bold
+        color: $gray
+        @media screen and (max-width: 700px)
+          margin-bottom: 20px
+          font-family: 'Circe-Regular', sans-serif
+      .h5
+        font-family: 'Circe-Regular', sans-serif
+    .adress
+      height: 173px
+      overflow: hidden
+      position: relative
+      width: 398px
+      transition: 1s
+      @media screen and (max-width: 700px)
+        max-height: 110px
+        height: auto
+        width: 100%
+      .box-adress
+        margin-bottom: 24px
+        margin-top: 10px
+        border-top: 2px solid rgba(235, 239, 242, 0.9)
+        padding-top: 10px
+        p
+          margin-bottom: 32px
+          @media screen and (max-width: 700px)
+            margin-bottom: 20px
+        a:nth-child(2)
+          margin-bottom: 5px
+          &:hover
+            color: $gray
+        a:last-child
+          text-decoration: underline
+          color: $blue
+          &:hover
+            color: $blue
+      .box-adress:first-child
+        margin-bottom: 0
+        margin-top: 0
+        border-top: 0
+        padding-top: 0
+      .box-adress:last-child
+        margin-bottom: 0
+      .button-collapsed
+        text-decoration: underline
+        color: $blue
+        position: absolute
+        top: 120px
+        left: 54px
+        display: none
+        margin-bottom: 0
+        margin-top: 0
+        border-top: 0
+        padding-top: 0
+        cursor: pointer
+        transition: 1s
+        @media screen and (max-width: 700px)
+          top: 90px
+          left: 50%
+          transform: translateX(-50%)
+  .h2
+    color: $forest
+    padding-bottom: 32px
+    margin-bottom: 32px
+    border-bottom: 2px solid $smokey
+    @media screen and (max-width: 700px)
+      font-size: 18px
+      line-height: 48px
+      padding-bottom: 0
+  .height-box
+    position: relative
+  .collapsed-contact
+    .contact-gradient
+      display: block!important
+  .collapsed-contact
+    .button-collapsed
+      display: block!important
+  .open-contact
+    .contact-gradient
+      opacity: 0
+      visibility: hidden
+
+
+.box-check-ico
+  margin-bottom: 30px
+  p
+    margin-right: 5px
+  a
+    color: $gray
+    transition: .5s
+  a:hover
+    text-decoration: underline
+    color: $gray
+.check-ico
+  position: relative
+  cursor: pointer
+  input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    -webkit-appearance: auto
+    left: 50%
+  span::before
+    content: ''
+    display: inline-block
+    width: 20px
+    height: 20px
+    margin-right: 16px
+    border: 2px solid $gray
+    border-radius: 5px
+    flex: 0 0 20px
+.check-ico>input:checked+span::before
+  background-image: url("../img/checkicon.svg")
+  background-repeat: no-repeat
+  background-position: 50%
+  background-size: cover
+  background-color: $blue

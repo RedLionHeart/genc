@@ -132,7 +132,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                                 get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $special_category));
                             endforeach;?>
                         </div>
-                        <button class="button-blue w-100 h5 filter-entry">Применить</button>
+<!--                        <button class="button-blue w-100 h5 filter-entry">Применить</button>-->
                         <button class="button-discard w-100 h5 reset-filter">Сбросить фильтр</button>
                         <input type="hidden" name="action" value="filter_catalog">
                     </form>
