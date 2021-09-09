@@ -27,7 +27,7 @@ $terms_special_application_methods = get_terms(array('taxonomy' => $special_appl
 
 $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide_empty' => false));
 ?>
-<section class="catalog">
+<section class="catalog <?php if(is_page(8)){echo 'catalog-mt';}?>">
     <div class="margin">
         <div class="d-flex flex-column">
             <h1 class="h1">Каталог</h1>
@@ -142,8 +142,11 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
 
                     <div class="d-flex flex-wrap justify-content-between container-card">
                         <?php
-                        $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
-
+                        global $query_string;
+                        parse_str( $query_string, $my_query_array );
+                        $paged = ( isset( $my_query_array['paged'] ) && !empty( $my_query_array['paged'] ) ) ? $my_query_array['paged'] : 1;
+                        //var_dump($paged);
+                        //$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
                         $args = array(
                             'posts_per_page' => 13,
                             'order'=> 'ASC',
@@ -173,7 +176,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                         echo paginate_links( array(
                             'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
                             'format' => '?paged=%#%',
-                            'current' => max( 1, get_query_var('paged') ),
+                            'current' => max( 1, $paged ),
                             'total'   => $products->max_num_pages,
                             'next_text' => '<img src="' . get_template_directory_uri() . '/assets/img/arrow_pagination_next.svg">',
                             'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/img/arrow_pagination_prev.svg">',
