@@ -8,7 +8,7 @@ get_header();
 
     <section class="back-top">
         <div class="video-back back-catalog">
-            <img src="<?= get_template_directory_uri() ?>/assets/img/back_catalog.jpg">
+            <img src="<?= get_field('izobrazhenie_fona');?>">
             <div class="back-gradient"></div>
         </div>
     </section>
