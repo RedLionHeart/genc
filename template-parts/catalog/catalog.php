@@ -145,10 +145,16 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                         global $query_string;
                         parse_str( $query_string, $my_query_array );
                         $paged = ( isset( $my_query_array['paged'] ) && !empty( $my_query_array['paged'] ) ) ? $my_query_array['paged'] : 1;
-                        //var_dump($paged);
                         //$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+
+                        if(is_mobile()){
+                            $posts_per_page_catalog = 7;
+                        } else {
+                            $posts_per_page_catalog = 13;
+                        }
+
                         $args = array(
-                            'posts_per_page' => 13,
+                            'posts_per_page' => $posts_per_page_catalog,
                             'order'=> 'ASC',
                             'post_type' => 'paint',
                             'paged' => $paged,
