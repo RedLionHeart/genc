@@ -778,15 +778,18 @@ header
   .box-media
     @media screen and (max-width: 1300px)
       margin-bottom: 32px
-      width: 277px
-      height: 277px
+      width: 380px
+      height: 380px
+    @media screen and (max-width: 600px)
+      width: 100%
+      height: 93vw
       .h4
         font-size: 12px
         line-height: 16px
         width: 130px!important
 
 #container-video
-  @media screen and (max-width: 590px)
+  @media screen and (max-width: 800px)
     justify-content: center!important
 
 .box-media
@@ -804,18 +807,25 @@ header
     width: 380px
     height: 380px
   @media screen and (max-width: 1300px)
-    width: 100%
-    height: 460px
+    width: 48%
+    height: 282px
   @media screen and (max-width: 991px)
-    width: 277px
-    height: 277px
+    width: 380px
+    height: 380px
+  @media screen and (max-width: 600px)
+    width: 100%
+    height: 93vw
   .name-video
     width: 100%
-    justify-content: space-evenly
+    justify-content: space-between
     .h4
       width: 242px
       transition: .5s
       color: $gray50
+      @media screen and (max-width: 1600px)
+        width: 190px
+      @media screen and (max-width: 991px)
+        max-height: 77px
     .time-video
       display: flex
       flex-direction: column
@@ -827,21 +837,32 @@ header
           height: 36px
           transition: .5s
   .box-video-desc
-    padding: 40px 32px
+    padding: 40px 50px
     max-height: 138px
-    @media screen and (max-width: 991px)
+    flex-grow: 1
+    @media screen and (max-width: 1300px)
+      padding: 13px 18px
       max-height: 84px
+    @media screen and (max-width: 991px)
+      padding: 40px 50px
+      max-height: 131px
+    @media screen and (max-width: 500px)
+      max-height: 71px
+      padding: 13px 18px
 .media
   .box-video-desc
     @media screen and (max-width: 1300px)
-      padding: 10px 32px
+      max-height: 84px
+    .h4
+      @media screen and (max-width: 1300px)
+        width: 163px
 
 
 .box-video
   //background: black
   overflow: hidden
   max-width: 100%
-  height: 315px
+  height: 100%
   position: relative
   border-radius: 12px 12px 0 0
   border-top: 3px solid $smokey
@@ -1203,7 +1224,7 @@ footer
     @media screen and (max-width: 1600px)
       width: 350px
     @media screen and (max-width: 1300px)
-      width: 300px
+      width: 250px
     @media screen and (max-width: 991px)
       display: none
   .col-lg-8
@@ -1211,7 +1232,7 @@ footer
     @media screen and (max-width: 1600px)
       width: 800px
     @media screen and (max-width: 1300px)
-      width: 600px
+      width: 650px
     @media screen and (max-width: 991px)
       width: 100%
   .box-media
