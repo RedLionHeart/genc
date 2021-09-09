@@ -1789,7 +1789,8 @@ footer {
   padding-bottom: 74px; }
   @media screen and (max-width: 991px) {
     .contacts {
-      margin-top: -30px; } }
+      margin-top: -30px;
+      padding-bottom: 20px; } }
   .contacts .h1 {
     padding-bottom: 24px;
     margin-bottom: 32px;
