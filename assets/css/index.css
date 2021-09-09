@@ -534,6 +534,9 @@ header {
   .catalog .margin .h1, .search-results-box .margin .h1 {
     margin-bottom: 35px;
     border-bottom: 2px solid #5C87AF; }
+    @media screen and (max-width: 991px) {
+      .catalog .margin .h1, .search-results-box .margin .h1 {
+        margin-bottom: 10px; } }
   .catalog .container-search-card, .search-results-box .container-search-card {
     width: 950px; }
     @media screen and (max-width: 1600px) {
@@ -873,10 +876,17 @@ header {
 
 .media {
   padding: 0 0 134px; }
+  @media screen and (max-width: 991px) {
+    .media {
+      padding: 0 0 20px; } }
   .media .h1 {
     padding-bottom: 44px;
     margin-bottom: 44px;
     border-bottom: 2px solid #5C87AF; }
+    @media screen and (max-width: 991px) {
+      .media .h1 {
+        padding-bottom: 10px;
+        margin-bottom: 10px; } }
   @media screen and (max-width: 600px) {
     .media .h1 + div {
       -webkit-box-pack: center !important;
@@ -1069,7 +1079,7 @@ header {
   margin-bottom: 74px; }
   @media screen and (max-width: 991px) {
     .tinting {
-      margin-bottom: 50px; } }
+      margin-bottom: 10px; } }
   .tinting .tinting-txt {
     width: 585px; }
     @media screen and (max-width: 1600px) {
@@ -1085,6 +1095,10 @@ header {
       padding-bottom: 44px;
       margin-bottom: 44px;
       border-bottom: 2px solid #5C87AF; }
+      @media screen and (max-width: 991px) {
+        .tinting .tinting-txt h2 {
+          padding-bottom: 10px;
+          margin-bottom: 10px; } }
     .tinting .tinting-txt h4 {
       margin-bottom: 32px; }
     .tinting .tinting-txt .button-discard {
@@ -1686,6 +1700,14 @@ footer {
     @media screen and (max-width: 991px) {
       .about .col-lg-6:nth-child(1) h4, .about .col-lg-6:nth-child(1) ul, .support .col-lg-6:nth-child(1) h4, .support .col-lg-6:nth-child(1) ul {
         margin-bottom: 17px; } }
+  @media screen and (max-width: 1600px) {
+    .about .col-lg-6:nth-child(1) .h4, .support .col-lg-6:nth-child(1) .h4 {
+      font-size: 18px;
+      line-height: 24px; } }
+  @media screen and (max-width: 1300px) {
+    .about .col-lg-6:nth-child(1) .h4, .support .col-lg-6:nth-child(1) .h4 {
+      font-size: 14px;
+      line-height: 18px; } }
   .about .col-lg-6:nth-child(1) li, .support .col-lg-6:nth-child(1) li {
     display: -webkit-box;
     display: -ms-flexbox;
