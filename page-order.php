@@ -11,7 +11,7 @@ $post_id = $_GET['id'];
 
 <section class="form-sta">
     <div class="margin">
-        <h1 class="h1">Оставить заявку</h1>
+        <h1 class="h1"><?php the_title();?></h1>
         <form action="/" class="d-flex flex-column ajax-form" method="post" id="order">
             <input type="hidden" name="email_to" value="<?= get_field('email_dlya_zayavok', 'options'); ?>">
             <h2 class="h2"><?php the_field('artikul', $post_id); ?></h2>

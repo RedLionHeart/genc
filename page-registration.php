@@ -7,7 +7,7 @@ get_header(); ?>
 
 <section class="form-passwork">
     <div class="margin">
-        <h1 class="h1">Форма получения пароля</h1>
+        <h1 class="h1"><?php the_title();?></h1>
         <form action="/" class="d-flex flex-column ajax-form" method="post" id="registration">
             <input type="hidden" name="email_to" value="<?= get_field('email_dlya_zayavok', 'options'); ?>">
 
