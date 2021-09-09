@@ -680,6 +680,9 @@ header {
 @media screen and (max-width: 1600px) {
   .catalog-mt {
     margin-top: -430px; } }
+@media screen and (max-width: 991px) {
+  .catalog-mt {
+    margin-top: -70px; } }
 
 @media screen and (max-width: 1300px) {
   .search-results-box .container-card {
