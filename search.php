@@ -130,7 +130,7 @@ $count_medias = count($medias);
 
                                     wp_reset_postdata(); ?>
                                 </div>
-                                <div>
+                                <div class="button-load h3">
                                     <?php
                                     if ($medias->max_num_pages > 1) :?>
                                         <script>
