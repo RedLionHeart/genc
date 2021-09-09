@@ -12,7 +12,7 @@ $medias = get_posts(array(
 ));
 ?>
 
-    <section class="back-top">
+    <section class="back-top back-index">
         <div class="video-back">
             <div style="padding:56.49% 0 0 0;position:relative;">
                 <iframe src="https://player.vimeo.com/video/593213120?h=6d9c4360d0&autoplay=1&mute=1&loop=1&background=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>

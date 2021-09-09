@@ -678,11 +678,11 @@ header {
   .catalog-mt {
     margin-top: -70px; } }
 @media screen and (max-width: 1600px) {
-  .catalog-mt .back-gradient {
+  .catalog-mt .back-index .back-gradient {
     height: 430px !important; } }
-  @media screen and (max-width: 1600px) and (max-width: 991px) {
-    .catalog-mt .back-gradient {
-      height: 80px !important; } }
+@media screen and (max-width: 991px) {
+  .catalog-mt .back-index .back-gradient {
+    height: 80px !important; } }
 
 @media screen and (max-width: 1300px) {
   .search-results-box .container-card {
@@ -948,6 +948,10 @@ header {
     @media screen and (max-width: 991px) {
       .box-media .box-video-desc {
         max-height: 84px; } }
+
+@media screen and (max-width: 1300px) {
+  .media .box-video-desc {
+    padding: 10px 32px; } }
 
 .box-video {
   overflow: hidden;
@@ -1233,7 +1237,7 @@ footer {
             width: 72px;
             height: 72px;
             margin-right: 24px; }
-            @media screen and (max-width: 550px) {
+            @media screen and (max-width: 991px) {
               .card-description .content-card .info-card .import-info .ico-card-flex .ico-card {
                 width: 31px;
                 height: 31px;
