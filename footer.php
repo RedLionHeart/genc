@@ -108,8 +108,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                 </a>
             <?php endif;?>
         </div>
-<!--        <h6 class="h6">Кроваво-черное ничто пустилось вить систему клеток, связанных внутри, клеток, связанных внутри,-->
-<!--            клеток в едином стебле. И явственно, до жути, на фоне тьмы, ввысь белым бил фонтан .</h6>-->
+        <a target="_blank" href="<?= get_field('politika_konfidenczialnosti', 'options');?>" class="h6">Политика конфиденциальности</a>
     </div>
 </footer>
 
