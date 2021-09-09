@@ -59,7 +59,7 @@ $medias = get_posts(array(
             <div class="modal-body">
                     <div class="playlist">
                         <?php foreach ($terms_playlists as $key => $term):?>
-                            <button class="button-playlist h4 <?= $key === 0 ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
+                            <button data-bs-dismiss="modal" aria-label="Close" class="button-playlist h4 <?= $key === 0 ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
                         <?php endforeach;?>
                     </div>
             </div>

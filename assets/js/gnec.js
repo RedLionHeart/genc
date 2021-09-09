@@ -39,55 +39,40 @@ $(".categories-search label").click(function () {
     }
 });
 
-const massivevideo = document.querySelectorAll('.box-media');
-let clickbutton = document.querySelector('.button-discard-active');
+var massivevideo = Array.from(document.getElementsByClassName('box-media'));
+var boxmenu = document.getElementById('container-video');
+var clickid = $('.button-discard-active').attr('id');
+$('#container-video').empty()
+$.each(massivevideo, function (index, value) {
+    if (value.classList.contains(clickid)) {
+        $(value).addClass("video-show");
 
-if(massivevideo.length && clickbutton){
-    const boxmenu = document.querySelector('#container-video');
-    let clickid = clickbutton.id;
-    const playlistContainer = document.querySelector('.playlist');
+        boxmenu.appendChild(value)
+    }
+})
+$('.playlist button').click(function () {
+    $(".playlist button").removeClass("button-discard-active");
+    $(this).addClass("button-discard-active");
+    var clickid = $(this).attr('id');
 
-    boxmenu.innerHTML = "";
-
-    massivevideo.forEach(function(item){
-        if(item.classList.contains(clickid)){
-            item.classList.add("video-show");
-
-            boxmenu.appendChild(item);
+    $('#container-video').empty()
+    $.each(massivevideo, function (index, value) {
+        if (value.classList.contains(clickid)) {
+            $(value).addClass("video-show");
+            boxmenu.appendChild(value)
         }
-    });
-    playlistContainer.addEventListener('click', function (evt) {
-        let btn = evt.target.closest('button');
+    })
 
-        if(btn){
-            let buttons = playlistContainer.querySelectorAll('button');
-
-            buttons.forEach((item) => item.classList.remove('button-discard-active'));
-            btn.classList.add('button-discard-active');
-
-            clickid = btn.id;
-
-            boxmenu.innerHTML = "";
-            massivevideo.forEach(function(item){
-                if(item.classList.contains(clickid)){
-                    item.classList.add("video-show");
-
-                    boxmenu.appendChild(item);
-                }
-            });
-
-            let videos = document.querySelectorAll('.box-video');
-            for (let i = 0; i < videos.length; i++) {
-                setupVideo(videos[i]);
-                let playedIframe = videos[i].querySelector('iframe');
-                if(playedIframe){
-                    let srcIframePlayed = playedIframe.src;
-                    playedIframe.src = srcIframePlayed.slice(0, -1) + '0';
-                }
-            }
+    let videos = document.querySelectorAll('.box-video');
+    for (let i = 0; i < videos.length; i++) {
+        setupVideo(videos[i]);
+        let playedIframe = videos[i].querySelector('iframe');
+        if(playedIframe){
+            let srcIframePlayed = playedIframe.src;
+            playedIframe.src = srcIframePlayed.slice(0, -1) + '0';
         }
-    });
-}
+    }
+});
 
 
 
