@@ -633,7 +633,10 @@ header {
           width: 290px; } }
       @media screen and (max-width: 991px) {
         .catalog .container-search-card .container-card .box-card, .search-results-box .container-search-card .container-card .box-card {
-          width: 100%; } }
+          width: 48%; } }
+      @media screen and (max-width: 680px) {
+        .catalog .container-search-card .container-card .box-card, .search-results-box .container-search-card .container-card .box-card {
+          width: 100% !important; } }
       .catalog .container-search-card .container-card .box-card .img-card, .search-results-box .container-search-card .container-card .box-card .img-card {
         width: 62px;
         height: 80px;
