@@ -57,7 +57,7 @@ $paint_id = get_the_ID();
                     </div>
                 <?php endif;
                 $color = get_field('czvet');
-                if ($color):?>
+                if ($color['czvet']):?>
                     <div class="box-color">
                         <h3 class="h3 mb-16">Цвет</h3>
                         <div class="d-flex align-items-center justify-content-between">
