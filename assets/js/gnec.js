@@ -40,10 +40,11 @@ $(".categories-search label").click(function () {
 });
 
 const massivevideo = document.querySelectorAll('.box-media');
+let clickbutton = document.querySelector('.button-discard-active');
 
-if(massivevideo.length){
+if(massivevideo.length && clickbutton){
     const boxmenu = document.querySelector('#container-video');
-    let clickid = document.querySelector('.button-discard-active').id;
+    let clickid = clickbutton.id;
     const playlistContainer = document.querySelector('.playlist');
 
     boxmenu.innerHTML = "";
