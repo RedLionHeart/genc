@@ -772,3 +772,99 @@ function checkGetParametersFilter($get_query_name){
     }
 
 }
+
+// Подсчет количества посещений страниц
+add_action( 'wp_head', 'custom_postviews' );
+
+/**
+ * @param array $args
+ *
+ * @return null
+ */
+function custom_postviews( $args = [] ){
+    global $user_ID, $post, $wpdb;
+
+    if( ! $post || ! is_singular() || $post->post_type !== 'paint')
+        return;
+
+
+    $rg = (object) wp_parse_args( $args, [
+        // Ключ мета поля поста, куда будет записываться количество просмотров.
+        'meta_key' => 'views',
+        // Чьи посещения считать? 0 - Всех. 1 - Только гостей. 2 - Только зарегистрированных пользователей.
+        'who_count' => 0,
+        // Исключить ботов, роботов? 0 - нет, пусть тоже считаются. 1 - да, исключить из подсчета.
+        'exclude_bots' => true,
+    ] );
+
+    $do_count = false;
+    switch( $rg->who_count ){
+
+        case 0:
+            $do_count = true;
+            break;
+        case 1:
+            if( ! $user_ID )
+                $do_count = true;
+            break;
+        case 2:
+            if( $user_ID )
+                $do_count = true;
+            break;
+    }
+
+    if( $do_count && $rg->exclude_bots ){
+
+        $notbot = 'Mozilla|Opera'; // Chrome|Safari|Firefox|Netscape - все равны Mozilla
+        $bot = 'Bot/|robot|Slurp/|yahoo';
+        if(
+            ! preg_match( "/$notbot/i", $_SERVER['HTTP_USER_AGENT'] ) ||
+            preg_match( "~$bot~i", $_SERVER['HTTP_USER_AGENT'] )
+        ){
+            $do_count = false;
+        }
+
+    }
+
+    if( $do_count ){
+
+        $up = $wpdb->query( $wpdb->prepare(
+            "UPDATE $wpdb->postmeta SET meta_value = (meta_value+1) WHERE post_id = %d AND meta_key = %s", $post->ID, $rg->meta_key
+        ) );
+
+        if( ! $up )
+            add_post_meta( $post->ID, $rg->meta_key, 1, true );
+
+        wp_cache_delete( $post->ID, 'post_meta' );
+    }
+
+}
+
+// создаем новую колонку
+add_filter( 'manage_'.'paint'.'_posts_columns', 'add_views_column', 4 );
+function add_views_column( $columns ){
+    $num = 2; // после какой по счету колонки вставлять новые
+
+    $new_columns = array(
+        'views' => 'Просмотры',
+    );
+
+    return array_slice( $columns, 0, $num ) + $new_columns + array_slice( $columns, $num );
+}
+
+// заполняем колонку данными
+add_action('manage_paint_posts_custom_column', 'fill_views_column', 5, 2 );
+function fill_views_column( $colname, $post_id ){
+    if( $colname === 'views' ){
+        echo get_post_meta( $post_id, 'views', 1 );
+    }
+}
+
+add_action('admin_head', 'custom_style_paint_views');
+function custom_style_paint_views() {
+    echo '<style>
+.fixed .column-views{
+    width: 10%;
+}
+</style>';
+}
