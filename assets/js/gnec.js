@@ -276,7 +276,7 @@ $('.filter-entry').click(function () {
         data: filter.serialize(), // form data
         type: filter.attr('method'), // POST
         success: function (data) {
-            $('.container-card').html(data);
+            $('.card-container').html(data);
             //console.log(data);
         },
         error: function (error) {
@@ -295,7 +295,7 @@ $('.filter-form input').click(function(){
         data: filterForm.serialize(),
         type: filterForm.attr('method'),
         success: function(data){
-            $('.container-card').html(data);
+            $('.card-container').html(data);
         },
         error: function (error) {
             console.log(error);
@@ -314,7 +314,7 @@ $('.reset-filter').click(function () {
         data: filter.serialize(), // form data
         type: filter.attr('method'), // POST
         success: function (data) {
-            $('.container-card').html(data);
+            $('.card-container').html(data);
         },
         error: function (error) {
             console.log(error);

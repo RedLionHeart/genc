@@ -487,9 +487,12 @@ add_action('wp_ajax_nopriv_filter_catalog', 'filter_function');
 
 function filter_function()
 {
-    global $query_string;
-    parse_str( $query_string, $my_query_array );
-    $paged = ( isset( $my_query_array['paged'] ) && !empty( $my_query_array['paged'] ) ) ? $my_query_array['paged'] : 1;
+    global $wp;
+    $base = home_url( $wp->request );
+    //global $query_string;
+    //parse_str( $query_string, $my_query_array );
+    //$paged = ( isset( $my_query_array['paged'] ) && !empty( $my_query_array['paged'] ) ) ? $my_query_array['paged'] : 1;
+    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
     if(is_mobile()){
         $posts_per_page_catalog = 7;
@@ -506,56 +509,56 @@ function filter_function()
     );
 
     // for taxonomies / categories
-    if (isset($_POST['chemical']) || isset($_POST['diluent_type']) || isset($_POST['material_type'])
-        || isset($_POST['tinting_system']) || isset($_POST['special_materials']) || isset($_POST['type_finishing'])
-        || isset($_POST['special_application_methods']) || isset($_POST['special_category'])) {
+    if (isset($_GET['chemical']) || isset($_GET['diluent_type']) || isset($_GET['material_type'])
+        || isset($_GET['tinting_system']) || isset($_GET['special_materials']) || isset($_GET['type_finishing'])
+        || isset($_GET['special_application_methods']) || isset($_GET['special_category'])) {
         $args['tax_query'] = array(
             'relation' => 'OR',
             array(
                 'taxonomy' => 'chemical',
                 'field' => 'name',
-                'terms' => $_POST['chemical'],
+                'terms' => $_GET['chemical'],
             ),
             array(
                 'taxonomy' => 'diluent_type',
                 'field' => 'name',
-                'terms' => $_POST['diluent_type'],
+                'terms' => $_GET['diluent_type'],
             ),
             array(
                 'taxonomy' => 'material_type',
                 'field' => 'name',
-                'terms' => $_POST['material_type'],
+                'terms' => $_GET['material_type'],
             ),
             array(
                 'taxonomy' => 'tinting_system',
                 'field' => 'name',
-                'terms' => $_POST['tinting_system'],
+                'terms' => $_GET['tinting_system'],
             ),
             array(
                 'taxonomy' => 'special_materials',
                 'field' => 'name',
-                'terms' => $_POST['special_materials'],
+                'terms' => $_GET['special_materials'],
             ),
             array(
                 'taxonomy' => 'type_finishing',
                 'field' => 'name',
-                'terms' => $_POST['type_finishing'],
+                'terms' => $_GET['type_finishing'],
             ),
             array(
                 'taxonomy' => 'special_application_methods',
                 'field' => 'name',
-                'terms' => $_POST['special_application_methods'],
+                'terms' => $_GET['special_application_methods'],
             ),
             array(
                 'taxonomy' => 'special_category',
                 'field' => 'name',
-                'terms' => $_POST['special_category'],
+                'terms' => $_GET['special_category'],
             ),
         );
     }
 
     $query = new WP_Query($args);
-
+    echo '<div class="d-flex flex-wrap justify-content-between container-card">';
     if ($query->have_posts()) :
         while ($query->have_posts()): $query->the_post();
             get_template_part('template-parts/catalog/item', '');
@@ -563,6 +566,29 @@ function filter_function()
         wp_reset_postdata();
     else :
         echo '<h2>Продукции не найдено</h2>';
+    endif;
+    echo '</div>';
+
+    if (  $query->max_num_pages > 1 ) :
+        $big = 999999999; // уникальное число
+        // Fallback if there is not base set.
+        $fallback_base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
+
+        // Set the base.
+        $base = isset( $base ) ? trailingslashit( $base ) . '%_%' : $fallback_base;
+
+        echo '<nav class="navigation pagination" role="navigation">
+                            <div class="d-flex align-items-center nav-links">';
+
+        echo paginate_links( array(
+            'base'    => $base,
+            'format' => '?paged=%#%',
+            'current' => max( 1, $paged ),
+            'total'   => $query->max_num_pages,
+            'next_text' => '<img src="' . get_template_directory_uri() . '/assets/img/arrow_pagination_next.svg">',
+            'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/img/arrow_pagination_prev.svg">',
+        ) );
+        echo '</div> </nav>';
     endif;
 
     die();
@@ -735,4 +761,110 @@ function is_mobile(){
     )
         return true;
     return false;
+}
+
+function checkGetParametersFilter($get_query_name){
+
+    if(isset($_GET[$get_query_name])){
+         return ($_GET[$get_query_name]);
+    } else {
+        return false;
+    }
+
+}
+
+// Подсчет количества посещений страниц
+add_action( 'wp_head', 'custom_postviews' );
+
+/**
+ * @param array $args
+ *
+ * @return null
+ */
+function custom_postviews( $args = [] ){
+    global $user_ID, $post, $wpdb;
+
+    if( ! $post || ! is_singular() || $post->post_type !== 'paint')
+        return;
+
+
+    $rg = (object) wp_parse_args( $args, [
+        // Ключ мета поля поста, куда будет записываться количество просмотров.
+        'meta_key' => 'views',
+        // Чьи посещения считать? 0 - Всех. 1 - Только гостей. 2 - Только зарегистрированных пользователей.
+        'who_count' => 0,
+        // Исключить ботов, роботов? 0 - нет, пусть тоже считаются. 1 - да, исключить из подсчета.
+        'exclude_bots' => true,
+    ] );
+
+    $do_count = false;
+    switch( $rg->who_count ){
+
+        case 0:
+            $do_count = true;
+            break;
+        case 1:
+            if( ! $user_ID )
+                $do_count = true;
+            break;
+        case 2:
+            if( $user_ID )
+                $do_count = true;
+            break;
+    }
+
+    if( $do_count && $rg->exclude_bots ){
+
+        $notbot = 'Mozilla|Opera'; // Chrome|Safari|Firefox|Netscape - все равны Mozilla
+        $bot = 'Bot/|robot|Slurp/|yahoo';
+        if(
+            ! preg_match( "/$notbot/i", $_SERVER['HTTP_USER_AGENT'] ) ||
+            preg_match( "~$bot~i", $_SERVER['HTTP_USER_AGENT'] )
+        ){
+            $do_count = false;
+        }
+
+    }
+
+    if( $do_count ){
+
+        $up = $wpdb->query( $wpdb->prepare(
+            "UPDATE $wpdb->postmeta SET meta_value = (meta_value+1) WHERE post_id = %d AND meta_key = %s", $post->ID, $rg->meta_key
+        ) );
+
+        if( ! $up )
+            add_post_meta( $post->ID, $rg->meta_key, 1, true );
+
+        wp_cache_delete( $post->ID, 'post_meta' );
+    }
+
+}
+
+// создаем новую колонку
+add_filter( 'manage_'.'paint'.'_posts_columns', 'add_views_column', 4 );
+function add_views_column( $columns ){
+    $num = 2; // после какой по счету колонки вставлять новые
+
+    $new_columns = array(
+        'views' => 'Просмотры',
+    );
+
+    return array_slice( $columns, 0, $num ) + $new_columns + array_slice( $columns, $num );
+}
+
+// заполняем колонку данными
+add_action('manage_paint_posts_custom_column', 'fill_views_column', 5, 2 );
+function fill_views_column( $colname, $post_id ){
+    if( $colname === 'views' ){
+        echo get_post_meta( $post_id, 'views', 1 );
+    }
+}
+
+add_action('admin_head', 'custom_style_paint_views');
+function custom_style_paint_views() {
+    echo '<style>
+.fixed .column-views{
+    width: 10%;
+}
+</style>';
 }
