@@ -2,6 +2,46 @@
 
 
 
+$(window).on("load", function() {
+
+    var windowwidth = screen.width;
+    var coloramount = $('.box-color').length;
+    var boxamount = $('.wrap-color');
+    var realheight = boxamount.outerHeight(true);
+    console.log(coloramount);
+    console.log(realheight);
+    if(windowwidth >= 768) {
+        if(coloramount > 6) {
+            var height1 = Math.max($('.box-color').slice(0, 3).outerHeight(true));
+            console.log(height1);
+            var height2 = Math.max($('.box-color').slice(3, 7).outerHeight(true));
+            console.log(height2);
+            var sumheight = height1 + height2;
+            $(boxamount).addClass('color-collapsed').css('height', sumheight);
+        }
+    } else {
+        if(coloramount > 4) {
+            var height1 = Math.max($('.box-color').slice(0, 2).outerHeight(true));
+            console.log(height1);
+            var height2 = Math.max($('.box-color').slice(2, 4).outerHeight(true));
+            console.log(height2);
+            var sumheight = height1 + height2;
+            $(boxamount).addClass('color-collapsed').css('height', sumheight);
+        }
+    }
+
+
+    $(".button-collapsed").click(function () {
+        // var realheight = 0;
+        // $('.box-color').slice(0).each(function () {
+        //     realheight += $(this).outerHeight(true);
+        //     console.log(realheight)
+        // })
+        $(boxamount).addClass('open-collaps').css('height', realheight)
+    });
+
+});
+
 
 $(window).on("load", function() {
     $('.height-box').each(function (i, obj) {

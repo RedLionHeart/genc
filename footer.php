@@ -50,7 +50,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
     <div class="margin">
         <div class="d-flex justify-content-between align-items-center logo-login">
             <a href="<?=get_home_url();?>" class="top-logo">
-                <img src="<?= get_template_directory_uri() ?>/assets/img/logo_blue.svg">
+                <img src="<?= get_template_directory_uri() ?>/assets/img/logo.svg">
             </a>
             <?php
             if ( !is_user_logged_in() ) { ?>

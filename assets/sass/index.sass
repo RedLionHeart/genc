@@ -95,9 +95,9 @@ button
   @media screen and (max-width: 1600px)
     font-size: 14px
     line-height: 18px
-  @media screen and (max-width: 500px)
-    font-size: 12px
-    line-height: 16px
+  //@media screen and (max-width: 500px)
+  //  font-size: 12px
+  //  line-height: 16px
 
 .h5
   font-family: 'Circe-Light', sans-serif
@@ -370,14 +370,19 @@ header
 
 .button-filter-mob
   display: none!important
-  margin-right: 7px
+  margin-top: 7px
+  max-height: 34px
   @media screen and (max-width: 991px)
     display: flex!important
   svg
-    margin-right: 4px
+    margin-right: 18px
     flex: 0 0 12px
   p
     display: block
+    color: $white
+    font-family: 'Circe-Light', sans-serif
+    font-size: 16px
+    line-height: 23px
 
 #burgerModal
   .modal-dialog
@@ -424,20 +429,24 @@ header
   color: $forest!important
 
 .back-top
+  @media screen and (max-width: 550px)
+    padding-top: 54px
   .video-back
     position: relative
     width: 100%
     max-height: 836px
     overflow: hidden
     @media screen and (max-width: 550px)
-      height: 215px
+      height: 280px
     iframe
       position: absolute
       top: 0
       left: 0
       width: 100%
       height: 100%
-      //object-fit: cover
+      .vp-video
+        video
+          object-fit: cover
     .back-gradient
       position: absolute
       bottom: 0
@@ -445,16 +454,19 @@ header
       width: 100%
       height: 253px
       background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.75) 49.27%, #FFFFFF 100%)
+      @media screen and (max-width: 991px)
+        height: 71px!important
     img
       width: 100%
       height: 100%
       object-fit: cover
 .back-index
+  .video-back
+    height: auto
   .back-gradient
     @media screen and (max-width: 1600px)
       height: 450px!important
-    @media screen and (max-width: 991px)
-      height: 80px!important
+
 
 
 
@@ -495,7 +507,7 @@ header
         box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2)
         border-radius: 4px
         @media screen and (max-width: 991px)
-          height: 25px
+          height: 34px
           padding: 0 0 0 10px
           box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
       input::-webkit-search-cancel-button
@@ -598,7 +610,7 @@ header
   @media screen and (max-width: 1600px)
     margin-top: -430px
   @media screen and (max-width: 991px)
-    margin-top: -70px
+    margin-top: -30px
   .back-index
     .back-gradient
       @media screen and (max-width: 1600px)
@@ -791,7 +803,7 @@ header
       height: 380px
     @media screen and (max-width: 600px)
       width: 100%
-      height: 93vw
+      height: 85vw
       .h4
         font-size: 12px
         line-height: 16px
@@ -1077,7 +1089,7 @@ footer
   z-index: 3
   margin-top: -224px
   @media screen and (max-width: 991px)
-    margin-top: -70px
+    margin-top: -115px
   .content-card
     margin: 0 auto
     max-width: 950px
@@ -1088,8 +1100,8 @@ footer
     .img-card
       width: 224px
       height: 224px
+      //margin-bottom: 35px
       @media screen and (max-width: 991px)
-        display: none
         width: 134px
         height: 134px
       img
@@ -1104,9 +1116,9 @@ footer
       .h2
         margin-bottom: 24px
       .img-card
-        display: none
-        @media screen and (max-width: 991px)
-          display: block
+        //display: none
+        //@media screen and (max-width: 991px)
+        //  display: block
       .import-info
         border: 1px solid $forest
         border-radius: 4px
@@ -1121,20 +1133,6 @@ footer
           border-bottom: 1px solid $smokey
         .ico-card-flex
           width: 100%
-          .ico-card:last-child
-            margin-right: 0
-          .ico-card
-            width: 72px
-            height: 72px
-            margin-right: 24px
-            @media screen and (max-width: 991px)
-              width: 31px
-              height: 31px
-              margin-right: 10px
-            img
-              width: 100%
-              height: 100%
-              object-fit: contain
       .properties-color
         @media screen and (max-width: 550px)
           flex-direction: column
@@ -1145,8 +1143,43 @@ footer
             margin-bottom: 7px
           li:before
             content: "– "
-        .box-color
-          max-width: 218px
+        .container-color
+          //margin-bottom: 37px
+          .wrap-color
+            position: relative
+            overflow: hidden
+            transition: 1s
+            .color-gradient
+              height: 200px
+              position: absolute
+              bottom: 0
+              left: 0
+              width: 100%
+              transition: 1s
+              display: none
+              background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
+            .button-collapsed
+              text-decoration: underline
+              color: $blue
+              position: absolute
+              bottom: 30px
+              left: 50%
+              transform: translateX(-50%)
+              display: none
+              cursor: pointer
+              transition: 1s
+              display: none
+          .color-collapsed
+            .color-gradient, .button-collapsed
+              display: block
+          .open-collaps
+            .color-gradient, .button-collapsed
+              opacity: 0
+              visibility: hidden
+          .box-color
+            @media screen and (max-width: 450px)
+              flex-direction: column
+              align-items: flex-start!important
           .color
             width: 72px
             height: 72px
@@ -1154,8 +1187,12 @@ footer
             border-radius: 50%
             background-color: #CDA175
             margin-right: 12px
+            flex: 0 0 72px
+            @media screen and (max-width: 450px)
+              margin-bottom: 15px
           .h4
             width: 135px
+            padding-right: 10px
       .gloss-level
         li
           margin-bottom: 16px
@@ -1170,7 +1207,7 @@ footer
       .application
         .box-application-ico
           @media screen and (max-width: 550px)
-            justify-content: center
+            //justify-content: center
         .application-ico:last-child
           margin-right: 0
         .application-ico
@@ -1220,6 +1257,139 @@ footer
         .button-blue, .button-download
           @media screen and (max-width: 550px)
             align-self: center
+  .share-img
+    position: sticky
+    top: 70px
+    height: fit-content
+    @media screen and (max-width: 991px)
+      display: none
+    .box-share
+      border: 1px solid #5C87AF
+      border-radius: 4px
+      max-height: 40px
+      transition: .5s
+      overflow: hidden
+      .header-share
+        height: 40px
+        border-bottom: 1px solid #5C87AF
+        border-radius: 4px
+        cursor: pointer
+        p
+          color: #5C87AF
+          font-family: 'Circe-Bold', sans-serif
+      .share-body
+        height: 65px
+        svg
+          path
+            transition: .5s
+        a:nth-child(1):hover
+          path
+            fill: #00AEEF
+        a:nth-child(2):hover
+          path
+            fill: #5FBC57
+        a:nth-child(3):hover
+          path
+            fill: #74499F
+    .box-share:hover
+      max-height: 120px
+  .share-img-mob
+    position: relative
+    display: none
+    @media screen and (max-width: 991px)
+      display: block
+    .box-share
+      position: absolute
+      bottom: 0
+      right: 0
+      width: 28px
+      height: 28px
+      border-radius: 4px
+      border: 1px solid #5C87AF
+      transition: .5s
+      overflow: hidden
+      background: $white
+      .header-share
+        border-left: 1px solid #5C87AF
+        border-radius: 4px
+        width: 28px
+        height: 100%
+        position: absolute
+        right: 0
+        top: 0
+        background: $white
+      .share-body
+        width: 0
+        position: absolute
+        left: 0
+        top: 0
+        background: $white
+        svg
+          path
+            transition: .5s
+        a:nth-child(1):hover
+          path
+            fill: #00AEEF
+        a:nth-child(2):hover
+          path
+            fill: #5FBC57
+        a:nth-child(3):hover
+          path
+            fill: #74499F
+      svg
+        width: 18px
+        height: 18px
+    .box-share:hover
+      width: 152px
+      .share-body
+        width: 124px
+
+.ico-card
+  width: 72px
+  height: 72px
+  margin-right: 24px
+  position: relative
+  margin-bottom: 35px
+  @media screen and (max-width: 991px)
+    //width: 31px
+    //height: 31px
+    margin-right: 10px
+  img
+    width: 100%
+    height: 100%
+    object-fit: contain
+  svg
+    position: absolute
+    right: 0
+    bottom: -18px
+    transition: .5s
+  p
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    bottom: -34px
+    font-family: 'Circe-Regular', sans-serif
+    font-size: 12px
+    line-height: 10px
+    text-align: center
+    transition: .5s
+    opacity: 0
+    visibility: hidden
+  svg:hover
+    opacity: 0
+    visibility: hidden
+  svg:hover + p
+    opacity: 1
+    visibility: visible
+  .ico-card:hover
+    svg
+      opacity: 0
+      visibility: hidden
+    p
+      opacity: 1
+      visibility: visible
+.ico-card:last-child
+  margin-right: 0
 
 .media-container
   position: relative
