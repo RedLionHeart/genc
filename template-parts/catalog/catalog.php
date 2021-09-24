@@ -160,9 +160,13 @@ $checked_special_category = checkGetParametersFilter($special_category);
                             //$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
                             if (is_mobile()) {
-                                $posts_per_page_catalog = 7;
+                                $posts_per_page_catalog = 3;
                             } else {
-                                $posts_per_page_catalog = 13;
+                                if (is_page(8)){
+                                $posts_per_page_catalog = 6;
+                                } else {
+                                    $posts_per_page_catalog = 12;
+                                }
                             }
 
                             $args = array(
