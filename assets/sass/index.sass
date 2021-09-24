@@ -6,7 +6,7 @@ html *
 $blue: #00AEEF
 $light: #6DCFF6
 $pure: #B9EBFF
-$black: black
+$black: #191919
 $gray: #3F3F3F
 $gray50: #808080
 $gray20: #CDCDCD
@@ -485,6 +485,7 @@ header
       @media screen and (max-width: 991px)
         margin-bottom: 10px
   .container-search-card
+    position: relative
     width: 950px
     @media screen and (max-width: 1600px)
       width: 780px
@@ -496,27 +497,40 @@ header
       margin-bottom: 35px
       @media screen and (max-width: 1300px)
         margin-bottom: 20px
+    .box-search-filters
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      background: $white
     .form-search
-      position: relative
-      flex-grow: 1
-      input
-        width: 100%
-        height: 51px
-        padding: 0 110px 0 20px
+      label
+        position: relative
+        flex-grow: 1
         border: 2px solid $smokey
         box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2)
         border-radius: 4px
+        width: 100%
+        transition: .5s
+        @media screen and (max-width: 991px)
+          box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
+      .box-search
+        position: relative
+        width: 100%
+        height: 51px
+        padding: 0 10px 0 20px
         @media screen and (max-width: 991px)
           height: 34px
           padding: 0 0 0 10px
-          box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
+      input
+        padding: 0 110px 0 0
+        width: 100%
+        height: 100%
+        border: none
+        background: transparent
+        color: $black
       input::-webkit-search-cancel-button
         display: none
-      input:focus
-        border: 2px solid $blue
-        box-shadow: 2px 2px 0 $blue
-        @media screen and (max-width: 991px)
-          box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
       button
         position: absolute
         right: 10px
@@ -555,7 +569,29 @@ header
         svg
           width: 20px
           height: 20px
+      .box-search-result
+        display: none
+        padding-top: 12px
+        a
+          padding: 9px 10px 9px 20px
+          transition: .5s
+          @media screen and (max-width: 991px)
+            padding: 9px 0 9px 10px
+        a:hover
+          background: $winter
+          color: $gray
+      .focus-input
+        border: 2px solid $blue
+        box-shadow: 2px 2px 0 $blue
+        @media screen and (max-width: 991px)
+          box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
+    .open-search-result
+      .box-search
+        border-bottom: 2px solid #D5E1EC
+      .box-search-result
+        display: block
     .container-card
+      padding-top: 85px
       .box-card
         width: 458px
         padding: 18px 10px 18px 10px
@@ -1264,6 +1300,7 @@ footer
     @media screen and (max-width: 991px)
       display: none
     .box-share
+      margin-top: 35px
       border: 1px solid #5C87AF
       border-radius: 4px
       max-height: 40px
@@ -1350,6 +1387,7 @@ footer
   margin-right: 24px
   position: relative
   margin-bottom: 35px
+  cursor: pointer
   @media screen and (max-width: 991px)
     //width: 31px
     //height: 31px
@@ -1367,7 +1405,7 @@ footer
     position: absolute
     left: 50%
     transform: translateX(-50%)
-    bottom: -34px
+    top: calc(100% + 21px)
     font-family: 'Circe-Regular', sans-serif
     font-size: 12px
     line-height: 10px
@@ -1859,3 +1897,77 @@ footer
   background-position: 50%
   background-size: cover
   background-color: $blue
+
+.popular-product
+  .h2
+    margin-bottom: 24px
+    border-bottom: 2px solid #5C87AF
+    padding-bottom: 10px
+  .box-card
+    flex-direction: column
+    align-items: flex-start
+    padding: 24px 19px
+    .img-card
+      margin-bottom: 23px
+      @media screen and (max-width: 500px)
+        width: 33px
+    .txt-card
+      .h3
+        margin-bottom: 20px
+        @media screen and (max-width: 500px)
+          font-size: 13px
+          line-height: 18px
+      .h4
+        @media screen and (max-width: 500px)
+          font-size: 10px
+          line-height: 13px
+  .swiper
+    .swiper-slide
+      width: 220px
+      @media screen and (max-width: 1300px)
+        width: 170px
+      @media screen and (max-width: 500px)
+        width: 120px
+    .swiper-button-next
+      right: -1px
+      width: 121px
+      height: 110%
+      transform: translateY(-50%)
+      margin-top: 0
+      cursor: auto
+      justify-content: end
+      transition: .5s
+      background: linear-gradient(270deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
+      @media screen and (max-width: 500px)
+        width: 66px
+      &:after
+        margin-right: 5px
+        cursor: pointer
+        color: $smokey
+        font-size: 32px
+        transition: .5s
+      &:after:hover
+        transform: scale(1.2)
+    .swiper-button-prev
+      left: -1px
+      width: 121px
+      height: 110%
+      transform: translateY(-50%)
+      margin-top: 0
+      cursor: auto
+      transition: .5s
+      justify-content: start
+      background: linear-gradient(90deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
+      @media screen and (max-width: 500px)
+        width: 66px
+      &:after
+        margin-left: 5px
+        cursor: pointer
+        color: $smokey
+        font-size: 32px
+        transition: .5s
+      &:after:hover
+        transform: scale(1.2)
+    .swiper-button-disabled
+      opacity: 0
+      visibility: hidden

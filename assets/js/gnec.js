@@ -2,29 +2,116 @@
 
 
 
+swiper = new Swiper('.swiper', {
+    // slidesPerView: 4,
+    spaceBetween: 12,
+    slidesPerView: "auto",
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        992: {
+            spaceBetween: 22,
+        }
+    }
+});
+
+
+document.querySelector('.form-search input').onfocus = function() {
+    $(this).closest('label').addClass('focus-input');
+    var searchitem = $(this).val().length;
+    if (searchitem > 1) {
+        $.ajax({
+            url :  myajax.url,
+            type: 'POST',
+            data:{
+                'action': 'custom_paint_ajax_search',
+                'search'  : $(this).value,
+            },
+            success:function(data){
+                console.log(data);
+                if(data === 'false'){
+                    searchTitle.textContent = 'К сожалению, мы ничего не нашли.'
+                    searchItemsContainer.innerHTML = "";
+                } else {
+                    searchTitle.textContent = 'Смотрите, что мы нашли:';
+                    searchItemsContainer.innerHTML = data;
+                    $('.form-search').addClass('open-search-result')
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    } else {
+        $('.form-search').removeClass('open-search-result')
+    }
+};
+document.querySelector('.form-search input').onblur = function() {
+    $(this).closest('label').removeClass('focus-input');
+    $('.form-search').removeClass('open-search-result')
+};
+
+
+
+
+
+
+$(document).on('input', '.form-search input', function () {
+    var searchitem = $(this).val().length;
+    if (searchitem > 1) {
+        $.ajax({
+            url :  myajax.url,
+            type: 'POST',
+            data:{
+                'action': 'custom_paint_ajax_search',
+                'search'  : $(this).value,
+            },
+            success:function(data){
+                console.log(data);
+                if(data === 'false'){
+                    searchTitle.textContent = 'К сожалению, мы ничего не нашли.'
+                    searchItemsContainer.innerHTML = "";
+                } else {
+                    searchTitle.textContent = 'Смотрите, что мы нашли:';
+                    searchItemsContainer.innerHTML = data;
+                    $('.form-search').addClass('open-search-result')
+                }
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+    } else {
+        $('.form-search').removeClass('open-search-result')
+    }
+});
+
+
+
 $(window).on("load", function() {
 
     var windowwidth = screen.width;
     var coloramount = $('.box-color').length;
     var boxamount = $('.wrap-color');
     var realheight = boxamount.outerHeight(true);
-    console.log(coloramount);
-    console.log(realheight);
+
     if(windowwidth >= 768) {
-        if(coloramount > 6) {
+        if (coloramount > 6) {
             var height1 = Math.max($('.box-color').slice(0, 3).outerHeight(true));
-            console.log(height1);
+
             var height2 = Math.max($('.box-color').slice(3, 7).outerHeight(true));
-            console.log(height2);
+
             var sumheight = height1 + height2;
             $(boxamount).addClass('color-collapsed').css('height', sumheight);
         }
     } else {
-        if(coloramount > 4) {
+        if (coloramount > 4) {
             var height1 = Math.max($('.box-color').slice(0, 2).outerHeight(true));
-            console.log(height1);
+
             var height2 = Math.max($('.box-color').slice(2, 4).outerHeight(true));
-            console.log(height2);
+
             var sumheight = height1 + height2;
             $(boxamount).addClass('color-collapsed').css('height', sumheight);
         }
@@ -116,10 +203,9 @@ $('.playlist button').click(function () {
 
 
 
-$(".btn-secondary").click(function () {
-    $("body").css("overflow", "visible");
-    $(".modal-swiper").removeClass("modal-swiper-active");
-});
+// $(".btn-secondary").click(function () {
+//     $("body").css("overflow", "visible");
+// });
 
 
 $('nav [href]').each(function () {
@@ -323,56 +409,56 @@ $('.reset-filter').click(function () {
     return false;
 });
 
-let videos = document.querySelectorAll('.box-video');
-for (let i = 0; i < videos.length; i++) {
-    setupVideo(videos[i]);
-}
-
-function setupVideo(video) {
-    let link = video.querySelector('.video__link');
-    let media = video.querySelector('.video__media');
-    let id;
-    if(media.tagName === 'IMG'){
-        id = parseMediaURL(media);
-    } else {
-        return false;
-    }
-
-    video.addEventListener('click', (e) => {
-        let iframe = createIframe(id);
-        let blue = e.target;
-        blue.closest(".box-media").classList.add('box-blue');
-        link.remove();
-        // button.remove();
-        video.appendChild(iframe);
-    });
-
-    link.removeAttribute('href');
-    video.classList.add('video--enabled');
-}
-
-function parseMediaURL(media) {
-    let regexp = /https:\/\/i\.ytimg\.com\/vi\/([a-zA-Z0-9_-]+)\/maxresdefault\.jpg/i;
-    let url = media.src;
-    let match = url.match(regexp);
-
-    return match[1];
-}
-
-function createIframe(id) {
-    let iframe = document.createElement('iframe');
-
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('allow', 'autoplay');
-    iframe.setAttribute('src', generateURL(id));
-    iframe.classList.add('video__media');
-
-
-    return iframe;
-}
-
-function generateURL(id) {
-    let query = '?rel=0&showinfo=0&autoplay=1';
-
-    return 'https://www.youtube.com/embed/' + id + query;
-}
+// let videos = document.querySelectorAll('.box-video');
+// for (let i = 0; i < videos.length; i++) {
+//     setupVideo(videos[i]);
+// }
+//
+// function setupVideo(video) {
+//     let link = video.querySelector('.video__link');
+//     let media = video.querySelector('.video__media');
+//     let id;
+//     if(media.tagName === 'IMG'){
+//         id = parseMediaURL(media);
+//     } else {
+//         return false;
+//     }
+//
+//     video.addEventListener('click', (e) => {
+//         let iframe = createIframe(id);
+//         let blue = e.target;
+//         blue.closest(".box-media").classList.add('box-blue');
+//         link.remove();
+//         // button.remove();
+//         video.appendChild(iframe);
+//     });
+//
+//     link.removeAttribute('href');
+//     video.classList.add('video--enabled');
+// }
+//
+// function parseMediaURL(media) {
+//     let regexp = /https:\/\/i\.ytimg\.com\/vi\/([a-zA-Z0-9_-]+)\/maxresdefault\.jpg/i;
+//     let url = media.src;
+//     let match = url.match(regexp);
+//
+//     return match[1];
+// }
+//
+// function createIframe(id) {
+//     let iframe = document.createElement('iframe');
+//
+//     iframe.setAttribute('allowfullscreen', '');
+//     iframe.setAttribute('allow', 'autoplay');
+//     iframe.setAttribute('src', generateURL(id));
+//     iframe.classList.add('video__media');
+//
+//
+//     return iframe;
+// }
+//
+// function generateURL(id) {
+//     let query = '?rel=0&showinfo=0&autoplay=1';
+//
+//     return 'https://www.youtube.com/embed/' + id + query;
+// }

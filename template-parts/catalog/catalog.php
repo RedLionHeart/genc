@@ -255,6 +255,66 @@ $checked_special_category = checkGetParametersFilter($special_category);
                         endif;
                         ?>
                     </div>
+                    <div class="popular-product">
+                        <h2 class="h2">Популярные продукты</h2>
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a href="card.html" class="box-card">
+                                        <div class="img-card">
+                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
+                                        </div>
+                                        <div class="txt-card">
+                                            <h3 class="h3">H1 - BS100.78</h3>
+                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide"><a href="card.html" class="box-card">
+                                        <div class="img-card">
+                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
+                                        </div>
+                                        <div class="txt-card">
+                                            <h3 class="h3">H1 - BS100.78</h3>
+                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide"><a href="card.html" class="box-card">
+                                        <div class="img-card">
+                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
+                                        </div>
+                                        <div class="txt-card">
+                                            <h3 class="h3">H1 - BS100.78</h3>
+                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide"><a href="card.html" class="box-card">
+                                        <div class="img-card">
+                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
+                                        </div>
+                                        <div class="txt-card">
+                                            <h3 class="h3">H1 - BS100.78</h3>
+                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide"><a href="card.html" class="box-card">
+                                        <div class="img-card">
+                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
+                                        </div>
+                                        <div class="txt-card">
+                                            <h3 class="h3">H1 - BS100.78</h3>
+                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
