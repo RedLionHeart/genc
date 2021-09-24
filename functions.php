@@ -868,3 +868,119 @@ function custom_style_paint_views() {
 }
 </style>';
 }
+
+function keyMatchingPictogram($key){
+    switch ($key) {
+        case '1':
+            echo "Распыление";
+            break;
+        case '2':
+            echo "Кисть";
+            break;
+        case '3':
+            echo "Валик";
+            break;
+        case '4':
+            echo "Распылительный станок";
+            break;
+        case '5':
+            echo "Лаконалив";
+            break;
+        case '6':
+            echo "Окунание";
+            break;
+        case '7':
+            echo "Струйный облив";
+            break;
+        case '8':
+            echo "Электростатическое распыление";
+            break;
+        case '9':
+            echo "Втирание";
+            break;
+        case '10':
+            echo "Розлив";
+            break;
+        case '11':
+            echo "Шпатель";
+            break;
+        case '12':
+            echo "Вальцы";
+            break;
+        case '13':
+            echo "Сертификат TSE";
+            break;
+        case '14':
+            echo "Забор из кованого железа";
+            break;
+        case '15':
+            echo "Деревянный забор";
+            break;
+        case '16':
+            echo "Стол";
+            break;
+        case '17':
+            echo "Стул";
+            break;
+        case '18':
+            echo "Детская мебель";
+            break;
+        case '19':
+            echo "Термостойкость";
+            break;
+        case '20':
+            echo "Ванная";
+            break;
+        case '21':
+            echo "Паркет";
+            break;
+        case '22':
+            echo "Мебель";
+            break;
+        case '23':
+            echo "Кухня";
+            break;
+        case '24':
+            echo "Дверь";
+            break;
+        case '25':
+            echo "Однокомпонентный";
+            break;
+        case '26':
+            echo "Двухкомпонентный";
+            break;
+        case '27':
+            echo "Трехкомпонентный";
+            break;
+        case '28':
+            echo "Не содержит свинец";
+            break;
+        case '29':
+            echo "На основе растворителя";
+            break;
+        case '30':
+            echo "Водоразбавимый";
+            break;
+        case '31':
+            echo "Сертификат EN-71-3";
+            break;
+        case '32':
+            echo "Сертификат огнезащиты";
+            break;
+        case '33':
+            echo "Система GENC Tinting";
+            break;
+        case '34':
+            echo "Видео";
+            break;
+        case '35':
+            echo "Для внутренних и внешних работ";
+            break;
+        case '36':
+            echo "Для внешних работ";
+            break;
+        case '37':
+            echo "Для внутренних работ";
+            break;
+    }
+}
