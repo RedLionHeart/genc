@@ -1558,12 +1558,13 @@ footer {
   .ico-card svg:hover + p {
     opacity: 1;
     visibility: visible; }
-  .ico-card .ico-card:hover svg {
-    opacity: 0;
-    visibility: hidden; }
-  .ico-card .ico-card:hover p {
-    opacity: 1;
-    visibility: visible; }
+
+.ico-card:hover svg {
+  opacity: 0;
+  visibility: hidden; }
+.ico-card:hover p {
+  opacity: 1;
+  visibility: visible; }
 
 .ico-card:last-child {
   margin-right: 0; }
