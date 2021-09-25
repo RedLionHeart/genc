@@ -984,3 +984,26 @@ function keyMatchingPictogram($key){
             break;
     }
 }
+
+//поиск
+add_action( 'wp_ajax_nopriv_custom_paint_ajax_search', 'custom_paint_ajax_search' );
+add_action( 'wp_ajax_custom_paint_ajax_search', 'custom_paint_ajax_search' );
+function custom_paint_ajax_search(){
+    $args = array(
+        'post_type'      => 'paint',
+        'post_status'    => 'publish',
+        'order'          => 'DESC',
+        'orderby'        => 'date',
+        's'              => $_POST['search'],
+        'posts_per_page' => 5
+    );
+    $query = new WP_Query( $args );
+    if($query->have_posts()){
+        while ($query->have_posts()) { $query->the_post(); ?>
+            <a class="h5" href="<?php the_permalink();?>>"><?php the_title();?>></a>
+        <?php }
+    } else{
+        echo 'false';
+    }
+    wp_die();
+}

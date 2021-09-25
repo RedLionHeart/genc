@@ -104,62 +104,26 @@ $paint_id = get_the_ID();
                 <?php endif; ?>
             </div>
             <div class="properties-color mb-56">
-                <?php $color = get_field('czvet');
-                if ($color['czvet']):?>
+                <?php $colors = get_field('czvet');
+                if ($colors):?>
                     <div class="container-color">
                         <h3 class="h3 mb-16">Цвет</h3>
                         <div class="d-flex flex-wrap wrap-color color-collapsed">
+                            <?php foreach ($colors as $color):?>
                             <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
+                                <div class="color" style="background-color:<?= $color['czvet'];?>"></div>
                                 <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
+                                    <h4 class="h4 mb-16"><?= $color['nomer_czveta'];?></h4>
                                     <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
-                                <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
-                                    <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
-                                <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
-                                    <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
-                                <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
-                                    <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
-                                <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
-                                    <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
-                                <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
-                                    <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet']; ?>"></div>
-                                <div class="color-desc">
-                                    <h4 class="h4 mb-16"><?= $color['nazvanie_czveta']; ?></h4>
-                                    <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
-                                </div>
-                            </div>
-                            <div class="color-gradient"></div>
-                            <p class="button-collapsed h4">смотреть еще</p>
+                            <?php endforeach;?>
+                            <?php
+                            $count_colors = count($color);
+                            if(is_mobile() && $count_colors > 2 || !is_mobile() && $count_colors > 3):?>
+                                <div class="color-gradient"></div>
+                                <p class="button-collapsed h4">смотреть еще</p>
+                            <?php endif;?>
                         </div>
                     </div>
                 <?php endif;
@@ -333,6 +297,42 @@ $paint_id = get_the_ID();
                 <a href="<?= get_permalink(77) . '?id=' . get_the_ID(); ?>" class="button-blue h5">Оставить заявку</a>
             </div>
 
+            <?php $popular_paints =  get_posts( array(
+                "post_type" => "paint",
+                'numberposts' => 10,
+                'order' => 'DESC',
+                'orderby' => 'meta_value_num',
+                'meta_query' => array(
+                    array(
+                        'key' => 'views',
+                        "type" => "DECIMAL(16,4)",
+                    )
+                )
+            ));?>
+            <div class="popular-product">
+                <h2 class="h2">Похожие продукты</h2>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($popular_paints as $post):
+                            setup_postdata($post);?>
+                            <div class="swiper-slide">
+                                <a href="<?php the_permalink();?>" class="box-card">
+                                    <div class="img-card">
+                                        <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full', true)[0]; ?>">
+                                    </div>
+                                    <div class="txt-card">
+                                        <h3 class="h3"><?= get_field('artikul');?></h3>
+                                        <h4 class="h4"><?php the_title();?></h4>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach;
+                        wp_reset_postdata();?>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

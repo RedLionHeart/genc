@@ -17,13 +17,7 @@
                 </div>
             </button>
         </div>
-        <div class="box-search-result">
-            <a class="h5" href="#">Result</a>
-            <a class="h5" href="#">Result</a>
-            <a class="h5" href="#">Result</a>
-            <a class="h5" href="#">Result</a>
-            <a class="h5" href="#">Result</a>
-        </div>
+        <div class="box-search-result"></div>
     </label>
 </form>
     <div class="d-flex align-items-center justify-content-center button-filter-mob button-blue" data-bs-toggle="modal" data-bs-target="#formModalfilters">

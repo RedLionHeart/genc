@@ -17,48 +17,21 @@ swiper = new Swiper('.swiper', {
     }
 });
 
+const formSearchInput = document.querySelector('.form-search input');
 
-document.querySelector('.form-search input').onfocus = function() {
-    $(this).closest('label').addClass('focus-input');
-    var searchitem = $(this).val().length;
-    if (searchitem > 1) {
-        $.ajax({
-            url :  myajax.url,
-            type: 'POST',
-            data:{
-                'action': 'custom_paint_ajax_search',
-                'search'  : $(this).value,
-            },
-            success:function(data){
-                console.log(data);
-                if(data === 'false'){
-                    searchTitle.textContent = 'К сожалению, мы ничего не нашли.'
-                    searchItemsContainer.innerHTML = "";
-                } else {
-                    searchTitle.textContent = 'Смотрите, что мы нашли:';
-                    searchItemsContainer.innerHTML = data;
-                    $('.form-search').addClass('open-search-result')
-                }
-            },
-            error: function (data) {
-                console.log(data);
-            }
-        });
-    } else {
+if(formSearchInput){
+    formSearchInput.onfocus = function() {
+        $(this).closest('label').addClass('focus-input');
+
+    };
+    formSearchInput.onblur = function() {
+        $(this).closest('label').removeClass('focus-input');
         $('.form-search').removeClass('open-search-result')
-    }
-};
-document.querySelector('.form-search input').onblur = function() {
-    $(this).closest('label').removeClass('focus-input');
-    $('.form-search').removeClass('open-search-result')
-};
-
-
-
-
-
+    };
+}
 
 $(document).on('input', '.form-search input', function () {
+    const searchItemsContainer = document.querySelector('.box-search-result');
     var searchitem = $(this).val().length;
     if (searchitem > 1) {
         $.ajax({
@@ -70,14 +43,11 @@ $(document).on('input', '.form-search input', function () {
             },
             success:function(data){
                 console.log(data);
-                if(data === 'false'){
-                    searchTitle.textContent = 'К сожалению, мы ничего не нашли.'
+                if(data !== 'false'){
                     searchItemsContainer.innerHTML = "";
-                } else {
-                    searchTitle.textContent = 'Смотрите, что мы нашли:';
-                    searchItemsContainer.innerHTML = data;
                     $('.form-search').addClass('open-search-result')
                 }
+                return false;
             },
             error: function (data) {
                 console.log(data);

@@ -162,8 +162,8 @@ $checked_special_category = checkGetParametersFilter($special_category);
                             if (is_mobile()) {
                                 $posts_per_page_catalog = 3;
                             } else {
-                                if (is_page(8)){
-                                $posts_per_page_catalog = 6;
+                                if (is_page(8)) {
+                                    $posts_per_page_catalog = 6;
                                 } else {
                                     $posts_per_page_catalog = 12;
                                 }
@@ -177,8 +177,8 @@ $checked_special_category = checkGetParametersFilter($special_category);
                                 'paged' => $paged,
                             );
 
-                            if($checked_chemical || $checked_diluent || $checked_material_type || $checked_tinting ||
-                                $checked_special_materials || $checked_type_finishing || $checked_special_application_methods || $checked_special_category){
+                            if ($checked_chemical || $checked_diluent || $checked_material_type || $checked_tinting ||
+                                $checked_special_materials || $checked_type_finishing || $checked_special_application_methods || $checked_special_category) {
                                 $args['tax_query'] = array(
                                     'relation' => 'OR',
                                     array(
@@ -239,10 +239,10 @@ $checked_special_category = checkGetParametersFilter($special_category);
                         <?php
                         if ($products->max_num_pages > 1) :
                             $big = 999999999; // уникальное число
-                            $fallback_base = str_replace( $big, '%#%', get_pagenum_link( $big, false ) );
+                            $fallback_base = str_replace($big, '%#%', get_pagenum_link($big, false));
 
                             // Set the base.
-                            $base = isset( $base ) ? trailingslashit( $base ) . '%_%' : $fallback_base;
+                            $base = isset($base) ? trailingslashit($base) . '%_%' : $fallback_base;
 
                             echo '<nav class="navigation pagination" role="navigation">
                             <div class="d-flex align-items-center nav-links">';
@@ -259,61 +259,37 @@ $checked_special_category = checkGetParametersFilter($special_category);
                         endif;
                         ?>
                     </div>
+                    <?php $popular_paints =  get_posts( array(
+                        "post_type" => "paint",
+                        'numberposts' => 10,
+                        'order' => 'DESC',
+                        'orderby' => 'meta_value_num',
+                        'meta_query' => array(
+                                array(
+                                    'key' => 'views',
+                                    "type" => "DECIMAL(16,4)",
+                                )
+                        )
+                    ));?>
                     <div class="popular-product">
                         <h2 class="h2">Популярные продукты</h2>
                         <div class="swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide"><a href="card.html" class="box-card">
+                                <?php foreach ($popular_paints as $post):
+                                setup_postdata($post);?>
+                                <div class="swiper-slide">
+                                    <a href="<?php the_permalink();?>" class="box-card">
                                         <div class="img-card">
-                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
+                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full', true)[0]; ?>">
                                         </div>
                                         <div class="txt-card">
-                                            <h3 class="h3">H1 - BS100.78</h3>
-                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
+                                            <h3 class="h3"><?= get_field('artikul');?></h3>
+                                            <h4 class="h4"><?php the_title();?></h4>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="swiper-slide"><a href="card.html" class="box-card">
-                                        <div class="img-card">
-                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
-                                        </div>
-                                        <div class="txt-card">
-                                            <h3 class="h3">H1 - BS100.78</h3>
-                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide"><a href="card.html" class="box-card">
-                                        <div class="img-card">
-                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
-                                        </div>
-                                        <div class="txt-card">
-                                            <h3 class="h3">H1 - BS100.78</h3>
-                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide"><a href="card.html" class="box-card">
-                                        <div class="img-card">
-                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
-                                        </div>
-                                        <div class="txt-card">
-                                            <h3 class="h3">H1 - BS100.78</h3>
-                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide"><a href="card.html" class="box-card">
-                                        <div class="img-card">
-                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($item_id),'full', true)[0];?>">
-                                        </div>
-                                        <div class="txt-card">
-                                            <h3 class="h3">H1 - BS100.78</h3>
-                                            <h4 class="h4">Синтетический антикоррозийный грунт</h4>
-                                        </div>
-                                    </a>
-                                </div>
-
+                                <?php endforeach;
+                                wp_reset_postdata();?>
                             </div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
