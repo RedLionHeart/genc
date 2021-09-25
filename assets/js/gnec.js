@@ -44,7 +44,7 @@ $(document).on('input', '.form-search input', function () {
             success:function(data){
                 console.log(data);
                 if(data !== 'false'){
-                    searchItemsContainer.innerHTML = "";
+                    searchItemsContainer.innerHTML = data;
                     $('.form-search').addClass('open-search-result')
                 }
                 return false;
