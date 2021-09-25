@@ -1452,7 +1452,7 @@ footer {
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
-        margin-bottom: 205px; }
+        margin-bottom: 70px; }
         @media screen and (max-width: 991px) {
           .card-description .content-card .info-card .documentation {
             margin-bottom: 0; } }
@@ -1469,6 +1469,11 @@ footer {
           .card-description .content-card .info-card .documentation .button-blue, .card-description .content-card .info-card .documentation .button-download {
             -ms-flex-item-align: center;
                 align-self: center; } }
+      .card-description .content-card .info-card .popular-product {
+        margin-bottom: 70px; }
+        .card-description .content-card .info-card .popular-product .img-card {
+          max-width: 100%;
+          height: auto; }
   .card-description .share-img {
     position: -webkit-sticky;
     position: sticky;
@@ -2107,6 +2112,8 @@ footer {
       cursor: pointer;
       -webkit-transition: 1s;
       transition: 1s; }
+  .contacts .map {
+    margin-bottom: 70px; }
   .contacts .collapsed-contact .contact-gradient, .contacts .collapsed-contact .button-collapsed {
     display: block !important; }
   .contacts .open-collaps .contact-gradient, .contacts .open-collaps .button-collapsed {
@@ -2153,98 +2160,103 @@ footer {
   background-size: cover;
   background-color: #00AEEF; }
 
-.popular-product .h2 {
-  margin-bottom: 24px;
-  border-bottom: 2px solid #5C87AF;
-  padding-bottom: 10px; }
-.popular-product .box-card {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  padding: 24px 19px; }
-  .popular-product .box-card .img-card {
-    margin-bottom: 23px; }
+.popular-product {
+  margin-top: 30px; }
+  .popular-product .h2 {
+    margin-bottom: 24px;
+    border-bottom: 2px solid #5C87AF;
+    padding-bottom: 10px; }
+  .popular-product .box-card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    padding: 24px 19px; }
+    .popular-product .box-card .img-card {
+      margin-bottom: 23px; }
+      @media screen and (max-width: 500px) {
+        .popular-product .box-card .img-card {
+          width: 33px; } }
+    .popular-product .box-card .txt-card .h3 {
+      margin-bottom: 20px; }
+      @media screen and (max-width: 500px) {
+        .popular-product .box-card .txt-card .h3 {
+          font-size: 13px;
+          line-height: 18px; } }
     @media screen and (max-width: 500px) {
-      .popular-product .box-card .img-card {
-        width: 33px; } }
-  .popular-product .box-card .txt-card .h3 {
-    margin-bottom: 20px; }
+      .popular-product .box-card .txt-card .h4 {
+        font-size: 10px;
+        line-height: 13px; } }
+  .popular-product .swiper .swiper-slide {
+    width: 220px;
+    height: 100%; }
+    @media screen and (max-width: 1300px) {
+      .popular-product .swiper .swiper-slide {
+        width: 170px; } }
     @media screen and (max-width: 500px) {
-      .popular-product .box-card .txt-card .h3 {
-        font-size: 13px;
-        line-height: 18px; } }
-  @media screen and (max-width: 500px) {
-    .popular-product .box-card .txt-card .h4 {
-      font-size: 10px;
-      line-height: 13px; } }
-.popular-product .swiper .swiper-slide {
-  width: 220px; }
-  @media screen and (max-width: 1300px) {
-    .popular-product .swiper .swiper-slide {
-      width: 170px; } }
-  @media screen and (max-width: 500px) {
-    .popular-product .swiper .swiper-slide {
-      width: 120px; } }
-.popular-product .swiper .swiper-button-next {
-  right: -1px;
-  width: 121px;
-  height: 110%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  margin-top: 0;
-  cursor: auto;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background: -webkit-gradient(linear, right top, left top, color-stop(31.67%, #FFFFFF), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(270deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%); }
-  @media screen and (max-width: 500px) {
-    .popular-product .swiper .swiper-button-next {
-      width: 66px; } }
-  .popular-product .swiper .swiper-button-next:after {
-    margin-right: 5px;
-    cursor: pointer;
-    color: #5C87AF;
-    font-size: 32px;
+      .popular-product .swiper .swiper-slide {
+        width: 120px; } }
+    .popular-product .swiper .swiper-slide a {
+      height: 100%; }
+  .popular-product .swiper .swiper-button-next {
+    right: -1px;
+    width: 121px;
+    height: 110%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    margin-top: 0;
+    cursor: auto;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
     -webkit-transition: 0.5s;
-    transition: 0.5s; }
-  .popular-product .swiper .swiper-button-next:after:hover {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2); }
-.popular-product .swiper .swiper-button-prev {
-  left: -1px;
-  width: 121px;
-  height: 110%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  margin-top: 0;
-  cursor: auto;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  background: -webkit-gradient(linear, left top, right top, color-stop(31.67%, #FFFFFF), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(90deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%); }
-  @media screen and (max-width: 500px) {
-    .popular-product .swiper .swiper-button-prev {
-      width: 66px; } }
-  .popular-product .swiper .swiper-button-prev:after {
-    margin-left: 5px;
-    cursor: pointer;
-    color: #5C87AF;
-    font-size: 32px;
+    transition: 0.5s;
+    background: -webkit-gradient(linear, right top, left top, color-stop(31.67%, #FFFFFF), to(rgba(255, 255, 255, 0)));
+    background: linear-gradient(270deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%); }
+    @media screen and (max-width: 500px) {
+      .popular-product .swiper .swiper-button-next {
+        width: 66px; } }
+    .popular-product .swiper .swiper-button-next:after {
+      margin-right: 5px;
+      cursor: pointer;
+      color: #5C87AF;
+      font-size: 32px;
+      -webkit-transition: 0.5s;
+      transition: 0.5s; }
+    .popular-product .swiper .swiper-button-next:after:hover {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2); }
+  .popular-product .swiper .swiper-button-prev {
+    left: -1px;
+    width: 121px;
+    height: 110%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    margin-top: 0;
+    cursor: auto;
     -webkit-transition: 0.5s;
-    transition: 0.5s; }
-  .popular-product .swiper .swiper-button-prev:after:hover {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2); }
-.popular-product .swiper .swiper-button-disabled {
-  opacity: 0;
-  visibility: hidden; }
+    transition: 0.5s;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    background: -webkit-gradient(linear, left top, right top, color-stop(31.67%, #FFFFFF), to(rgba(255, 255, 255, 0)));
+    background: linear-gradient(90deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%); }
+    @media screen and (max-width: 500px) {
+      .popular-product .swiper .swiper-button-prev {
+        width: 66px; } }
+    .popular-product .swiper .swiper-button-prev:after {
+      margin-left: 5px;
+      cursor: pointer;
+      color: #5C87AF;
+      font-size: 32px;
+      -webkit-transition: 0.5s;
+      transition: 0.5s; }
+    .popular-product .swiper .swiper-button-prev:after:hover {
+      -webkit-transform: scale(1.2);
+              transform: scale(1.2); }
+  .popular-product .swiper .swiper-button-disabled {
+    opacity: 0;
+    visibility: hidden; }

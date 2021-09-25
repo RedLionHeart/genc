@@ -108,7 +108,7 @@ $paint_id = get_the_ID();
                 if ($colors):?>
                     <div class="container-color">
                         <h3 class="h3 mb-16">Цвет</h3>
-                        <div class="d-flex flex-wrap wrap-color color-collapsed">
+                        <div class="d-flex flex-wrap wrap-color">
                             <?php foreach ($colors as $color):?>
                             <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
                                 <div class="color" style="background-color:<?= $color['czvet'];?>"></div>

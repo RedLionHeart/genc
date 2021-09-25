@@ -1279,7 +1279,7 @@ footer
       .documentation
         display: flex
         flex-direction: column
-        margin-bottom: 205px
+        margin-bottom: 70px
         @media screen and (max-width: 991px)
           margin-bottom: 0
         .button-download
@@ -1293,6 +1293,11 @@ footer
         .button-blue, .button-download
           @media screen and (max-width: 550px)
             align-self: center
+      .popular-product
+        margin-bottom: 70px
+        .img-card
+          max-width: 100%
+          height: auto
   .share-img
     position: sticky
     top: 70px
@@ -1854,6 +1859,8 @@ footer
       display: none
       cursor: pointer
       transition: 1s
+  .map
+    margin-bottom: 70px
   .collapsed-contact
     .contact-gradient, .button-collapsed
       display: block!important
@@ -1899,6 +1906,7 @@ footer
   background-color: $blue
 
 .popular-product
+  margin-top: 30px
   .h2
     margin-bottom: 24px
     border-bottom: 2px solid #5C87AF
@@ -1924,10 +1932,13 @@ footer
   .swiper
     .swiper-slide
       width: 220px
+      height: 100%
       @media screen and (max-width: 1300px)
         width: 170px
       @media screen and (max-width: 500px)
         width: 120px
+      a
+        height: 100%
     .swiper-button-next
       right: -1px
       width: 121px

@@ -6,6 +6,7 @@ swiper = new Swiper('.swiper', {
     // slidesPerView: 4,
     spaceBetween: 12,
     slidesPerView: "auto",
+    autoHeight: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -22,7 +23,10 @@ const formSearchInput = document.querySelector('.form-search input');
 if(formSearchInput){
     formSearchInput.onfocus = function() {
         $(this).closest('label').addClass('focus-input');
-
+        console.log($(formSearchInput).val().length)
+        if ($(formSearchInput).val().length > 1) {
+            $('.form-search').addClass('open-search-result')
+        }
     };
     formSearchInput.onblur = function() {
         $(this).closest('label').removeClass('focus-input');
@@ -64,6 +68,7 @@ $(window).on("load", function() {
 
     var windowwidth = screen.width;
     var coloramount = $('.box-color').length;
+    console.log(coloramount)
     var boxamount = $('.wrap-color');
     var realheight = boxamount.outerHeight(true);
 
