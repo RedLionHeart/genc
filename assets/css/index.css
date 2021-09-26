@@ -571,7 +571,8 @@ header {
       top: 0;
       left: 0;
       width: 100%;
-      background: white; }
+      background: white;
+      z-index: 15; }
       .catalog .container-search-card .form-search label, .search-results-box .container-search-card .form-search label {
         position: relative;
         -webkit-box-flex: 1;
