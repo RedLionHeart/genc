@@ -24,11 +24,6 @@ $('.swiper-wrapper').css('height', heightslider)
 
 const formSearchInput = document.querySelector('.form-search input');
 
-$(window).on("load", function() {
-    formSearchInput.value = ''
-    $(formSearchInput).closest('label').removeClass('focus-input');
-    $('.form-search').removeClass('open-search-result')
-});
 
 if(formSearchInput){
 
