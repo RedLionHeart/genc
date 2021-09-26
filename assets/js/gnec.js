@@ -6,7 +6,7 @@ swiper = new Swiper('.swiper', {
     // slidesPerView: 4,
     spaceBetween: 12,
     slidesPerView: "auto",
-    autoHeight: true,
+    // autoHeight: true,
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
@@ -16,22 +16,37 @@ swiper = new Swiper('.swiper', {
             spaceBetween: 22,
         }
     }
+
 });
+
+var heightslider = $('.swiper-wrapper').outerHeight(true);
+$('.swiper-wrapper').css('height', heightslider)
 
 const formSearchInput = document.querySelector('.form-search input');
 
+$(window).on("load", function() {
+    formSearchInput.value = ''
+    $(formSearchInput).closest('label').removeClass('focus-input');
+    $('.form-search').removeClass('open-search-result')
+});
+
 if(formSearchInput){
-    formSearchInput.onfocus = function() {
-        $(this).closest('label').addClass('focus-input');
-        console.log($(formSearchInput).val().length)
-        if ($(formSearchInput).val().length > 1) {
-            $('.form-search').addClass('open-search-result')
+
+    $(document).click( function(){
+        if ($(formSearchInput).is(":focus")) {
+            console.log('focus')
+            $(formSearchInput).closest('label').addClass('focus-input');
+            if ($(formSearchInput).val().length > 1) {
+                $('.form-search').addClass('open-search-result')
+            }
+        } else {
+            $(formSearchInput).closest('label').removeClass('focus-input');
+            $('.form-search').removeClass('open-search-result')
+            console.log('nefocus')
         }
-    };
-    formSearchInput.onblur = function() {
-        $(this).closest('label').removeClass('focus-input');
-        $('.form-search').removeClass('open-search-result')
-    };
+    });
+
+
 }
 
 $(document).on('input', '.form-search input', function () {
@@ -68,7 +83,6 @@ $(window).on("load", function() {
 
     var windowwidth = screen.width;
     var coloramount = $('.box-color').length;
-    console.log(coloramount)
     var boxamount = $('.wrap-color');
     var realheight = boxamount.outerHeight(true);
 
@@ -94,11 +108,6 @@ $(window).on("load", function() {
 
 
     $(".button-collapsed").click(function () {
-        // var realheight = 0;
-        // $('.box-color').slice(0).each(function () {
-        //     realheight += $(this).outerHeight(true);
-        //     console.log(realheight)
-        // })
         $(boxamount).addClass('open-collaps').css('height', realheight)
     });
 
