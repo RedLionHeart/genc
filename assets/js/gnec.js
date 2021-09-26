@@ -51,7 +51,7 @@ $(document).on('input', '.form-search input', function () {
             type: 'POST',
             data:{
                 'action': 'custom_paint_ajax_search',
-                'search'  : $(this).value,
+                'search'  : this.value,
             },
             success:function(data){
                 console.log(data);
