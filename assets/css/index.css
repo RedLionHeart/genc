@@ -819,7 +819,7 @@ header {
   .catalog .filters .separate-input, .search-results-box .filters .separate-input, #formModalfilters .filters .separate-input {
     padding: 10px 0 0;
     border-bottom: none;
-    margin-bottom: 104px; }
+    margin-bottom: 65px; }
   .catalog .filters .button-blue, .search-results-box .filters .button-blue, #formModalfilters .filters .button-blue {
     margin-bottom: 23px; }
 
@@ -1301,8 +1301,8 @@ footer {
           height: 134px; } }
       .card-description .content-card .img-card img {
         width: 100%;
-        -o-object-fit: cover;
-           object-fit: cover; }
+        -o-object-fit: contain;
+           object-fit: contain; }
     .card-description .content-card .info-card {
       max-width: 704px; }
       .card-description .content-card .info-card .box-h1 {
@@ -1473,9 +1473,6 @@ footer {
                 align-self: center; } }
       .card-description .content-card .info-card .popular-product {
         margin-bottom: 70px; }
-        .card-description .content-card .info-card .popular-product .img-card {
-          max-width: 100%;
-          height: auto; }
   .card-description .share-img {
     position: -webkit-sticky;
     position: sticky;
@@ -2163,33 +2160,19 @@ footer {
   background-color: #00AEEF; }
 
 .popular-product {
-  margin-top: 30px; }
+  margin-top: 50px; }
   .popular-product .h2 {
     margin-bottom: 24px;
     border-bottom: 2px solid #5C87AF;
     padding-bottom: 10px; }
-  .popular-product .box-card {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    padding: 24px 19px; }
-    .popular-product .box-card .img-card {
-      margin-bottom: 23px; }
-      @media screen and (max-width: 500px) {
-        .popular-product .box-card .img-card {
-          width: 33px; } }
-    .popular-product .box-card .txt-card .h3 {
+    .popular-product .h2 .txt-card .h3 {
       margin-bottom: 20px; }
       @media screen and (max-width: 500px) {
-        .popular-product .box-card .txt-card .h3 {
+        .popular-product .h2 .txt-card .h3 {
           font-size: 13px;
           line-height: 18px; } }
     @media screen and (max-width: 500px) {
-      .popular-product .box-card .txt-card .h4 {
+      .popular-product .h2 .txt-card .h4 {
         font-size: 10px;
         line-height: 13px; } }
   .popular-product .swiper .swiper-slide {
@@ -2201,11 +2184,23 @@ footer {
     @media screen and (max-width: 500px) {
       .popular-product .swiper .swiper-slide {
         width: 120px; } }
-    .popular-product .swiper .swiper-slide a {
-      height: 100%; }
-      .popular-product .swiper .swiper-slide a .img-card {
+    .popular-product .swiper .swiper-slide .box-card {
+      height: 100%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      padding: 24px 19px; }
+      .popular-product .swiper .swiper-slide .box-card .img-card {
         max-width: 61px;
-        max-height: 82px; }
+        max-height: 82px;
+        margin-bottom: 23px; }
+        @media screen and (max-width: 500px) {
+          .popular-product .swiper .swiper-slide .box-card .img-card {
+            width: 33px; } }
   .popular-product .swiper .swiper-button-next {
     right: -1px;
     width: 121px;
