@@ -584,7 +584,8 @@ header {
         border-radius: 4px;
         width: 100%;
         -webkit-transition: 0.5s;
-        transition: 0.5s; }
+        transition: 0.5s;
+        padding: 0 10px 0 20px; }
         @media screen and (max-width: 991px) {
           .catalog .container-search-card .form-search label, .search-results-box .container-search-card .form-search label {
             -webkit-box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2);
@@ -592,8 +593,7 @@ header {
       .catalog .container-search-card .form-search .box-search, .search-results-box .container-search-card .form-search .box-search {
         position: relative;
         width: 100%;
-        height: 51px;
-        padding: 0 10px 0 20px; }
+        height: 51px; }
         @media screen and (max-width: 991px) {
           .catalog .container-search-card .form-search .box-search, .search-results-box .container-search-card .form-search .box-search {
             height: 34px;
@@ -649,7 +649,7 @@ header {
         display: none;
         padding-top: 12px; }
         .catalog .container-search-card .form-search .box-search-result a, .search-results-box .container-search-card .form-search .box-search-result a {
-          padding: 9px 10px 9px 20px;
+          padding: 9px 0 9px;
           -webkit-transition: 0.5s;
           transition: 0.5s; }
           @media screen and (max-width: 991px) {
@@ -2203,6 +2203,9 @@ footer {
         width: 120px; } }
     .popular-product .swiper .swiper-slide a {
       height: 100%; }
+      .popular-product .swiper .swiper-slide a .img-card {
+        max-width: 61px;
+        max-height: 82px; }
   .popular-product .swiper .swiper-button-next {
     right: -1px;
     width: 121px;

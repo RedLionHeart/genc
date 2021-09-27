@@ -1,7 +1,3 @@
-
-
-
-
 swiper = new Swiper('.swiper', {
     // slidesPerView: 4,
     spaceBetween: 12,
@@ -25,21 +21,26 @@ $('.swiper-wrapper').css('height', heightslider)
 const formSearchInput = document.querySelector('.form-search input');
 
 
-if(formSearchInput){
+if (formSearchInput) {
 
-    $(document).click( function(){
+    $(document).click(function () {
         if ($(formSearchInput).is(":focus")) {
+            console.log('focus')
             $(formSearchInput).closest('label').addClass('focus-input');
             if ($(formSearchInput).val().length > 1) {
-                $('.form-search').addClass('open-search-result')
-            }
-        } else {
-            $(formSearchInput).closest('label').removeClass('focus-input');
-            $('.form-search').removeClass('open-search-result')
-        }
-    });
-
-
+                if ($(formSearchInput).closest('label').children('.box-search-result').get(0).firstChild == null) {
+} else {
+    $('.form-search').addClass('open-search-result')
+}
+}
+} else
+{
+    $(formSearchInput).closest('label').removeClass('focus-input');
+    $('.form-search').removeClass('open-search-result')
+    console.log('nefocus')
+}
+})
+;
 }
 
 $(document).on('input', '.form-search input', function () {
@@ -47,17 +48,20 @@ $(document).on('input', '.form-search input', function () {
     var searchitem = $(this).val().length;
     if (searchitem > 1) {
         $.ajax({
-            url :  myajax.url,
+            url: myajax.url,
             type: 'POST',
-            data:{
+            data: {
                 'action': 'custom_paint_ajax_search',
-                'search'  : this.value,
+                'search': this.value,
             },
-            success:function(data){
+            success: function (data) {
                 console.log(data);
-                if(data !== 'false'){
+                if (data !== 'false') {
                     searchItemsContainer.innerHTML = data;
                     $('.form-search').addClass('open-search-result')
+                } else {
+                    searchItemsContainer.innerHTML = '';
+                    $('.form-search').removeClass('open-search-result')
                 }
                 return false;
             },
@@ -71,15 +75,14 @@ $(document).on('input', '.form-search input', function () {
 });
 
 
-
-$(window).on("load", function() {
+$(window).on("load", function () {
 
     var windowwidth = screen.width;
     var coloramount = $('.box-color').length;
     var boxamount = $('.wrap-color');
     var realheight = boxamount.outerHeight(true);
 
-    if(windowwidth >= 768) {
+    if (windowwidth >= 768) {
         if (coloramount > 6) {
             var height1 = Math.max($('.box-color').slice(0, 3).outerHeight(true));
 
@@ -107,7 +110,7 @@ $(window).on("load", function() {
 });
 
 
-$(window).on("load", function() {
+$(window).on("load", function () {
     $('.height-box').each(function (i, obj) {
         var landamount = $(this).find('.box-contact').length;
         var boxamount = $(this).find('.box-contact');
@@ -115,7 +118,7 @@ $(window).on("load", function() {
         $(boxamount).slice(0, 3).each(function () {
             sumheight += $(this).outerHeight(true);
         })
-        if(landamount > 3) {
+        if (landamount > 3) {
             $(this).addClass('collapsed-contact').css('height', sumheight)
         }
     })
@@ -129,7 +132,6 @@ $(window).on("load", function() {
     });
 
 });
-
 
 
 $(".categories-search label").click(function () {
@@ -171,13 +173,12 @@ $('.playlist button').click(function () {
     for (let i = 0; i < videos.length; i++) {
         setupVideo(videos[i]);
         let playedIframe = videos[i].querySelector('iframe');
-        if(playedIframe){
+        if (playedIframe) {
             let srcIframePlayed = playedIframe.src;
             playedIframe.src = srcIframePlayed.slice(0, -1) + '0';
         }
     }
 });
-
 
 
 // $(".btn-secondary").click(function () {
@@ -350,14 +351,14 @@ $('.filter-entry').click(function () {
 });
 
 
-$('.filter-form input').click(function(){
+$('.filter-form input').click(function () {
     let filterForm = $('.filter-form');
 
     $.ajax({
         url: filterForm.attr('action'),
         data: filterForm.serialize(),
         type: filterForm.attr('method'),
-        success: function(data){
+        success: function (data) {
             $('.card-container').html(data);
         },
         error: function (error) {
@@ -395,7 +396,7 @@ function setupVideo(video) {
     let link = video.querySelector('.video__link');
     let media = video.querySelector('.video__media');
     let id;
-    if(media.tagName === 'IMG'){
+    if (media.tagName === 'IMG') {
         id = parseMediaURL(media);
     } else {
         return false;
