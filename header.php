@@ -28,6 +28,7 @@
     <!-- Disable screen scaling-->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="yandex-verification" content="a7f9ae4f97203e0c" />
+    <meta name="google-site-verification" content="5lDZSJIshe0Baoy6iHZtca4LwMlU3wQExy4GBA9WQKc" />
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
@@ -44,6 +45,16 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/85552006" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9MHFFF45QS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9MHFFF45QS');
+    </script>
 
     <?php wp_head(); ?>
 </head>
