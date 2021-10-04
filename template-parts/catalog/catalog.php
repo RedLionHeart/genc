@@ -89,6 +89,20 @@ $checked_special_category = checkGetParametersFilter($special_category);
                         </div>
                         <div class="accordion-item">
                             <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8">
+                                <?= $material_type->label; ?>
+                            </button>
+                            <div id="collapse8" class="accordion-collapse collapse">
+                                <div class="d-flex flex-column accordion-body">
+                                    <h4 class="h4">Материалы для внутренних работ</h4>
+                                    <?php foreach ($terms_material_type as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $material_type_name, 'current_filter' => $checked_material_type));
+                                    endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse4">
                                 <?= $tinting_system->label; ?>
                             </button>

@@ -100,7 +100,7 @@ button
   //  line-height: 16px
 
 .h5
-  font-family: 'Circe-Light', sans-serif
+  c
   font-size: 18px
   line-height: 27px
   @media screen and (max-width: 991px)
@@ -720,6 +720,11 @@ header
       border-bottom: 1px solid $winter
       .accordion-body
         padding: 16px 0 20px
+        .h4
+          padding-bottom: 20px
+        .box-check
+          .h4
+            padding-bottom: 0
       label:last-child
         margin-bottom: 0
     .separate-input
@@ -778,6 +783,7 @@ header
 .check-filter
   cursor: pointer
   margin-bottom: 16px
+  width: fit-content
   input
     display: none
   .box-check
@@ -810,14 +816,17 @@ header
         top: 50%
         left: 50%
         transform: translate(-50%, -50%)
-    .box-plus:hover
-      border: 1px solid $blue
-      div
-        opacity: 1
+    .h4
+      font-family: 'Circe-Light', sans-serif
   input:active + .box-check .box-plus
     background-color: $winter
   input:checked + .box-check .box-plus div
     opacity: 1
+.check-filter:hover
+  .box-plus
+    border: 1px solid $blue
+    div
+      opacity: 1
 
 
 .media

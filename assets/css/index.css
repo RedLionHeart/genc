@@ -95,7 +95,6 @@ button {
       line-height: 18px; } }
 
 .h5 {
-  font-family: "Circe-Light", sans-serif;
   font-size: 18px;
   line-height: 27px; }
   @media screen and (max-width: 991px) {
@@ -814,6 +813,10 @@ header {
     border-bottom: 1px solid #D5E1EC; }
     .catalog .filters .accordion-collapse .accordion-body, .catalog .filters .separate-input .accordion-body, .search-results-box .filters .accordion-collapse .accordion-body, .search-results-box .filters .separate-input .accordion-body, #formModalfilters .filters .accordion-collapse .accordion-body, #formModalfilters .filters .separate-input .accordion-body {
       padding: 16px 0 20px; }
+      .catalog .filters .accordion-collapse .accordion-body .h4, .catalog .filters .separate-input .accordion-body .h4, .search-results-box .filters .accordion-collapse .accordion-body .h4, .search-results-box .filters .separate-input .accordion-body .h4, #formModalfilters .filters .accordion-collapse .accordion-body .h4, #formModalfilters .filters .separate-input .accordion-body .h4 {
+        padding-bottom: 20px; }
+      .catalog .filters .accordion-collapse .accordion-body .box-check .h4, .catalog .filters .separate-input .accordion-body .box-check .h4, .search-results-box .filters .accordion-collapse .accordion-body .box-check .h4, .search-results-box .filters .separate-input .accordion-body .box-check .h4, #formModalfilters .filters .accordion-collapse .accordion-body .box-check .h4, #formModalfilters .filters .separate-input .accordion-body .box-check .h4 {
+        padding-bottom: 0; }
     .catalog .filters .accordion-collapse label:last-child, .catalog .filters .separate-input label:last-child, .search-results-box .filters .accordion-collapse label:last-child, .search-results-box .filters .separate-input label:last-child, #formModalfilters .filters .accordion-collapse label:last-child, #formModalfilters .filters .separate-input label:last-child {
       margin-bottom: 0; }
   .catalog .filters .separate-input, .search-results-box .filters .separate-input, #formModalfilters .filters .separate-input {
@@ -872,7 +875,10 @@ header {
 
 .check-filter {
   cursor: pointer;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content; }
   .check-filter input {
     display: none; }
   .check-filter .box-check {
@@ -915,13 +921,16 @@ header {
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%); }
-    .check-filter .box-check .box-plus:hover {
-      border: 1px solid #00AEEF; }
-      .check-filter .box-check .box-plus:hover div {
-        opacity: 1; }
+    .check-filter .box-check .h4 {
+      font-family: "Circe-Light", sans-serif; }
   .check-filter input:active + .box-check .box-plus {
     background-color: #D5E1EC; }
   .check-filter input:checked + .box-check .box-plus div {
+    opacity: 1; }
+
+.check-filter:hover .box-plus {
+  border: 1px solid #00AEEF; }
+  .check-filter:hover .box-plus div {
     opacity: 1; }
 
 .media {
