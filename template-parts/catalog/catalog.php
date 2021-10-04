@@ -6,6 +6,8 @@ $tinting_system_name = 'tinting_system';
 $special_materials_name = 'special_materials';
 $type_finishing_name = 'type_finishing';
 $special_application_methods_name = 'special_application_methods';
+$materials_for_inside_name = 'materials_for_inside';
+$materials_for_outside_name = 'materials_for_outside';
 
 $special_category = 'special_category';
 
@@ -16,6 +18,8 @@ $tinting_system = get_taxonomy($tinting_system_name);
 $special_materials = get_taxonomy($special_materials_name);
 $type_finishing = get_taxonomy($type_finishing_name);
 $special_application_methods = get_taxonomy($special_application_methods_name);
+$materials_for_inside = get_taxonomy($materials_for_inside_name);
+$materials_for_outside = get_taxonomy($materials_for_outside_name);
 
 $terms_chemical = get_terms(array('taxonomy' => $chemical_name, 'hide_empty' => false));
 $terms_diluent_type = get_terms(array('taxonomy' => $diluent_type_name, 'hide_empty' => false));
@@ -24,6 +28,8 @@ $terms_tinting_system = get_terms(array('taxonomy' => $tinting_system_name, 'hid
 $terms_special_materials = get_terms(array('taxonomy' => $special_materials_name, 'hide_empty' => false));
 $terms_type_finishing = get_terms(array('taxonomy' => $type_finishing_name, 'hide_empty' => false));
 $terms_special_application_methods = get_terms(array('taxonomy' => $special_application_methods_name, 'hide_empty' => false));
+$terms_materials_for_inside = get_terms(array('taxonomy' => $materials_for_inside_name, 'hide_empty' => false));
+$terms_materials_for_outside = get_terms(array('taxonomy' => $materials_for_outside_name, 'hide_empty' => false));
 
 $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide_empty' => false));
 
@@ -34,9 +40,9 @@ $checked_tinting = checkGetParametersFilter($tinting_system_name);
 $checked_special_materials = checkGetParametersFilter($special_materials_name);
 $checked_type_finishing = checkGetParametersFilter($type_finishing_name);
 $checked_special_application_methods = checkGetParametersFilter($special_application_methods_name);
+$checked_materials_for_inside = checkGetParametersFilter($materials_for_inside_name);
+$checked_materials_for_outside = checkGetParametersFilter($materials_for_outside_name);
 $checked_special_category = checkGetParametersFilter($special_category);
-
-
 ?>
 <section class="catalog <?php if (is_page(8)) {
     echo 'catalog-mt';
@@ -81,20 +87,6 @@ $checked_special_category = checkGetParametersFilter($special_category);
                             </button>
                             <div id="collapse3" class="accordion-collapse collapse">
                                 <div class="d-flex flex-column accordion-body">
-                                    <?php foreach ($terms_material_type as $term):
-                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $material_type_name, 'current_filter' => $checked_material_type));
-                                    endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse8">
-                                <?= $material_type->label; ?>
-                            </button>
-                            <div id="collapse8" class="accordion-collapse collapse">
-                                <div class="d-flex flex-column accordion-body">
-                                    <h4 class="h4">Материалы для внутренних работ</h4>
                                     <?php foreach ($terms_material_type as $term):
                                         get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $material_type_name, 'current_filter' => $checked_material_type));
                                     endforeach; ?>
@@ -153,7 +145,24 @@ $checked_special_category = checkGetParametersFilter($special_category);
                                 </div>
                             </div>
                         </div>
-
+                        <div class="accordion-item">
+                            <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8">
+                                Область применения
+                            </button>
+                            <div id="collapse8" class="accordion-collapse collapse">
+                                <div class="d-flex flex-column accordion-body">
+                                    <h4 class="h4"><?= $materials_for_inside->label; ?></h4>
+                                    <?php foreach ($terms_materials_for_inside as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_inside_name, 'current_filter' => $checked_materials_for_inside));
+                                    endforeach; ?>
+                                    <h4 class="h4"><?= $materials_for_outside->label; ?></h4>
+                                    <?php foreach ($terms_materials_for_outside as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_outside_name, 'current_filter' => $checked_materials_for_outside));
+                                    endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
                         <div class="separate-input">
                             <?php foreach ($terms_special_category as $term):
                                 get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $special_category, 'current_filter' => $checked_special_category));
@@ -171,7 +180,6 @@ $checked_special_category = checkGetParametersFilter($special_category);
                             global $query_string;
                             parse_str($query_string, $my_query_array);
                             $paged = (isset($my_query_array['paged']) && !empty($my_query_array['paged'])) ? $my_query_array['paged'] : 1;
-                            //$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
                             if (is_mobile()) {
                                 $posts_per_page_catalog = 3;
@@ -192,7 +200,8 @@ $checked_special_category = checkGetParametersFilter($special_category);
                             );
 
                             if ($checked_chemical || $checked_diluent || $checked_material_type || $checked_tinting ||
-                                $checked_special_materials || $checked_type_finishing || $checked_special_application_methods || $checked_special_category) {
+                                $checked_special_materials || $checked_type_finishing || $checked_special_application_methods || $checked_special_category ||
+                                $checked_materials_for_inside || $checked_materials_for_outside) {
                                 $args['tax_query'] = array(
                                     'relation' => 'OR',
                                     array(
@@ -229,6 +238,16 @@ $checked_special_category = checkGetParametersFilter($special_category);
                                         'taxonomy' => 'special_application_methods',
                                         'field' => 'name',
                                         'terms' => $checked_special_application_methods,
+                                    ),
+                                    array(
+                                        'taxonomy' => $materials_for_inside_name,
+                                        'field' => 'name',
+                                        'terms' => $checked_materials_for_inside,
+                                    ),
+                                    array(
+                                        'taxonomy' => $materials_for_outside_name,
+                                        'field' => 'name',
+                                        'terms' => $checked_materials_for_outside,
                                     ),
                                     array(
                                         'taxonomy' => 'special_category',
@@ -273,37 +292,37 @@ $checked_special_category = checkGetParametersFilter($special_category);
                         endif;
                         ?>
                     </div>
-                    <?php $popular_paints =  get_posts( array(
+                    <?php $popular_paints = get_posts(array(
                         "post_type" => "paint",
                         'numberposts' => 10,
                         'order' => 'DESC',
                         'orderby' => 'meta_value_num',
                         'meta_query' => array(
-                                array(
-                                    'key' => 'views',
-                                    "type" => "DECIMAL(16,4)",
-                                )
+                            array(
+                                'key' => 'views',
+                                "type" => "DECIMAL(16,4)",
+                            )
                         )
-                    ));?>
+                    )); ?>
                     <div class="popular-product">
                         <h2 class="h2">Популярные продукты</h2>
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <?php foreach ($popular_paints as $post):
-                                setup_postdata($post);?>
-                                <div class="swiper-slide">
-                                    <a href="<?php the_permalink();?>" class="box-card">
-                                        <div class="img-card">
-                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full', true)[0]; ?>">
-                                        </div>
-                                        <div class="txt-card">
-                                            <h3 class="h3"><?= get_field('artikul');?></h3>
-                                            <h4 class="h4"><?php the_title();?></h4>
-                                        </div>
-                                    </a>
-                                </div>
+                                    setup_postdata($post); ?>
+                                    <div class="swiper-slide">
+                                        <a href="<?php the_permalink(); ?>" class="box-card">
+                                            <div class="img-card">
+                                                <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full', true)[0]; ?>">
+                                            </div>
+                                            <div class="txt-card">
+                                                <h3 class="h3"><?= get_field('artikul'); ?></h3>
+                                                <h4 class="h4"><?php the_title(); ?></h4>
+                                            </div>
+                                        </a>
+                                    </div>
                                 <?php endforeach;
-                                wp_reset_postdata();?>
+                                wp_reset_postdata(); ?>
                             </div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>

@@ -206,9 +206,9 @@ function add_menu_link_class($atts, $item, $args)
         $current_post_type = get_post_type_object(get_post_type($post->ID));
         $ancestor_slug = $current_post_type->rewrite ? $current_post_type->rewrite['slug'] : '';
 
-        if($ancestor_slug === 'paint'){
+        if ($ancestor_slug === 'paint') {
 
-            if($item->object_id == 32){
+            if ($item->object_id == 32) {
                 $atts['class'] .= ' active-link';
             }
         }
@@ -350,6 +350,28 @@ function create_paint_taxonomies()
         'publicly_queryable' => false,
     ));
 
+    register_taxonomy('materials_for_inside', array('paint'), array(
+        'hierarchical' => true,
+        'labels' => array(
+            'name' => _x('Материалы для внутренних работ', 'taxonomy general name'),
+            'singular_name' => _x('Материалы для внутренних работ', 'taxonomy singular name'),
+        ),
+        'show_ui' => true,
+        'query_var' => true,
+        'publicly_queryable' => false,
+    ));
+
+    register_taxonomy('materials_for_outside', array('paint'), array(
+        'hierarchical' => true,
+        'labels' => array(
+            'name' => _x('Материалы для наружных работ', 'taxonomy general name'),
+            'singular_name' => _x('Материалы для наружных работ', 'taxonomy singular name'),
+        ),
+        'show_ui' => true,
+        'query_var' => true,
+        'publicly_queryable' => false,
+    ));
+
     register_taxonomy('special_category', array('paint'), array(
         'hierarchical' => true,
         'labels' => array(
@@ -360,8 +382,6 @@ function create_paint_taxonomies()
         'query_var' => true,
         'publicly_queryable' => false,
     ));
-
-
 }
 
 add_action('init', 'register_paint');
@@ -488,16 +508,17 @@ add_action('wp_ajax_nopriv_filter_catalog', 'filter_function');
 function filter_function()
 {
     global $wp;
-    $base = home_url( $wp->request );
-    //global $query_string;
-    //parse_str( $query_string, $my_query_array );
-    //$paged = ( isset( $my_query_array['paged'] ) && !empty( $my_query_array['paged'] ) ) ? $my_query_array['paged'] : 1;
-    $paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $base = home_url($wp->request);
+    $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 
-    if(is_mobile()){
-        $posts_per_page_catalog = 7;
+    if (is_mobile()) {
+        $posts_per_page_catalog = 3;
     } else {
-        $posts_per_page_catalog = 13;
+        if (is_page(8)) {
+            $posts_per_page_catalog = 6;
+        } else {
+            $posts_per_page_catalog = 12;
+        }
     }
 
     $args = array(
@@ -511,7 +532,8 @@ function filter_function()
     // for taxonomies / categories
     if (isset($_GET['chemical']) || isset($_GET['diluent_type']) || isset($_GET['material_type'])
         || isset($_GET['tinting_system']) || isset($_GET['special_materials']) || isset($_GET['type_finishing'])
-        || isset($_GET['special_application_methods']) || isset($_GET['special_category'])) {
+        || isset($_GET['special_application_methods']) || isset($_GET['materials_for_inside']) ||
+        isset($_GET['materials_for_outside']) || isset($_GET['special_category'])) {
         $args['tax_query'] = array(
             'relation' => 'OR',
             array(
@@ -554,6 +576,16 @@ function filter_function()
                 'field' => 'name',
                 'terms' => $_GET['special_category'],
             ),
+            array(
+                'taxonomy' => 'materials_for_inside',
+                'field' => 'name',
+                'terms' => $_GET['materials_for_inside'],
+            ),
+            array(
+                'taxonomy' => 'materials_for_outside',
+                'field' => 'name',
+                'terms' => $_GET['materials_for_outside'],
+            ),
         );
     }
 
@@ -569,25 +601,25 @@ function filter_function()
     endif;
     echo '</div>';
 
-    if (  $query->max_num_pages > 1 ) :
+    if ($query->max_num_pages > 1) :
         $big = 999999999; // уникальное число
         // Fallback if there is not base set.
-        $fallback_base = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
+        $fallback_base = str_replace($big, '%#%', esc_url(get_pagenum_link($big)));
 
         // Set the base.
-        $base = isset( $base ) ? trailingslashit( $base ) . '%_%' : $fallback_base;
+        $base = isset($base) ? trailingslashit($base) . '%_%' : $fallback_base;
 
         echo '<nav class="navigation pagination" role="navigation">
                             <div class="d-flex align-items-center nav-links">';
 
-        echo paginate_links( array(
-            'base'    => $base,
+        echo paginate_links(array(
+            'base' => $base,
             'format' => '?paged=%#%',
-            'current' => max( 1, $paged ),
-            'total'   => $query->max_num_pages,
+            'current' => max(1, $paged),
+            'total' => $query->max_num_pages,
             'next_text' => '<img src="' . get_template_directory_uri() . '/assets/img/arrow_pagination_next.svg">',
             'prev_text' => '<img src="' . get_template_directory_uri() . '/assets/img/arrow_pagination_prev.svg">',
-        ) );
+        ));
         echo '</div> </nav>';
     endif;
 
@@ -732,11 +764,12 @@ function true_load_posts()
 add_action('wp_ajax_loadmore', 'true_load_posts');
 add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');
 
-if ( ! current_user_can( 'manage_options' ) ) {
-    show_admin_bar( false );
+if (!current_user_can('manage_options')) {
+    show_admin_bar(false);
 }
 
-function parse_phone_number ($phone_number){
+function parse_phone_number($phone_number)
+{
     $output_link = preg_replace('/\s/', '', $phone_number);
     $output_link = preg_replace('/-/', '', $output_link);
     $output_link = preg_replace('/–/', '', $output_link);
@@ -745,9 +778,10 @@ function parse_phone_number ($phone_number){
     return $output_link;
 }
 
-function is_mobile(){
+function is_mobile()
+{
     $useragent = $_SERVER['HTTP_USER_AGENT'];
-    if(
+    if (
         // добавить '|android|ipad|playbook|silk' в первую регулярку для определения еще и tablet
         preg_match(
             '/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i',
@@ -756,17 +790,18 @@ function is_mobile(){
         ||
         preg_match(
             '/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',
-            substr($useragent,0,4)
+            substr($useragent, 0, 4)
         )
     )
         return true;
     return false;
 }
 
-function checkGetParametersFilter($get_query_name){
+function checkGetParametersFilter($get_query_name)
+{
 
-    if(isset($_GET[$get_query_name])){
-         return ($_GET[$get_query_name]);
+    if (isset($_GET[$get_query_name])) {
+        return ($_GET[$get_query_name]);
     } else {
         return false;
     }
@@ -774,94 +809,98 @@ function checkGetParametersFilter($get_query_name){
 }
 
 // Подсчет количества посещений страниц
-add_action( 'wp_head', 'custom_postviews' );
+add_action('wp_head', 'custom_postviews');
 
 /**
  * @param array $args
  *
  * @return null
  */
-function custom_postviews( $args = [] ){
+function custom_postviews($args = [])
+{
     global $user_ID, $post, $wpdb;
 
-    if( ! $post || ! is_singular() || $post->post_type !== 'paint')
+    if (!$post || !is_singular() || $post->post_type !== 'paint')
         return;
 
 
-    $rg = (object) wp_parse_args( $args, [
+    $rg = (object)wp_parse_args($args, [
         // Ключ мета поля поста, куда будет записываться количество просмотров.
         'meta_key' => 'views',
         // Чьи посещения считать? 0 - Всех. 1 - Только гостей. 2 - Только зарегистрированных пользователей.
         'who_count' => 0,
         // Исключить ботов, роботов? 0 - нет, пусть тоже считаются. 1 - да, исключить из подсчета.
         'exclude_bots' => true,
-    ] );
+    ]);
 
     $do_count = false;
-    switch( $rg->who_count ){
+    switch ($rg->who_count) {
 
         case 0:
             $do_count = true;
             break;
         case 1:
-            if( ! $user_ID )
+            if (!$user_ID)
                 $do_count = true;
             break;
         case 2:
-            if( $user_ID )
+            if ($user_ID)
                 $do_count = true;
             break;
     }
 
-    if( $do_count && $rg->exclude_bots ){
+    if ($do_count && $rg->exclude_bots) {
 
         $notbot = 'Mozilla|Opera'; // Chrome|Safari|Firefox|Netscape - все равны Mozilla
         $bot = 'Bot/|robot|Slurp/|yahoo';
-        if(
-            ! preg_match( "/$notbot/i", $_SERVER['HTTP_USER_AGENT'] ) ||
-            preg_match( "~$bot~i", $_SERVER['HTTP_USER_AGENT'] )
-        ){
+        if (
+            !preg_match("/$notbot/i", $_SERVER['HTTP_USER_AGENT']) ||
+            preg_match("~$bot~i", $_SERVER['HTTP_USER_AGENT'])
+        ) {
             $do_count = false;
         }
 
     }
 
-    if( $do_count ){
+    if ($do_count) {
 
-        $up = $wpdb->query( $wpdb->prepare(
+        $up = $wpdb->query($wpdb->prepare(
             "UPDATE $wpdb->postmeta SET meta_value = (meta_value+1) WHERE post_id = %d AND meta_key = %s", $post->ID, $rg->meta_key
-        ) );
+        ));
 
-        if( ! $up )
-            add_post_meta( $post->ID, $rg->meta_key, 1, true );
+        if (!$up)
+            add_post_meta($post->ID, $rg->meta_key, 1, true);
 
-        wp_cache_delete( $post->ID, 'post_meta' );
+        wp_cache_delete($post->ID, 'post_meta');
     }
 
 }
 
 // создаем новую колонку
-add_filter( 'manage_'.'paint'.'_posts_columns', 'add_views_column', 4 );
-function add_views_column( $columns ){
+add_filter('manage_' . 'paint' . '_posts_columns', 'add_views_column', 4);
+function add_views_column($columns)
+{
     $num = 2; // после какой по счету колонки вставлять новые
 
     $new_columns = array(
         'views' => 'Просмотры',
     );
 
-    return array_slice( $columns, 0, $num ) + $new_columns + array_slice( $columns, $num );
+    return array_slice($columns, 0, $num) + $new_columns + array_slice($columns, $num);
 }
 
 // заполняем колонку данными
-add_action('manage_paint_posts_custom_column', 'fill_views_column', 5, 2 );
-function fill_views_column( $colname, $post_id ){
-    if( $colname === 'views' ){
-        echo get_post_meta( $post_id, 'views', 1 );
+add_action('manage_paint_posts_custom_column', 'fill_views_column', 5, 2);
+function fill_views_column($colname, $post_id)
+{
+    if ($colname === 'views') {
+        echo get_post_meta($post_id, 'views', 1);
     }
 }
 
 add_action('admin_head', 'custom_style_paint_views');
-function custom_style_paint_views() {
+function custom_style_paint_views()
+{
     echo '<style>
 .fixed .column-views{
     width: 10%;
@@ -869,7 +908,8 @@ function custom_style_paint_views() {
 </style>';
 }
 
-function keyMatchingPictogram($key){
+function keyMatchingPictogram($key)
+{
     switch ($key) {
         case '1':
             echo "Распыление";
@@ -986,23 +1026,25 @@ function keyMatchingPictogram($key){
 }
 
 //поиск
-add_action( 'wp_ajax_nopriv_custom_paint_ajax_search', 'custom_paint_ajax_search' );
-add_action( 'wp_ajax_custom_paint_ajax_search', 'custom_paint_ajax_search' );
-function custom_paint_ajax_search(){
+add_action('wp_ajax_nopriv_custom_paint_ajax_search', 'custom_paint_ajax_search');
+add_action('wp_ajax_custom_paint_ajax_search', 'custom_paint_ajax_search');
+function custom_paint_ajax_search()
+{
     $args = array(
-        'post_type'      => 'paint',
-        'post_status'    => 'publish',
-        'order'          => 'DESC',
-        'orderby'        => 'date',
-        's'              => $_POST['search'],
+        'post_type' => 'paint',
+        'post_status' => 'publish',
+        'order' => 'DESC',
+        'orderby' => 'date',
+        's' => $_POST['search'],
         'posts_per_page' => 5
     );
-    $query = new WP_Query( $args );
-    if($query->have_posts()){
-        while ($query->have_posts()) { $query->the_post(); ?>
-            <a class="h5" href="<?php the_permalink();?>"><?php the_title();?></a>
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post(); ?>
+            <a class="h5" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         <?php }
-    } else{
+    } else {
         echo 'false';
     }
     wp_die();
