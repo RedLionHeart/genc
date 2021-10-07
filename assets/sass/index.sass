@@ -92,6 +92,7 @@ button
   font-family: 'Circe-Regular', sans-serif
   font-size: 18px
   line-height: 24px
+  font-weight: 400
   @media screen and (max-width: 1600px)
     font-size: 14px
     line-height: 18px
@@ -100,7 +101,7 @@ button
   //  line-height: 16px
 
 .h5
-  c
+  font-family: 'Circe-Light', sans-serif
   font-size: 18px
   line-height: 27px
   @media screen and (max-width: 991px)
@@ -342,6 +343,57 @@ header
           fill: $forest
       @media screen and (max-width: 991px)
         display: none!important
+  .header-box-search
+    position: relative
+    height: 55px
+    width: 34px
+    .form-search
+      width: 527px
+      right: 0
+      left: auto
+      transition: 1s
+    .button-search
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 0
+      width: 34px
+      height: 34px
+      cursor: pointer
+      opacity: 0
+      visibility: hidden
+      transition: 1s
+  .close-header-box-search
+    position: relative
+    width: 34px
+    height: 55px
+    transition: 1s
+    .form-search
+      opacity: 0
+      width: 34px
+      transition: 1s
+      label
+        padding: 0
+      input
+        padding: 0 31px 0 0
+        cursor: pointer
+      button
+        visibility: hidden
+    .button-search
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 0
+      width: 34px
+      height: 34px
+      cursor: pointer
+      visibility: visible
+      opacity: 1
+      transition: 1s
+
+
+
+
 .login, .button-filter-mob
   cursor: pointer
   svg
@@ -429,7 +481,10 @@ header
   color: $forest!important
 
 .back-top
-  @media screen and (max-width: 550px)
+  padding-top: 132px
+  @media screen and (max-width: 1600px)
+    padding-top: 80px
+  @media screen and (max-width: 991px)
     padding-top: 54px
   .video-back
     position: relative
@@ -485,6 +540,8 @@ header
       @media screen and (max-width: 991px)
         margin-bottom: 10px
   .container-search-card
+    display: flex
+    flex-direction: column
     position: relative
     width: 950px
     @media screen and (max-width: 1600px)
@@ -500,94 +557,7 @@ header
     .box-search-filters
       position: relative
       height: 55px
-    .form-search
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      background: $white
-      z-index: 15
-      label
-        position: relative
-        flex-grow: 1
-        border: 2px solid $smokey
-        box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2)
-        border-radius: 4px
-        width: 100%
-        transition: .5s
-        padding: 0 10px 0 20px
-        @media screen and (max-width: 991px)
-          box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
-      .box-search
-        position: relative
-        width: 100%
-        height: 51px
-        @media screen and (max-width: 991px)
-          height: 34px
-          padding: 0 0 0 10px
-      input
-        padding: 0 110px 0 0
-        width: 100%
-        height: 100%
-        border: none
-        background: transparent
-        color: $black
-      input::-webkit-search-cancel-button
-        display: none
-      button
-        position: absolute
-        right: 10px
-        top: 50%
-        transform: translateY(-50%)
-        background-color: transparent
-        border: none
-        p
-          margin-right: 15px
-          opacity: 0
-          color: $blue
-        .img-search
-          width: 44px
-          height: 44px
-          border-radius: 50%
-          svg
-          @media screen and (max-width: 991px)
-            width: 12px
-            height: 12px
-        path, svg, p, .img-search
-            transition: .5s
-      button:hover
-        p
-          opacity: 1
-        .img-search
-          background-color: $blue
-        path
-          fill: $blue
-          stroke: $white
-      button:active
-        p
-          opacity: 0
-        .img-search
-          width: 33px
-          height: 33px
-        svg
-          width: 20px
-          height: 20px
-      .box-search-result
-        display: none
-        padding-top: 12px
-        a
-          padding: 9px 0 9px
-          transition: .5s
-          @media screen and (max-width: 991px)
-            padding: 9px 0 9px 10px
-        a:hover
-          background: $winter
-          color: $gray
-      .focus-input
-        border: 2px solid $blue
-        box-shadow: 2px 2px 0 $blue
-        @media screen and (max-width: 991px)
-          box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
+
     .open-search-result
       .box-search
         border-bottom: 2px solid #D5E1EC
@@ -643,6 +613,95 @@ header
       transition: .5s
     .current
       color: $smokey
+
+.form-search
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  background: $white
+  z-index: 15
+  label
+    position: relative
+    flex-grow: 1
+    border: 2px solid $smokey
+    box-shadow: inset 6px 6px 0 rgba(66, 97, 137, 0.2)
+    border-radius: 4px
+    width: 100%
+    transition: .5s
+    padding: 0 10px 0 20px
+    @media screen and (max-width: 991px)
+      box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
+  .box-search
+    position: relative
+    width: 100%
+    height: 51px
+    @media screen and (max-width: 991px)
+      height: 34px
+      padding: 0 0 0 10px
+  input
+    padding: 0 110px 0 0
+    width: 100%
+    height: 100%
+    border: none
+    background: transparent
+    color: $black
+  input::-webkit-search-cancel-button
+    display: none
+  button
+    position: absolute
+    right: 10px
+    top: 50%
+    transform: translateY(-50%)
+    background-color: transparent
+    border: none
+    p
+      margin-right: 15px
+      opacity: 0
+      color: $blue
+    .img-search
+      width: 44px
+      height: 44px
+      border-radius: 50%
+      svg
+      @media screen and (max-width: 991px)
+        width: 12px
+        height: 12px
+    path, svg, p, .img-search
+      transition: .5s
+  button:hover
+    p
+      opacity: 1
+    .img-search
+      background-color: $blue
+    path
+      fill: $blue
+      stroke: $white
+  button:active
+    p
+      opacity: 0
+    .img-search
+      width: 33px
+      height: 33px
+    svg
+      width: 20px
+      height: 20px
+  .box-search-result
+    display: none
+    padding-top: 12px
+    a
+      padding: 9px 0 9px
+      transition: .5s
+      @media screen and (max-width: 991px)
+        padding: 9px 0 9px 10px
+    a:hover
+      background: $winter
+      color: $gray
+  .focus-input
+    border: 2px solid $blue
+    box-shadow: 2px 2px 0 $blue
+    @media screen and (max-width: 991px)
+      box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
 
 .catalog-mt
   @media screen and (max-width: 1600px)
@@ -1240,17 +1299,6 @@ footer
           .h4
             width: 135px
             padding-right: 10px
-      .gloss-level
-        li
-          margin-bottom: 16px
-          display: flex
-          align-items: center
-        li:before
-          content: url("../img/blik.svg")
-          display: block
-          width: 16px
-          height: 16px
-          margin-right: 8px
       .application
         .box-application-ico
           @media screen and (max-width: 550px)
@@ -1396,6 +1444,25 @@ footer
       width: 152px
       .share-body
         width: 124px
+
+.mb-40
+  margin-bottom: 40px
+.mb-20
+  margin-bottom: 20px
+
+.gloss-level
+  li
+    margin-bottom: 16px
+    display: flex
+    //align-items: center
+  li:before
+    content: url("../img/blik.svg")!important
+    display: block!important
+    width: 16px!important
+    height: 16px!important
+    background: transparent!important
+    border-radius: 0!important
+    margin: 5px 8px 0 0!important
 
 .ico-card
   width: 72px
@@ -1670,13 +1737,31 @@ footer
   position: relative
   @media screen and (max-width: 991px)
     margin-top: -30px
-  .h1
-    padding-bottom: 24px
+  .link-support
     margin-bottom: 32px
-    border-bottom: 2px solid $smokey
     @media screen and (max-width: 991px)
-      padding-bottom: 4px
       margin-bottom: 30px
+    a
+      width: 48%
+      padding-bottom: 24px
+      border-bottom: 2px solid $winter
+      transition: .5s
+      .h1
+        font-size: 52px
+        color: $gray20
+        transition: .5s
+        @media screen and (max-width: 991px)
+          padding-bottom: 4px
+          font-size: 24px
+          line-height: 28px
+    a:hover
+      border-bottom: 2px solid $blue
+      .h1
+        color: $gray50
+    .active-link-support
+      border-bottom: 2px solid $forest
+      .h1
+        color: $gray
   .banner-top
     margin-bottom: 45px
     width: 100%
@@ -1708,6 +1793,8 @@ footer
     li
       display: flex
       margin-bottom: 10px
+      @media screen and (max-width: 991px)
+        margin-bottom: 0
     li:before
       content: ""
       width: 3px
@@ -1725,8 +1812,10 @@ footer
     padding-left: 42px
     @media screen and (max-width: 991px)
       display: none
-    .img:nth-child(1)
+    .img
       margin-bottom: 63px
+    .img:last-child
+      margin-bottom: 0
 
 .about, .support
   .margin
@@ -1736,6 +1825,20 @@ footer
     @media screen and (max-width: 991px)
       width: 100%
       padding: 0 16px
+
+.tinting-content
+  @media screen and (max-width: 991px)
+    margin-top: 0
+  .col-lg-6:nth-child(2)
+    .img
+      position: sticky
+      top: 70px
+  .tinting-color
+    margin-bottom: 40px
+    @media screen and (max-width: 450px)
+      flex-direction: column
+    .h4
+      margin-bottom: 0!important
 
 #formModalpassworkTDS, #formModalThanks
   .modal-dialog
@@ -1917,7 +2020,9 @@ footer
   background-color: $blue
 
 .popular-product
-  margin-top: 50px
+  margin-top: auto
+  @media screen and (max-width: 991px)
+    margin-top: 15px
   .h2
     margin-bottom: 24px
     border-bottom: 2px solid #5C87AF
@@ -1994,3 +2099,100 @@ footer
     .swiper-button-disabled
       opacity: 0
       visibility: hidden
+
+.collapse-content-tinting, .collapse-content-tinting2, .collapse-content-tinting3
+  position: relative
+  .box-converter, .box-converter2, .box-converter3
+    overflow: hidden
+    transition: 1s
+    @media screen and (max-width: 991px)
+    &::-webkit-scrollbar
+      width: 0
+    .h3
+      margin-bottom: 27px
+      color: $gray
+      @media screen and (max-width: 991px)
+        margin-bottom: 15px
+    .table-converter
+      min-width: 767px
+      .table-content
+        margin-bottom: 70px
+        @media screen and (max-width: 991px)
+          margin-bottom: 20px
+      .table-header
+        padding: 40px 0
+        border-bottom: 1px solid #5C87AF
+        border-top: 1px solid #5C87AF
+        margin-bottom: 47px
+        align-items: center
+        @media screen and (max-width: 991px)
+          margin-bottom: 20px
+          padding: 15px
+        .h4
+          color: $gray
+          font-family: 'Circe-Bold', sans-serif
+      .table-heading
+        color: $gray50
+        margin-bottom: 47px
+        @media screen and (max-width: 991px)
+          margin-bottom: 20px
+      .h5
+        font-family: 'Circe-Regular', sans-serif
+        color: $gray
+  .gradient-button-collapse
+    position: absolute
+    width: 100%
+    bottom: 0
+    left: 0
+    height: 17%
+    transition: 1s
+    background: linear-gradient(0deg, #FFFFFF 31.67%, rgba(255, 255, 255, 0) 100%)
+    .button-collapsed, .button-collapsed-close
+      text-decoration: underline
+      color: $blue
+      cursor: pointer
+      width: fit-content
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      transition: 1s
+    .button-collapsed-close
+      opacity: 0
+      visibility: hidden
+  .gradient-button-collapse-open
+    background: transparent
+    .button-collapsed-close
+      opacity: 1
+      visibility: visible
+    .button-collapsed
+      opacity: 0
+      visibility: hidden
+
+.collapse-content-tinting2, .collapse-content-tinting3
+  @media screen and (max-width: 991px)
+    display: none
+
+.collapse-content-tinting
+  margin-bottom: 65px
+
+.collapse-content-tinting2, .collapse-content-tinting3
+  margin-bottom: 65px
+  .table-content, .table-header
+    .col-4:last-child
+      text-align: center
+
+.width-min-content
+  margin: 0 auto 72px
+  max-width: 936px
+  .pigment-pastes, .water-borne-pastes
+    width: 540px
+    @media screen and (max-width: 991px)
+      width: auto
+    .h2
+      margin-bottom: 40px
+    .h4
+      margin-bottom: 40px
+    .h3
+      margin-bottom: 30px
+      color: $gray50

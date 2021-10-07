@@ -18,34 +18,37 @@ swiper = new Swiper('.swiper', {
 var heightslider = $('.swiper-wrapper').outerHeight(true);
 $('.swiper-wrapper').css('height', heightslider)
 
-const formSearchInput = document.querySelector('.form-search input');
+const formSearchInput = $('.form-search input');
+console.log(formSearchInput)
 
 
 if (formSearchInput) {
-
-    $(document).click(function () {
+    $(document).click(function (e) {
         if ($(formSearchInput).is(":focus")) {
-            console.log('focus')
-            $(formSearchInput).closest('label').addClass('focus-input');
+            console.log(e.target)
+            $(e.target).closest('.header-box-search').removeClass('close-header-box-search');
+            $(e.target).closest('label').addClass('focus-input');
             if ($(formSearchInput).val().length > 1) {
                 if ($(formSearchInput).closest('label').children('.box-search-result').get(0).firstChild == null) {
-} else {
-    $('.form-search').addClass('open-search-result')
-}
-}
-} else
-{
-    $(formSearchInput).closest('label').removeClass('focus-input');
-    $('.form-search').removeClass('open-search-result')
-    console.log('nefocus')
-}
-})
-;
+                } else {
+                    $('.form-search').addClass('open-search-result');
+                }
+            }
+        } else
+            {
+                $(formSearchInput).closest('label').removeClass('focus-input');
+                $('.form-search').removeClass('open-search-result');
+                formSearchInput.closest('.header-box-search').addClass('close-header-box-search');
+                console.log('nefocus')
+            }
+    });
 }
 
 $(document).on('input', '.form-search input', function () {
     const searchItemsContainer = document.querySelector('.box-search-result');
+    console.log(searchItemsContainer)
     var searchitem = $(this).val().length;
+    console.log(searchitem)
     if (searchitem > 1) {
         $.ajax({
             url: myajax.url,
@@ -101,11 +104,11 @@ $(window).on("load", function () {
             $(boxamount).addClass('color-collapsed').css('height', sumheight);
         }
     }
-
-
     $(".button-collapsed").click(function () {
         $(boxamount).addClass('open-collaps').css('height', realheight)
     });
+
+
 
 });
 
@@ -131,6 +134,32 @@ $(window).on("load", function () {
         $(opencollaps).addClass('open-collaps').css('height', realheight)
     });
 
+
+    var boxconverter = document.querySelector('.box-converter');
+    var realheightboxconverter = $(boxconverter).outerHeight(true);
+    var closecollapseconverter = $(boxconverter).outerHeight(true) * 0.44;
+    $(boxconverter).css('height', closecollapseconverter);
+    $(".collapse-content-tinting .gradient-button-collapse .button-collapsed").click(function () {
+        $(boxconverter).css('height', realheightboxconverter).css('overflow', 'scroll hidden');
+        $(this).closest('.gradient-button-collapse').addClass('gradient-button-collapse-open');
+    });
+    $(".collapse-content-tinting .gradient-button-collapse .button-collapsed-close").click(function () {
+        $(boxconverter).css('height', closecollapseconverter);
+        $(this).closest('.gradient-button-collapse').removeClass('gradient-button-collapse-open');
+    });
+
+    var boxconverter2 = document.querySelector('.box-converter2');
+    var realheightboxconverter2 = $(boxconverter2).outerHeight(true);
+    var closecollapseconverter2 = $(boxconverter2).outerHeight(true) * 0.5;
+    $(boxconverter2).css('height', closecollapseconverter2);
+    $(".collapse-content-tinting2 .gradient-button-collapse .button-collapsed").click(function () {
+        $(boxconverter2).css('height', realheightboxconverter2);
+        $(this).closest('.gradient-button-collapse').addClass('gradient-button-collapse-open');
+    });
+    $(".collapse-content-tinting2 .gradient-button-collapse .button-collapsed-close").click(function () {
+        $(boxconverter2).css('height', closecollapseconverter2);
+        $(this).closest('.gradient-button-collapse').removeClass('gradient-button-collapse-open');
+    });
 });
 
 
@@ -184,7 +213,11 @@ $('.playlist button').click(function () {
 // $(".btn-secondary").click(function () {
 //     $("body").css("overflow", "visible");
 // });
-
+$('.link-support [href]').each(function () {
+    if (this.href == window.location.href) {
+        $(this).addClass('active-link-support');
+    }
+});
 
 $('nav [href]').each(function () {
     if (this.href == window.location.href) {

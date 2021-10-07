@@ -147,7 +147,7 @@ $paint_id = get_the_ID();
                     <ul>
                         <?php
                         foreach ($levels as $level):?>
-                            <li><?= $level['punkt']; ?></li>
+                            <li class="h4"><?= $level['punkt']; ?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
