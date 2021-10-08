@@ -13,8 +13,8 @@ get_header(); ?>
 <section class="support tinting-content">
     <div class="margin">
         <div class="d-flex justify-content-between link-support">
-            <a href="<?php echo get_option('home'); ?>/service/"><h1 class="h1">Система колеровки</h1></a>
-            <a href="<?php echo get_option('home'); ?>/tinting-system/" class="h1"><h2 class="h1">Техническая поддержка</h2></a>
+            <a href="<?php echo get_option('home'); ?>/tinting-system/"><h1 class="h1">Система колеровки</h1></a>
+            <a href="<?php echo get_option('home'); ?>/service/" class="h1"><h2 class="h1">Техническая поддержка</h2></a>
         </div>
         <div class="d-flex">
             <div class="col-lg-6">

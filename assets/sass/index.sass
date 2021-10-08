@@ -587,12 +587,6 @@ header
     .box-search-filters
       position: relative
       height: 55px
-
-    .open-search-result
-      .box-search
-        border-bottom: 2px solid #D5E1EC
-      .box-search-result
-        display: block
     .container-card
       .box-card
         width: 458px
@@ -732,6 +726,13 @@ header
     box-shadow: 2px 2px 0 $blue
     @media screen and (max-width: 991px)
       box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2)
+
+
+.open-search-result
+  .box-search
+    border-bottom: 2px solid #D5E1EC
+  .box-search-result
+    display: block
 
 .catalog-mt
   @media screen and (max-width: 1600px)
@@ -1784,14 +1785,15 @@ footer
           padding-bottom: 4px
           font-size: 24px
           line-height: 28px
+
+    a:first-child
+      border-bottom: 2px solid $forest
+      .h1
+        color: $gray
     a:hover
       border-bottom: 2px solid $blue
       .h1
         color: $gray50
-    .active-link-support
-      border-bottom: 2px solid $forest
-      .h1
-        color: $gray
   .banner-top
     margin-bottom: 45px
     width: 100%

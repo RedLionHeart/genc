@@ -19,19 +19,18 @@ var heightslider = $('.swiper-wrapper').outerHeight(true);
 $('.swiper-wrapper').css('height', heightslider)
 
 const formSearchInput = $('.form-search input');
-console.log(formSearchInput)
+
 
 
 if (formSearchInput) {
     $(document).click(function (e) {
         if ($(formSearchInput).is(":focus")) {
-            console.log(e.target)
             $(e.target).closest('.header-box-search').removeClass('close-header-box-search');
             $(e.target).closest('label').addClass('focus-input');
-            if ($(formSearchInput).val().length > 1) {
-                if ($(formSearchInput).closest('label').children('.box-search-result').get(0).firstChild == null) {
+            if (e.target.value.length > 1) {
+                if ($(e.target).closest('label').children('.box-search-result').get(0).firstChild == null) {
                 } else {
-                    $('.form-search').addClass('open-search-result');
+                    $(e.target.closest('.form-search')).addClass('open-search-result');
                 }
             }
         } else
@@ -45,10 +44,9 @@ if (formSearchInput) {
 }
 
 $(document).on('input', '.form-search input', function () {
-    const searchItemsContainer = document.querySelector('.box-search-result');
-    console.log(searchItemsContainer)
+    console.log(this)
+    const searchItemsContainer = $(this.closest('label')).children('.box-search-result');
     var searchitem = $(this).val().length;
-    console.log(searchitem)
     if (searchitem > 1) {
         $.ajax({
             url: myajax.url,
@@ -60,10 +58,11 @@ $(document).on('input', '.form-search input', function () {
             success: function (data) {
                 console.log(data);
                 if (data !== 'false') {
-                    searchItemsContainer.innerHTML = data;
+                    console.log(searchItemsContainer[0]);
+                    searchItemsContainer[0].innerHTML = data;
                     $('.form-search').addClass('open-search-result')
                 } else {
-                    searchItemsContainer.innerHTML = '';
+                    searchItemsContainer[0].innerHTML = '';
                     $('.form-search').removeClass('open-search-result')
                 }
                 return false;
@@ -213,11 +212,7 @@ $('.playlist button').click(function () {
 // $(".btn-secondary").click(function () {
 //     $("body").css("overflow", "visible");
 // });
-$('.link-support [href]').each(function () {
-    if (this.href == window.location.href) {
-        $(this).addClass('active-link-support');
-    }
-});
+
 
 $('nav [href]').each(function () {
     if (this.href == window.location.href) {

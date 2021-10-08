@@ -669,10 +669,6 @@ header {
     .catalog .container-search-card .box-search-filters, .search-results-box .container-search-card .box-search-filters {
       position: relative;
       height: 55px; }
-    .catalog .container-search-card .open-search-result .box-search, .search-results-box .container-search-card .open-search-result .box-search {
-      border-bottom: 2px solid #D5E1EC; }
-    .catalog .container-search-card .open-search-result .box-search-result, .search-results-box .container-search-card .open-search-result .box-search-result {
-      display: block; }
     .catalog .container-search-card .container-card .box-card, .search-results-box .container-search-card .container-card .box-card {
       width: 458px;
       padding: 18px 10px 18px 10px;
@@ -832,6 +828,11 @@ header {
       .form-search .focus-input {
         -webkit-box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2);
                 box-shadow: inset 2.34273px 2.34273px 0 rgba(66, 97, 137, 0.2); } }
+
+.open-search-result .box-search {
+  border-bottom: 2px solid #D5E1EC; }
+.open-search-result .box-search-result {
+  display: block; }
 
 @media screen and (max-width: 1600px) {
   .catalog-mt {
@@ -2023,14 +2024,14 @@ footer {
             padding-bottom: 4px;
             font-size: 24px;
             line-height: 28px; } }
+    .about .link-support a:first-child, .support .link-support a:first-child {
+      border-bottom: 2px solid #426189; }
+      .about .link-support a:first-child .h1, .support .link-support a:first-child .h1 {
+        color: #3F3F3F; }
     .about .link-support a:hover, .support .link-support a:hover {
       border-bottom: 2px solid #00AEEF; }
       .about .link-support a:hover .h1, .support .link-support a:hover .h1 {
         color: #808080; }
-    .about .link-support .active-link-support, .support .link-support .active-link-support {
-      border-bottom: 2px solid #426189; }
-      .about .link-support .active-link-support .h1, .support .link-support .active-link-support .h1 {
-        color: #3F3F3F; }
   .about .banner-top, .support .banner-top {
     margin-bottom: 45px;
     width: 100%; }
