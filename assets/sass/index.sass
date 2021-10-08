@@ -714,10 +714,15 @@ header
     display: none
     padding-top: 12px
     a
+      display: flex
+      flex-wrap: wrap
       padding: 9px 0 9px
       transition: .5s
       @media screen and (max-width: 991px)
         padding: 9px 0 9px 10px
+      span
+        margin-left: 10px
+        text-transform: uppercase
     a:hover
       background: $winter
       color: $gray

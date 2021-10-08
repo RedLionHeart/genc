@@ -811,12 +811,20 @@ header {
     display: none;
     padding-top: 12px; }
     .form-search .box-search-result a {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
       padding: 9px 0 9px;
       -webkit-transition: 0.5s;
       transition: 0.5s; }
       @media screen and (max-width: 991px) {
         .form-search .box-search-result a {
           padding: 9px 0 9px 10px; } }
+      .form-search .box-search-result a span {
+        margin-left: 10px;
+        text-transform: uppercase; }
     .form-search .box-search-result a:hover {
       background: #D5E1EC;
       color: #3F3F3F; }

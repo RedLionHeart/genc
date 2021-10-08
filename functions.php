@@ -1042,7 +1042,7 @@ function custom_paint_ajax_search()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post(); ?>
-            <a class="h5" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+            <a class="h5" href="<?php the_permalink(); ?>"><?php the_title(); ?><span>qwerty</span></a>
         <?php }
     } else {
         echo 'false';
