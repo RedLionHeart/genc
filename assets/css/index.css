@@ -400,13 +400,30 @@ header {
   header .header-box-search {
     position: relative;
     height: 55px;
-    width: 34px; }
+    width: 34px;
+    margin-right: 20px; }
+    @media screen and (max-width: 991px) {
+      header .header-box-search {
+        width: 20px;
+        height: 20px;
+        position: static; } }
     header .header-box-search .form-search {
       width: 527px;
       right: 0;
       left: auto;
       -webkit-transition: 1s;
       transition: 1s; }
+      @media screen and (max-width: 991px) {
+        header .header-box-search .form-search {
+          width: 100%;
+          height: 100%; } }
+      @media screen and (max-width: 991px) {
+        header .header-box-search .form-search label {
+          height: 100%;
+          padding: 0 10px 0 0; } }
+      @media screen and (max-width: 991px) {
+        header .header-box-search .form-search label .box-search {
+          height: 100%; } }
     header .header-box-search .button-search {
       position: absolute;
       top: 50%;
@@ -420,17 +437,29 @@ header {
       visibility: hidden;
       -webkit-transition: 1s;
       transition: 1s; }
+      @media screen and (max-width: 991px) {
+        header .header-box-search .button-search {
+          display: none;
+          width: 20px;
+          height: 20px; } }
   header .close-header-box-search {
     position: relative;
     width: 34px;
     height: 55px;
     -webkit-transition: 1s;
     transition: 1s; }
+    @media screen and (max-width: 991px) {
+      header .close-header-box-search {
+        width: 20px;
+        height: 20px; } }
     header .close-header-box-search .form-search {
       opacity: 0;
       width: 34px;
       -webkit-transition: 1s;
       transition: 1s; }
+      @media screen and (max-width: 991px) {
+        header .close-header-box-search .form-search {
+          width: 20px; } }
       header .close-header-box-search .form-search label {
         padding: 0; }
       header .close-header-box-search .form-search input {
@@ -451,6 +480,11 @@ header {
       opacity: 1;
       -webkit-transition: 1s;
       transition: 1s; }
+      @media screen and (max-width: 991px) {
+        header .close-header-box-search .button-search {
+          display: block;
+          width: 20px;
+          height: 20px; } }
 
 .login, .button-filter-mob {
   cursor: pointer; }
@@ -458,7 +492,9 @@ header {
     margin-right: 16px; }
     @media screen and (max-width: 991px) {
       .login svg, .button-filter-mob svg {
-        margin-right: 0; } }
+        margin-right: 0;
+        width: 18px;
+        height: 18px; } }
     .login svg path, .button-filter-mob svg path {
       -webkit-transition: 0.5s;
       transition: 0.5s; }
