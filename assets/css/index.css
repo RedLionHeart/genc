@@ -1393,7 +1393,7 @@ footer {
 .card-description {
   position: relative;
   z-index: 3;
-  margin-top: -224px; }
+  margin-top: -350px; }
   @media screen and (max-width: 991px) {
     .card-description {
       margin-top: -115px; } }
