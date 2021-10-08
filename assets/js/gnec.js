@@ -44,10 +44,12 @@ if (formSearchInput) {
 }
 
 $(document).on('input', '.form-search input', function () {
-    console.log(this)
+    var thisform = this.closest('.form-search')
     const searchItemsContainer = $(this.closest('label')).children('.box-search-result');
     var searchitem = $(this).val().length;
+
     if (searchitem > 1) {
+
         $.ajax({
             url: myajax.url,
             type: 'POST',
@@ -58,12 +60,12 @@ $(document).on('input', '.form-search input', function () {
             success: function (data) {
                 console.log(data);
                 if (data !== 'false') {
-                    console.log(searchItemsContainer[0]);
+                    console.log(this);
                     searchItemsContainer[0].innerHTML = data;
-                    $('.form-search').addClass('open-search-result')
+                    $(thisform).addClass('open-search-result')
                 } else {
                     searchItemsContainer[0].innerHTML = '';
-                    $('.form-search').removeClass('open-search-result')
+                    $(thisform).removeClass('open-search-result')
                 }
                 return false;
             },
