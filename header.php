@@ -115,6 +115,7 @@
                 <?php endif;?>
             </div>
             <div class="d-flex box-search-login">
+                <?php if(!is_page(8) && !is_page(32)):?>
                 <div class="header-box-search close-header-box-search">
                     <form class="form-search" method="get" action="<?php echo home_url( '/' ); ?>">
                         <label>
@@ -141,6 +142,7 @@
                         <img src="<?php echo get_template_directory_uri() ?>/assets/img/button_search.svg">
                     </div>
                 </div>
+                <?php endif;?>
                 <?php
                 if ( !is_user_logged_in() ) { ?>
                     <div class="d-flex align-items-center login" data-bs-toggle="modal" data-bs-target="#formModalpasswork">

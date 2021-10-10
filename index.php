@@ -52,7 +52,7 @@ $medias = get_posts(array(
                 </div>
             </div>
             <h4 class="h4"><?php the_field('tekst'); ?></h4>
-            <a class="button-discard h5" href="#"><?php the_field('tekst_knopki'); ?></a>
+            <a class="button-discard h5" href="<?= get_permalink(296);?>"><?php the_field('tekst_knopki'); ?></a>
         </div>
         <div class="padding-video">
             <div class="box-video">
