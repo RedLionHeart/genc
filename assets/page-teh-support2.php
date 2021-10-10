@@ -190,11 +190,11 @@ get_header(); ?>
             <div class="gradient-button-collapse">
                 <div class="position-relative w-100 h-100">
                     <p class="button-collapsed h4">смотреть еще</p>
-                    <p id="scroll-click" class="button-collapsed-close h4">закрыть подробности</p>
+                    <p class="button-collapsed-close h4">закрыть подробности</p>
                 </div>
             </div>
         </div>
-        <div class="width-min-content" id="collapse-scroll">
+        <div class="width-min-content">
             <div class="pigment-pastes">
                 <h2 class="h2">Пигментные пасты</h2>
                 <h4 class="h4">Пигментные пасты вводятся в конвертер дозирующей машиной Corob в соответствии с формулой цвета.

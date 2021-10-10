@@ -15,6 +15,23 @@ swiper = new Swiper('.swiper', {
 
 });
 
+
+$('#scroll-click').click(function () {
+    let scroll_el = $('#collapse-scroll');
+    console.log(scroll_el)
+    if ($(scroll_el).length !== 0) {
+        console.log(1)
+        setTimeout(function () {
+            console.log('2')
+            $('html, body').animate({
+                scrollTop: $(scroll_el).offset().top - 100
+            }, 0);
+            console.log('3');
+        }, 1000)
+    }
+});
+
+
 var heightslider = $('.swiper-wrapper').outerHeight(true);
 $('.swiper-wrapper').css('height', heightslider)
 
@@ -27,10 +44,13 @@ if (formSearchInput) {
         if ($(formSearchInput).is(":focus")) {
             $(e.target).closest('.header-box-search').removeClass('close-header-box-search');
             $(e.target).closest('label').addClass('focus-input');
-            if (e.target.value.length > 1) {
-                if ($(e.target).closest('label').children('.box-search-result').get(0).firstChild == null) {
-                } else {
-                    $(e.target.closest('.form-search')).addClass('open-search-result');
+            if (e.target.classList.contains('input-search-focus')) {
+                console.log('input-focus');
+                if (e.target.value.length > 1) {
+                    if ($(e.target).closest('label').children('.box-search-result').get(0).firstChild == null) {
+                    } else {
+                        $(e.target.closest('.form-search')).addClass('open-search-result');
+                    }
                 }
             }
         } else

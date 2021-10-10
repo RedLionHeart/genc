@@ -119,7 +119,7 @@
                     <form class="form-search" method="get" action="<?php echo home_url( '/' ); ?>">
                         <label>
                             <div class="box-search">
-                                <input class="h5" id="search" type="search" value="" name="s" placeholder="Поиск товара" minlength="2">
+                                <input class="h5 input-search-focus" type="search" value="" name="s" placeholder="Поиск товара" minlength="2">
                                 <button type="submit">
                                     <div class="d-flex align-items-center">
                                         <p class="h4">Найти!</p>
