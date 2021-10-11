@@ -399,7 +399,7 @@ header
       label
         padding: 0
       input
-        padding: 0 31px 0 0
+        padding: 0 0 0 0
         cursor: pointer
       button
         visibility: hidden
@@ -425,7 +425,7 @@ header
 .login, .button-filter-mob
   cursor: pointer
   svg
-    margin-right: 45px
+    margin-right: 16px
     //flex: 0 0 30px
     @media screen and (max-width: 991px)
       margin-right: 0
@@ -452,7 +452,7 @@ header
 
 .button-filter-mob
   display: none!important
-  margin-top: 7px
+  margin-top: 45px
   max-height: 34px
   @media screen and (max-width: 991px)
     display: flex!important
@@ -584,6 +584,8 @@ header
       margin-bottom: 35px
       @media screen and (max-width: 1300px)
         margin-bottom: 20px
+      form
+        height: 100%
     .box-search-filters
       position: relative
       height: 55px
@@ -664,7 +666,7 @@ header
     height: 51px
     @media screen and (max-width: 991px)
       height: 34px
-      padding: 0 0 0 10px
+      padding: 0 0 0 0
   input
     padding: 0 110px 0 0
     width: 100%
@@ -672,6 +674,9 @@ header
     border: none
     background: transparent
     color: $black
+    position: absolute
+    top: 0
+    left: 0
   input::-webkit-search-cancel-button
     display: none
   button
@@ -736,10 +741,12 @@ header
 
 
 .open-search-result
+  height: auto!important
   @media screen and (max-width: 991px)
     height: auto!important
   .box-search
     border-bottom: 2px solid #D5E1EC
+    padding: 0 0 0 10px
   .box-search-result
     display: block
   label

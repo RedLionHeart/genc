@@ -20,13 +20,10 @@ $('#scroll-click').click(function () {
     let scroll_el = $('#collapse-scroll');
     console.log(scroll_el)
     if ($(scroll_el).length !== 0) {
-        console.log(1)
         setTimeout(function () {
-            console.log('2')
             $('html, body').animate({
                 scrollTop: $(scroll_el).offset().top - 100
             }, 0);
-            console.log('3');
         }, 1000)
     }
 });
