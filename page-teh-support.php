@@ -24,7 +24,7 @@ get_header(); ?>
                 </div>
                 <h4 class="h4"><?= get_field('vtoroj_abzacz');?></h4>
                 <div class="img">
-                    <img src="<?= get_field('kartinka_1');?>">
+                    <img src="<?= get_field('kartinka_2');?>">
                 </div>
                 <h4 class="h4"><?= get_field('tretij_abzacz');?></h4>
                 <ul>
@@ -34,10 +34,10 @@ get_header(); ?>
                     <?php endforeach;?>
                 </ul>
                 <div class="img">
-                    <img src="<?= get_field('kartinka_2');?>">
+                    <img src="<?= get_field('kartinka_3');?>">
                 </div>
                 <div class="img">
-                    <img src="<?= get_field('kartinka_2');?>">
+                    <img src="<?= get_field('kartinka_4');?>">
                 </div>
                 <h4 class="h4"><?= get_field('chetvertyj_abzacz');?></h4>
             </div>
@@ -49,10 +49,10 @@ get_header(); ?>
                     <img src="<?= get_field('kartinka_2');?>">
                 </div>
                 <div class="img">
-                    <img src="<?= get_field('kartinka_1');?>">
+                    <img src="<?= get_field('kartinka_3');?>">
                 </div>
                 <div class="img">
-                    <img src="<?= get_field('kartinka_2');?>">
+                    <img src="<?= get_field('kartinka_4');?>">
                 </div>
             </div>
         </div>
