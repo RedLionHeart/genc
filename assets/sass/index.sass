@@ -398,9 +398,14 @@ header
         width: 20px
       label
         padding: 0
+        .box-search
+          padding: 0
       input
-        padding: 0 0 0 0
+        padding: 0
         cursor: pointer
+        position: absolute
+        top: 0
+        left: 0
       button
         visibility: hidden
     .button-search
@@ -584,8 +589,6 @@ header
       margin-bottom: 35px
       @media screen and (max-width: 1300px)
         margin-bottom: 20px
-      form
-        height: 100%
     .box-search-filters
       position: relative
       height: 55px
@@ -666,7 +669,7 @@ header
     height: 51px
     @media screen and (max-width: 991px)
       height: 34px
-      padding: 0 0 0 0
+      padding: 0 0 0 10px
   input
     padding: 0 110px 0 0
     width: 100%
@@ -674,9 +677,6 @@ header
     border: none
     background: transparent
     color: $black
-    position: absolute
-    top: 0
-    left: 0
   input::-webkit-search-cancel-button
     display: none
   button
@@ -741,12 +741,12 @@ header
 
 
 .open-search-result
-  height: auto!important
   @media screen and (max-width: 991px)
     height: auto!important
   .box-search
     border-bottom: 2px solid #D5E1EC
-    padding: 0 0 0 10px
+    @media screen and (max-width: 991px)
+      height: 40px!important
   .box-search-result
     display: block
   label
@@ -1877,6 +1877,14 @@ footer
     @media screen and (max-width: 991px)
       width: 100%
       padding: 0 16px
+.about
+  .h1
+    padding-bottom: 24px
+    margin-bottom: 32px
+    border-bottom: 2px solid $smokey
+    @media screen and (max-width: 991px)
+      padding-bottom: 4px
+      margin-bottom: 30px
 
 .tinting-content
   @media screen and (max-width: 991px)
