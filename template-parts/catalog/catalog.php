@@ -95,6 +95,24 @@ $checked_special_category = checkGetParametersFilter($special_category);
                         </div>
                         <div class="accordion-item">
                             <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8">
+                                Область применения
+                            </button>
+                            <div id="collapse8" class="accordion-collapse collapse">
+                                <div class="d-flex flex-column accordion-body">
+                                    <h4 class="h4"><?= $materials_for_inside->label; ?></h4>
+                                    <?php foreach ($terms_materials_for_inside as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_inside_name, 'current_filter' => $checked_materials_for_inside));
+                                    endforeach; ?>
+                                    <h4 class="h4"><?= $materials_for_outside->label; ?></h4>
+                                    <?php foreach ($terms_materials_for_outside as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_outside_name, 'current_filter' => $checked_materials_for_outside));
+                                    endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse4">
                                 <?= $tinting_system->label; ?>
                             </button>
@@ -141,24 +159,6 @@ $checked_special_category = checkGetParametersFilter($special_category);
                                 <div class="d-flex flex-column accordion-body">
                                     <?php foreach ($terms_special_application_methods as $term):
                                         get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $special_application_methods_name, 'current_filter' => $checked_special_application_methods));
-                                    endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse8">
-                                Область применения
-                            </button>
-                            <div id="collapse8" class="accordion-collapse collapse">
-                                <div class="d-flex flex-column accordion-body">
-                                    <h4 class="h4"><?= $materials_for_inside->label; ?></h4>
-                                    <?php foreach ($terms_materials_for_inside as $term):
-                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_inside_name, 'current_filter' => $checked_materials_for_inside));
-                                    endforeach; ?>
-                                    <h4 class="h4"><?= $materials_for_outside->label; ?></h4>
-                                    <?php foreach ($terms_materials_for_outside as $term):
-                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_outside_name, 'current_filter' => $checked_materials_for_outside));
                                     endforeach; ?>
                                 </div>
                             </div>
