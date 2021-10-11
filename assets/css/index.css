@@ -524,7 +524,7 @@ header {
 .button-filter-mob {
   display: none !important;
   margin-top: 45px;
-  max-height: 34px; }
+  max-height: 38px; }
   @media screen and (max-width: 991px) {
     .button-filter-mob {
       display: -webkit-box !important;
