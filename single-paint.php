@@ -119,7 +119,7 @@ $paint_id = get_the_ID();
                             </div>
                             <?php endforeach;?>
                             <?php
-                            $count_colors = count($color);
+                            $count_colors = count($colors);
                             if(is_mobile() && $count_colors > 2 || !is_mobile() && $count_colors > 3):?>
                                 <div class="color-gradient"></div>
                                 <p class="button-collapsed h4">смотреть еще</p>
