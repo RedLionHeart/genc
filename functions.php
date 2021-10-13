@@ -529,62 +529,115 @@ function filter_function()
         'posts_per_page' => $posts_per_page_catalog,
     );
 
+    $chemical_operator = 'IN';
+    $diluent_type_operator = 'IN';
+    $material_type_operator = 'IN';
+    $tinting_system_operator = 'IN';
+    $special_materials_operator = 'IN';
+    $type_finishing_operator = 'IN';
+    $special_application_methods_operator = 'IN';
+    $materials_for_inside_operator = 'IN';
+    $materials_for_outside_operator = 'IN';
+    $special_category_operator = 'IN';
+
     // for taxonomies / categories
     if (isset($_GET['chemical']) || isset($_GET['diluent_type']) || isset($_GET['material_type'])
         || isset($_GET['tinting_system']) || isset($_GET['special_materials']) || isset($_GET['type_finishing'])
         || isset($_GET['special_application_methods']) || isset($_GET['materials_for_inside']) ||
         isset($_GET['materials_for_outside']) || isset($_GET['special_category'])) {
+
+        if (!isset($_GET['chemical'])) {
+            $chemical_operator = 'NOT IN';
+        }
+        if (!isset($_GET['diluent_type'])) {
+            $diluent_type_operator = 'NOT IN';
+        }
+        if (!isset($_GET['material_type'])) {
+            $material_type_operator = 'NOT IN';
+        }
+        if (!isset($_GET['tinting_system'])) {
+            $tinting_system_operator = 'NOT IN';
+        }
+        if (!isset($_GET['special_materials'])) {
+            $special_materials_operator = 'NOT IN';
+        }
+        if (!isset($_GET['type_finishing'])) {
+            $type_finishing_operator = 'NOT IN';
+        }
+        if (!isset($_GET['special_application_methods'])) {
+            $special_application_methods_operator = 'NOT IN';
+        }
+        if (!isset($_GET['materials_for_inside'])) {
+            $materials_for_inside_operator = 'NOT IN';
+        }
+        if (!isset($_GET['materials_for_outside'])) {
+            $materials_for_outside_operator = 'NOT IN';
+        }
+        if (!isset($_GET['special_category'])) {
+            $special_category_operator = 'NOT IN';
+        }
+
         $args['tax_query'] = array(
-            'relation' => 'OR',
+            'relation' => 'AND',
             array(
                 'taxonomy' => 'chemical',
                 'field' => 'name',
                 'terms' => $_GET['chemical'],
+                'operator' => $chemical_operator,
             ),
             array(
                 'taxonomy' => 'diluent_type',
                 'field' => 'name',
                 'terms' => $_GET['diluent_type'],
+                'operator' => $diluent_type_operator,
             ),
             array(
                 'taxonomy' => 'material_type',
                 'field' => 'name',
                 'terms' => $_GET['material_type'],
+                'operator' => $material_type_operator,
             ),
             array(
                 'taxonomy' => 'tinting_system',
                 'field' => 'name',
                 'terms' => $_GET['tinting_system'],
+                'operator' => $tinting_system_operator,
             ),
             array(
                 'taxonomy' => 'special_materials',
                 'field' => 'name',
                 'terms' => $_GET['special_materials'],
+                'operator' => $special_materials_operator,
             ),
             array(
                 'taxonomy' => 'type_finishing',
                 'field' => 'name',
                 'terms' => $_GET['type_finishing'],
+                'operator' => $type_finishing_operator,
             ),
             array(
                 'taxonomy' => 'special_application_methods',
                 'field' => 'name',
                 'terms' => $_GET['special_application_methods'],
-            ),
-            array(
-                'taxonomy' => 'special_category',
-                'field' => 'name',
-                'terms' => $_GET['special_category'],
+                'operator' => $special_application_methods_operator,
             ),
             array(
                 'taxonomy' => 'materials_for_inside',
                 'field' => 'name',
                 'terms' => $_GET['materials_for_inside'],
+                'operator' => $materials_for_inside_operator,
             ),
             array(
                 'taxonomy' => 'materials_for_outside',
                 'field' => 'name',
                 'terms' => $_GET['materials_for_outside'],
+                'operator' => $materials_for_outside_operator,
+            ),
+            array(
+                'taxonomy' => 'special_category',
+                'field' => 'name',
+                'terms' => $_GET['special_category'],
+                'operator' => $special_category_operator,
             ),
         );
     }
@@ -1042,7 +1095,8 @@ function custom_paint_ajax_search()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post(); ?>
-            <a class="h5" href="<?php the_permalink(); ?>"><?php the_title(); ?><span><?= get_field('artikul');?></span></a>
+            <a class="h5" href="<?php the_permalink(); ?>"><?php the_title(); ?>
+                <span><?= get_field('artikul'); ?></span></a>
         <?php }
     } else {
         echo 'false';
