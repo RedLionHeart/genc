@@ -21,6 +21,8 @@ $tinting_system_name = 'tinting_system';
 $special_materials_name = 'special_materials';
 $type_finishing_name = 'type_finishing';
 $special_application_methods_name = 'special_application_methods';
+$materials_for_inside_name = 'materials_for_inside';
+$materials_for_outside_name = 'materials_for_outside';
 
 $special_category = 'special_category';
 
@@ -31,6 +33,8 @@ $tinting_system = get_taxonomy($tinting_system_name);
 $special_materials = get_taxonomy($special_materials_name);
 $type_finishing = get_taxonomy($type_finishing_name);
 $special_application_methods = get_taxonomy($special_application_methods_name);
+$materials_for_inside = get_taxonomy($materials_for_inside_name);
+$materials_for_outside = get_taxonomy($materials_for_outside_name);
 
 $terms_chemical = get_terms(array('taxonomy' => $chemical_name, 'hide_empty' => false));
 $terms_diluent_type = get_terms(array('taxonomy' => $diluent_type_name, 'hide_empty' => false));
@@ -39,6 +43,8 @@ $terms_tinting_system = get_terms(array('taxonomy' => $tinting_system_name, 'hid
 $terms_special_materials= get_terms(array('taxonomy' => $special_materials_name, 'hide_empty' => false));
 $terms_type_finishing= get_terms(array('taxonomy' => $type_finishing_name, 'hide_empty' => false));
 $terms_special_application_methods = get_terms(array('taxonomy' => $special_application_methods_name, 'hide_empty' => false));
+$terms_materials_for_inside = get_terms(array('taxonomy' => $materials_for_inside_name, 'hide_empty' => false));
+$terms_materials_for_outside = get_terms(array('taxonomy' => $materials_for_outside_name, 'hide_empty' => false));
 
 $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide_empty' => false));
 ?>
@@ -212,6 +218,24 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                                     <?php foreach ($terms_material_type as $term):
                                         get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $material_type_name));
                                     endforeach;?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-button collapsed h3" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8">
+                                Область применения
+                            </button>
+                            <div id="collapse8" class="accordion-collapse collapse">
+                                <div class="d-flex flex-column accordion-body">
+                                    <h4 class="h4"><?= $materials_for_inside->label; ?></h4>
+                                    <?php foreach ($terms_materials_for_inside as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_inside_name));
+                                    endforeach; ?>
+                                    <h4 class="h4"><?= $materials_for_outside->label; ?></h4>
+                                    <?php foreach ($terms_materials_for_outside as $term):
+                                        get_template_part('template-parts/catalog/filter', 'label', array('term' => $term, 'name' => $materials_for_outside_name));
+                                    endforeach; ?>
                                 </div>
                             </div>
                         </div>
