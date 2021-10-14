@@ -150,7 +150,7 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="submit" name="submit" class="button-blue h5">Войти</button>
-                            <a class="button-discard h5" href="<?= get_permalink(73);?>">Получить пароль</a>
+                            <a class="button-discard h5" href="<?= get_permalink(73);?>">Зарегистрироваться</a>
                         </div>
                         <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
                     </form>
