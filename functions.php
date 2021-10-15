@@ -643,16 +643,18 @@ function filter_function()
     }
 
     $query = new WP_Query($args);
-    echo '<div class="d-flex flex-wrap justify-content-between container-card">';
     if ($query->have_posts()) :
+        echo '<div class="d-flex flex-wrap justify-content-between container-card">';
+
         while ($query->have_posts()): $query->the_post();
             get_template_part('template-parts/catalog/item', '');
         endwhile;
+
+        echo '</div>';
         wp_reset_postdata();
-    else :
-        echo '<h2>Продукции не найдено</h2>';
-    endif;
-    echo '</div>';
+    else : ?>
+        <h2>К сожалению, по вашему запросу мы ничего не нашли</h2>
+    <?php endif;
 
     if ($query->max_num_pages > 1) :
         $big = 999999999; // уникальное число

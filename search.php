@@ -100,9 +100,45 @@ $count_medias = count($medias);
                                         <button class="btn btn-loadmore btn-loadmore-paints">Загрузить еще</button>
                                     <?php endif; ?>
                                 </div>
-                            <?php else:
-                                echo '<p>Нет результатов по данной категории</p>';
-                            endif; ?>
+                            <?php else: ?>
+                                <p>К сожалению, по вашему запросу мы ничего не нашли</p>
+                                <?php $popular_paints = get_posts(array(
+                                    "post_type" => "paint",
+                                    'numberposts' => 10,
+                                    'order' => 'DESC',
+                                    'orderby' => 'meta_value_num',
+                                    'meta_query' => array(
+                                        array(
+                                            'key' => 'views',
+                                            "type" => "DECIMAL(16,4)",
+                                        )
+                                    )
+                                )); ?>
+                                <div class="popular-product">
+                                    <h2 class="h2">Популярные продукты</h2>
+                                    <div class="swiper">
+                                        <div class="swiper-wrapper">
+                                            <?php foreach ($popular_paints as $post):
+                                                setup_postdata($post); ?>
+                                                <div class="swiper-slide">
+                                                    <a href="<?php the_permalink(); ?>" class="box-card">
+                                                        <div class="img-card">
+                                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full', true)[0]; ?>">
+                                                        </div>
+                                                        <div class="txt-card">
+                                                            <h3 class="h3"><?= get_field('artikul'); ?></h3>
+                                                            <h4 class="h4"><?php the_title(); ?></h4>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            <?php endforeach;
+                                            wp_reset_postdata(); ?>
+                                        </div>
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="flex-wrap" id="seacrh-container-video" style="display: none">
                             <?php if (isset($medias) && $count_medias !== 0): ?>
@@ -142,10 +178,45 @@ $count_medias = count($medias);
                                         <button class="btn btn-loadmore btn-loadmore-medias">Загрузить еще</button>
                                     <?php endif; ?>
                                 </div>
-                            <?php
-                            else:
-                                echo '<p>Нет результатов по данной категории</p>';
-                            endif; ?>
+                            <?php else: ?>
+                                <p>К сожалению, по вашему запросу мы ничего не нашли</p>
+                                <?php $popular_paints = get_posts(array(
+                                    "post_type" => "paint",
+                                    'numberposts' => 10,
+                                    'order' => 'DESC',
+                                    'orderby' => 'meta_value_num',
+                                    'meta_query' => array(
+                                        array(
+                                            'key' => 'views',
+                                            "type" => "DECIMAL(16,4)",
+                                        )
+                                    )
+                                )); ?>
+                                <div class="popular-product">
+                                    <h2 class="h2">Популярные продукты</h2>
+                                    <div class="swiper">
+                                        <div class="swiper-wrapper">
+                                            <?php foreach ($popular_paints as $post):
+                                                setup_postdata($post); ?>
+                                                <div class="swiper-slide">
+                                                    <a href="<?php the_permalink(); ?>" class="box-card">
+                                                        <div class="img-card">
+                                                            <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full', true)[0]; ?>">
+                                                        </div>
+                                                        <div class="txt-card">
+                                                            <h3 class="h3"><?= get_field('artikul'); ?></h3>
+                                                            <h4 class="h4"><?php the_title(); ?></h4>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            <?php endforeach;
+                                            wp_reset_postdata(); ?>
+                                        </div>
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
