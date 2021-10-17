@@ -630,6 +630,15 @@ header {
   height: auto;
   margin-top: -240px;
   max-height: none; }
+  @media screen and (max-width: 1600px) {
+    .back-index .video-back {
+      margin-top: -200px; } }
+  @media screen and (max-width: 1300px) {
+    .back-index .video-back {
+      margin-top: -150px; } }
+  @media screen and (max-width: 991px) {
+    .back-index .video-back {
+      margin-top: 0; } }
 
 .card-back .video-back {
   height: 836px; }
