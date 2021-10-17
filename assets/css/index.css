@@ -328,9 +328,11 @@ button {
       padding: 0 20px; } }
 
 header {
+  top: 0;
+  left: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  padding: 46px 0;
+  padding: 42px 0;
   z-index: 999;
   position: fixed;
   width: 100%;
@@ -399,7 +401,7 @@ header {
           display: none !important; } }
   header .header-box-search {
     position: relative;
-    height: 55px;
+    height: 40px;
     width: 34px;
     margin-right: 20px; }
     @media screen and (max-width: 991px) {
@@ -445,7 +447,7 @@ header {
   header .close-header-box-search {
     position: relative;
     width: 34px;
-    height: 55px;
+    height: 40px;
     -webkit-transition: 1s;
     transition: 1s; }
     @media screen and (max-width: 991px) {
@@ -625,7 +627,21 @@ header {
        object-fit: cover; }
 
 .back-index .video-back {
-  height: auto; }
+  height: auto;
+  margin-top: -240px;
+  max-height: none; }
+
+.card-back .video-back {
+  height: 836px; }
+  @media screen and (max-width: 1600px) {
+    .card-back .video-back {
+      height: 550px; } }
+  @media screen and (max-width: 991px) {
+    .card-back .video-back {
+      height: 350px; } }
+  @media screen and (max-width: 550px) {
+    .card-back .video-back {
+      height: 280px; } }
 
 .back-top .back-catalog .back-gradient {
   height: 250px;

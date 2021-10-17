@@ -280,8 +280,10 @@ button
     padding: 0 20px
 
 header
+  top: 0
+  left: 0
   transition: .5s
-  padding: 46px 0
+  padding: 42px 0
   z-index: 999
   position: fixed
   width: 100%
@@ -345,7 +347,7 @@ header
         display: none!important
   .header-box-search
     position: relative
-    height: 55px
+    height: 40px
     width: 34px
     @media screen and (max-width: 991px)
       width: 20px
@@ -385,7 +387,7 @@ header
   .close-header-box-search
     position: relative
     width: 34px
-    height: 55px
+    height: 40px
     transition: 1s
     @media screen and (max-width: 991px)
       width: 20px
@@ -557,11 +559,21 @@ header
 .back-index
   .video-back
     height: auto
+    margin-top: -240px
+    max-height: none
   //.back-gradient
   //  @media screen and (max-width: 1600px)
   //    height: 450px!important
 
-
+.card-back
+  .video-back
+    height: 836px
+    @media screen and (max-width: 1600px)
+      height: 550px
+    @media screen and (max-width: 991px)
+      height: 350px
+    @media screen and (max-width: 550px)
+      height: 280px
 .back-top
   .back-catalog
     .back-gradient

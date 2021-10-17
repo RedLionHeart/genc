@@ -3,7 +3,7 @@ get_header();
 $paint_id = get_the_ID();
 ?>
 
-<section class="back-top">
+<section class="back-top card-back">
     <div class="video-back">
         <img src="<?php the_field('izobrazhenie-fon'); ?>">
         <div class="back-gradient"></div>

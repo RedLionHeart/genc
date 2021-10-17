@@ -18,7 +18,6 @@ swiper = new Swiper('.swiper', {
 
 $('#scroll-click').click(function () {
     let scroll_el = $('#collapse-scroll');
-    console.log(scroll_el)
     if ($(scroll_el).length !== 0) {
         setTimeout(function () {
             $('html, body').animate({
@@ -42,7 +41,6 @@ if (formSearchInput) {
             $(e.target).closest('.header-box-search').removeClass('close-header-box-search');
             $(e.target).closest('label').addClass('focus-input');
             if (e.target.classList.contains('input-search-focus')) {
-                console.log('input-focus');
                 if (e.target.value.length > 1) {
                     if ($(e.target).closest('label').children('.box-search-result').get(0).firstChild == null) {
                     } else {
@@ -55,7 +53,6 @@ if (formSearchInput) {
                 $(formSearchInput).closest('label').removeClass('focus-input');
                 $('.form-search').removeClass('open-search-result');
                 formSearchInput.closest('.header-box-search').addClass('close-header-box-search');
-                console.log('nefocus')
             }
     });
 }
@@ -75,9 +72,7 @@ $(document).on('input', '.form-search input', function () {
                 'search': this.value,
             },
             success: function (data) {
-                console.log(data);
                 if (data !== 'false') {
-                    console.log(this);
                     searchItemsContainer[0].innerHTML = data;
                     $(thisform).addClass('open-search-result')
                 } else {
@@ -87,7 +82,6 @@ $(document).on('input', '.form-search input', function () {
                 return false;
             },
             error: function (data) {
-                console.log(data);
             }
         });
     } else {
@@ -255,7 +249,6 @@ let qwer = document.getElementsByClassName('input-mask__mail')
 
 $('.phone').on('blur', function () {
     var phone = this
-    console.log(phone);
     // if (phone.value.match(/\+375\s?[\(]{0,1}(25|29|33|44)[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}/)) {
     if (phone.value.match(/[+]?[0-9]{4,}/)) {
         $(this).addClass("valid");
@@ -272,7 +265,6 @@ $('.phone').on('blur', function () {
 
 $('.mail').on('blur', function () {
     var mail = this
-    console.log(mail);
     if (mail.value.match(/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/)) {
         $(this).addClass("valid");
         $(this).removeClass("invalid");
@@ -288,7 +280,6 @@ $('.mail').on('blur', function () {
 
 $('.name').on('blur', function () {
     var name = this
-    console.log(name);
     if (name.value.match(/^[\D]*([-][\D]*)?\s?[\D]*?\s?[\D]*?$/)) {
         $(this).addClass("valid");
         $(this).removeClass("invalid");
@@ -304,7 +295,6 @@ $('.name').on('blur', function () {
 
 $('.organization').on('blur', function () {
     var organization = this
-    console.log(organization);
     if (organization.value === "") {
         $(this).removeClass("valid");
         $(this).removeClass("invalid");
@@ -326,7 +316,6 @@ var passwork = new bootstrap.Modal(document.getElementById('formModalpassworkTDS
 
 $('#registration').on('submit', function (e) {
     let formData = new FormData(this);
-    console.log(formData)
     $.ajax({
         url: myajax.url_send_registration,
         data: formData,
@@ -348,7 +337,6 @@ $('#registration').on('submit', function (e) {
 
 $('#order').on('submit', function (e) {
     let formData = new FormData(this);
-    console.log(formData)
     thanks.show();
     $.ajax({
         url: myajax.url_send_order,
@@ -387,8 +375,14 @@ $('.filter-entry').click(function () {
         data: filter.serialize(), // form data
         type: filter.attr('method'), // POST
         success: function (data) {
-            $('.card-container').html(data);
-            //console.log(data);
+            $('.card-container').html('<h2>К сожалению, по вашему запросу мы ничего не нашли</h2>');
+            console.log(document.querySelector('.popular-product'))
+            console.log(data)
+            if(data){
+                $('.popular-product').css('margin-top', '40px');
+                console.log(document.querySelector('.popular-product'))
+
+            }
         },
         error: function (error) {
             console.log(error);
@@ -406,7 +400,12 @@ $('.filter-form input').click(function () {
         data: filterForm.serialize(),
         type: filterForm.attr('method'),
         success: function (data) {
-            $('.card-container').html(data);
+            $('.card-container').html('<h2 class="h2">К сожалению, по вашему запросу мы ничего не нашли</h2>');
+            console.log(data);
+            if(data){
+                $('.popular-product').css('margin-top', '40px');
+                console.log(document.querySelector('.popular-product'))
+            }
         },
         error: function (error) {
             console.log(error);
@@ -428,7 +427,6 @@ $('.reset-filter').click(function () {
             $('.card-container').html(data);
         },
         error: function (error) {
-            console.log(error);
         }
     });
     return false;
