@@ -652,9 +652,9 @@ function filter_function()
 
         echo '</div>';
         wp_reset_postdata();
-    else : ?>
-        <h2>К сожалению, по вашему запросу мы ничего не нашли</h2>
-    <?php endif;
+    else :
+        return false;
+    endif;
 
     if ($query->max_num_pages > 1) :
         $big = 999999999; // уникальное число
