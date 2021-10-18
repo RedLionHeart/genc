@@ -375,13 +375,13 @@ $('.filter-entry').click(function () {
         data: filter.serialize(), // form data
         type: filter.attr('method'), // POST
         success: function (data) {
-            $('.card-container').html('<h2>К сожалению, по вашему запросу мы ничего не нашли</h2>');
             console.log(document.querySelector('.popular-product'))
             console.log(data)
-            if(data){
+            if (data !== '0') {
+                $('.card-container').html(data);
                 $('.popular-product').css('margin-top', '40px');
-                console.log(document.querySelector('.popular-product'))
-
+            } else {
+                $('.card-container').html('<h2>К сожалению, по вашему запросу мы ничего не нашли</h2>');
             }
         },
         error: function (error) {
@@ -400,11 +400,12 @@ $('.filter-form input').click(function () {
         data: filterForm.serialize(),
         type: filterForm.attr('method'),
         success: function (data) {
-            $('.card-container').html('<h2 class="h2">К сожалению, по вашему запросу мы ничего не нашли</h2>');
-            console.log(data);
-            if(data){
+            if (data !== '0') {
+                $('.card-container').html(data);
                 $('.popular-product').css('margin-top', '40px');
-                console.log(document.querySelector('.popular-product'))
+
+            } else {
+                $('.card-container').html('<h2>К сожалению, по вашему запросу мы ничего не нашли</h2>');
             }
         },
         error: function (error) {
