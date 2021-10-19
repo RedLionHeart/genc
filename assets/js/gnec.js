@@ -34,7 +34,6 @@ $('.swiper-wrapper').css('height', heightslider)
 const formSearchInput = $('.form-search input');
 
 
-
 if (formSearchInput) {
     $(document).click(function (e) {
         if ($(formSearchInput).is(":focus")) {
@@ -48,12 +47,11 @@ if (formSearchInput) {
                     }
                 }
             }
-        } else
-            {
-                $(formSearchInput).closest('label').removeClass('focus-input');
-                $('.form-search').removeClass('open-search-result');
-                formSearchInput.closest('.header-box-search').addClass('close-header-box-search');
-            }
+        } else {
+            $(formSearchInput).closest('label').removeClass('focus-input');
+            $('.form-search').removeClass('open-search-result');
+            formSearchInput.closest('.header-box-search').addClass('close-header-box-search');
+        }
     });
 }
 
@@ -119,7 +117,6 @@ $(window).on("load", function () {
     $(".button-collapsed").click(function () {
         $(boxamount).addClass('open-collaps').css('height', realheight)
     });
-
 
 
 });
@@ -375,8 +372,6 @@ $('.filter-entry').click(function () {
         data: filter.serialize(), // form data
         type: filter.attr('method'), // POST
         success: function (data) {
-            console.log(document.querySelector('.popular-product'))
-            console.log(data)
             if (data !== '0') {
                 $('.card-container').html(data);
                 $('.popular-product').css('margin-top', '40px');
