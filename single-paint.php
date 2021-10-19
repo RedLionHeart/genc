@@ -111,7 +111,7 @@ $paint_id = get_the_ID();
                         <div class="d-flex flex-wrap wrap-color">
                             <?php foreach ($colors as $color):?>
                             <div class="d-flex align-items-center col-md-4 col-sm-6 col-6 mb-56 box-color">
-                                <div class="color" style="background-color:<?= $color['czvet'];?>"></div>
+                                <div class="color" style="background-size:cover;background: <?= $color['czvet'] ?: 'url(' . $color['kartinka_czveta'] . ')';?>"></div>
                                 <div class="color-desc">
                                     <h4 class="h4 mb-16"><?= $color['nomer_czveta'];?></h4>
                                     <h4 class="h4"><?= $color['nazvanie_czveta']; ?></h4>
