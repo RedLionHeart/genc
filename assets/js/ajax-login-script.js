@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
             url: ajax_login_object.ajaxurl,
             data: {
                 'action': 'ajaxlogin', //calls wp_ajax_nopriv_ajaxlogin
-                'mail': form.find('#mail').val(),
+                'mail': form.find('#mail-passwork').val(),
                 'password': form.find('#passwork').val(),
                 'security': form.find('#security').val() },
             success: function(data){

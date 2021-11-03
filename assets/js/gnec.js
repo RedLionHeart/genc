@@ -446,7 +446,7 @@ function setupVideo(video) {
     video.addEventListener('click', (e) => {
         let iframe = createIframe(id);
         let blue = e.target;
-        blue.closest(".box-media").classList.add('box-blue');
+        blue.closest(".box-video").classList.add('box-blue');
         link.remove();
         // button.remove();
         video.appendChild(iframe);
