@@ -1159,9 +1159,6 @@ header {
       @media screen and (max-width: 1600px) {
         .box-media .name-video .h4 {
           width: 190px; } }
-      @media screen and (max-width: 991px) {
-        .box-media .name-video .h4 {
-          width: 130px; } }
     .box-media .name-video .time-video {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1205,9 +1202,6 @@ header {
 @media screen and (max-width: 500px) {
   .media .box-video-desc {
     max-height: 71px; } }
-@media screen and (max-width: 1300px) {
-  .media .box-video-desc .h4 {
-    width: 163px; } }
 
 .box-video {
   overflow: hidden;
@@ -1254,7 +1248,9 @@ header {
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 5; }
+    z-index: 5;
+    -o-object-fit: cover;
+       object-fit: cover; }
 
 .box-blue {
   background: rgba(92, 135, 175, 0.4); }
