@@ -7,6 +7,7 @@ get_header();
 $terms_playlists = get_terms(array(
     'taxonomy' => 'category',
     'order' => "DESC",
+    'hide_empty' => true,
 ) );
 $medias = get_posts(array(
     'post_type' => 'media',
