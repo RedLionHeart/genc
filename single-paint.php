@@ -252,11 +252,11 @@ $paint_id = get_the_ID();
             $can_user_tds = false;
             $can_user_msds = false;
 
-            if (is_user_role('tds') || is_user_role('msds') || is_user_role('administrator')) {
+            if (is_user_role('tds') || is_user_role('tds_msds') || is_user_role('administrator')) {
                 $can_user_tds = true;
             }
 
-            if (is_user_role('msds') || is_user_role('administrator')) {
+            if (is_user_role('tds_msds') || is_user_role('administrator')) {
                 $can_user_msds = true;
             }
             ?>
