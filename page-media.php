@@ -8,12 +8,13 @@ $terms_playlists = get_terms(array(
     'taxonomy' => 'category',
     'order' => "DESC",
     'hide_empty' => true,
+    'parent' => 0
 ) );
 $medias = get_posts(array(
     'post_type' => 'media',
     'post_status' => 'publish',
     'numberposts' => -1,
-)); ?>
+));?>
 <section class="media-container">
     <div class="margin">
         <h2 class="h1"><?php the_title();?></h2>
@@ -22,7 +23,7 @@ $medias = get_posts(array(
                 <h2 class="h2">Плейлисты</h2>
                 <div class="playlist">
                     <?php foreach ($terms_playlists as $key => $term):?>
-                    <button class="button-playlist h4 <?= $key === 0 ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
+                    <button class="button-playlist h4 <?= $key === array_key_first($terms_playlists) ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
                     <?php endforeach;?>
                 </div>
             </div>
