@@ -206,12 +206,14 @@ $paint_id = get_the_ID();
                 <div class="mixing-ratio mb-56">
                     <h3 class="h3 mb-16">Пропорции смешивания</h3>
                     <div class="row">
-                        <h5 class="col-9 h5">Смешивание</h5>
+                        <h5 class="col-6 h5">Смешивание</h5>
+                        <h5 class="col-3 h5">По весу</h5>
                         <h5 class="col-3 h5">По объему</h5>
                     </div>
                     <?php foreach ($proportions as $proportion): ?>
                         <div class="row">
-                            <h4 class="col-9 h4"><?= $proportion['smeshivanie']; ?></h4>
+                            <h4 class="col-6 h4"><?= $proportion['smeshivanie']; ?></h4>
+                            <h4 class="col-3 h4"><?= $proportion['po_vesu']; ?></h4>
                             <h4 class="col-3 h4"><?= $proportion['po_obemu']; ?></h4>
                         </div>
                     <?php endforeach; ?>
@@ -252,11 +254,11 @@ $paint_id = get_the_ID();
             $can_user_tds = false;
             $can_user_msds = false;
 
-            if (is_user_role('tds') || is_user_role('msds') || is_user_role('administrator')) {
+            if (is_user_role('tds') || is_user_role('tds_msds') || is_user_role('administrator')) {
                 $can_user_tds = true;
             }
 
-            if (is_user_role('msds') || is_user_role('administrator')) {
+            if (is_user_role('tds_msds') || is_user_role('administrator')) {
                 $can_user_msds = true;
             }
             ?>
