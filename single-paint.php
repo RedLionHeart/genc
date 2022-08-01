@@ -32,7 +32,7 @@ $paint_id = get_the_ID();
                                   fill="#5C87AF"/>
                         </svg>
                     </a>
-                    <a href="viber://forward?text=<?php the_title();
+                    <a href="https://web.whatsapp.com/send?text=<?php the_title();
                     echo ' ';
                     the_permalink(); ?>" target="_blank" rel="noopener noreferrer">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ $paint_id = get_the_ID();
                                   fill="#5C87AF"/>
                         </svg>
                     </a>
-                    <a href="https://web.whatsapp.com/send?text=<?php the_title();
+                    <a href="viber://forward?text=<?php the_title();
                     echo ' ';
                     the_permalink(); ?>" target="_blank" rel="noopener noreferrer">
                         <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">

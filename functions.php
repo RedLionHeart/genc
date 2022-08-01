@@ -1105,3 +1105,17 @@ function custom_paint_ajax_search()
     }
     wp_die();
 }
+
+// Function to change email address
+function wpb_sender_email( $original_email_address ) {
+    return 'gencpaints@gmail.com';
+}
+
+// Function to change sender name
+function wpb_sender_name( $original_email_from ) {
+    return 'GENÇPAINTS';
+}
+
+// Hooking up our functions to WordPress filters
+add_filter( 'wp_mail_from', 'wpb_sender_email' );
+add_filter( 'wp_mail_from_name', 'wpb_sender_name' );

@@ -312,6 +312,7 @@ var passwork = new bootstrap.Modal(document.getElementById('formModalpassworkTDS
 
 
 $('#registration').on('submit', function (e) {
+    e.preventDefault();
     let formData = new FormData(this);
     $.ajax({
         url: myajax.url_send_registration,
@@ -333,8 +334,9 @@ $('#registration').on('submit', function (e) {
 });
 
 $('#order').on('submit', function (e) {
+    e.preventDefault();
     let formData = new FormData(this);
-    thanks.show();
+
     $.ajax({
         url: myajax.url_send_order,
         data: formData,
@@ -345,6 +347,7 @@ $('#order').on('submit', function (e) {
             if (data === 'ok') {
                 /*обработка успешной отправки формы*/
                 thanks.show();
+                $('#order').trigger('reset');
             }
         },
         error: function (data) {
@@ -353,7 +356,7 @@ $('#order').on('submit', function (e) {
     });
     return false;
 });
-
+console.log($('#order'))
 function check() {
     var consent = document.getElementsByClassName('consent');
     for (var i = 0; i < consent.length; i++) {
