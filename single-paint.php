@@ -32,7 +32,7 @@ $paint_id = get_the_ID();
                                   fill="#5C87AF"/>
                         </svg>
                     </a>
-                    <a href="https://web.whatsapp.com/send?text=<?php the_title();
+                    <a href="https://api.whatsapp.com/send?text=<?php the_title();
                     echo ' ';
                     the_permalink(); ?>" target="_blank" rel="noopener noreferrer">
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +240,7 @@ $paint_id = get_the_ID();
                     <?php endif; ?>
                     <?php if ($suhoj_dlya_shlifovki): ?>
                         <div class="row">
-                            <h4 class="col-6 h4">Сухой для шлифовки</h4>
+                            <h4 class="col-6 h4">До шлифования</h4>
                             <h4 class="col-3 h4"><?= $suhoj_dlya_shlifovki['20s']; ?></h4>
                             <h4 class="col-3 h4"><?= $suhoj_dlya_shlifovki['50s']; ?></h4>
                         </div>

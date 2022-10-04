@@ -20,7 +20,7 @@ get_header(); ?>
                     <div class="d-flex box-contact">
 
                         <div class="box-name-city">
-                            <h3 class="h3-bold">Представитель по СНГ</h3>
+                            <h3 class="h3-bold">Представитель по продажам в России</h3>
                         </div>
                         <div class="adress">
 
