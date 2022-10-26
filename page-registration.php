@@ -34,8 +34,8 @@ get_header(); ?>
                          src="<?= get_template_directory_uri() ?>/assets/img/invalid.svg">
                 </div>
                 <div class="input-valid">
-                    <input class="entryfield input-mask__mail mail h4" type="text"
-                           pattern="(\w+[.]?\w+?@\w+?\.[a-z]{2,4})" id="mail" placeholder="Email"
+                    <input class="entryfield input-mask__mail mail h4" type="email"
+                           id="mail" placeholder="Email"
                            name="mail" required>
                     <img class="entry-img"
                          src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">

@@ -133,8 +133,8 @@ $terms_special_category = get_terms(array('taxonomy' => $special_category, 'hide
                         <p class="status h3"></p>
                         <div class="d-flex flex-column">
                             <div class="input-valid">
-                                <input class="entryfield input-mask__mail mail h4"
-                                       pattern="(\w+[.]?\w+?@\w+?\.[a-z]{2,4})" id="mail-passwork" placeholder="Email"
+                                <input class="entryfield input-mask__mail mail h4" type="email"
+                                       id="mail-passwork" placeholder="Email"
                                        name="mail" required>
                                 <img class="entry-img"
                                      src="<?= get_template_directory_uri() ?>/assets/img/entry.svg">
