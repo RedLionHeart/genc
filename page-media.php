@@ -9,22 +9,29 @@ $terms_playlists = get_terms(array(
     'order' => "DESC",
     'hide_empty' => true,
     'parent' => 0
-) );
+));
 $medias = get_posts(array(
     'post_type' => 'media',
     'post_status' => 'publish',
     'numberposts' => -1,
-));?>
+)); ?>
 <section class="media-container">
     <div class="margin">
-        <h2 class="h1"><?php the_title();?></h2>
+        <h2 class="h1"><?php the_title(); ?></h2>
         <div class="d-flex justify-content-between">
             <div class="col-lg-4 pr-24">
                 <h2 class="h2">Плейлисты</h2>
                 <div class="playlist">
-                    <?php foreach ($terms_playlists as $key => $term):?>
-                    <button class="button-playlist h4 <?= $key === array_key_first($terms_playlists) ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
-                    <?php endforeach;?>
+                    <?php foreach ($terms_playlists as $key => $term): ?>
+                        <button class="button-playlist h4 <?= $key === array_key_first($terms_playlists) ? 'button-discard-active' : ''; ?>"
+                                id="<?= $term->slug; ?>"><?= $term->name; ?></button>
+                    <?php endforeach; ?>
+                    <a
+                            href="https://online.pubhtml5.com/coqn/gbpa/#p=1"
+                            class="button-playlist h4"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                    >Каталог</a>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -33,8 +40,8 @@ $medias = get_posts(array(
                     <?php foreach ($medias as $post):
                         setup_postdata($post);
                         get_template_part('template-parts/content', 'media');
-                     endforeach;
-                    wp_reset_postdata();?>
+                    endforeach;
+                    wp_reset_postdata(); ?>
                 </div>
             </div>
         </div>
@@ -42,7 +49,8 @@ $medias = get_posts(array(
 </section>
 <div class="button-bottom-filters">
     <div class="margin">
-    <button class="button-blue w-100 h5" data-bs-toggle="modal" data-bs-target="#formModalplaylist">Плейлисты</button>
+        <button class="button-blue w-100 h5" data-bs-toggle="modal" data-bs-target="#formModalplaylist">Плейлисты
+        </button>
     </div>
 </div>
 <div class="modal fade" id="formModalplaylist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,11 +67,19 @@ $medias = get_posts(array(
                 </div>
             </div>
             <div class="modal-body">
-                    <div class="playlist">
-                        <?php foreach ($terms_playlists as $key => $term):?>
-                            <button data-bs-dismiss="modal" aria-label="Close" class="button-playlist h4 <?= $key === 0 ? 'button-discard-active' : '';?>" id="<?=$term->slug;?>"><?=$term->name;?></button>
-                        <?php endforeach;?>
-                    </div>
+                <div class="playlist">
+                    <?php foreach ($terms_playlists as $key => $term): ?>
+                        <button data-bs-dismiss="modal" aria-label="Close"
+                                class="button-playlist h4 <?= $key === 0 ? 'button-discard-active' : ''; ?>"
+                                id="<?= $term->slug; ?>"><?= $term->name; ?></button>
+                    <?php endforeach; ?>
+                    <a
+                            href="https://online.pubhtml5.com/coqn/gbpa/#p=1"
+                            class="button-playlist h4"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                    >Каталог</a>
+                </div>
             </div>
         </div>
     </div>
