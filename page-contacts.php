@@ -38,7 +38,7 @@ get_header(); ?>
                 </div>
                 <div class="map">
                     <script type="text/javascript" charset="utf-8" async
-                            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A24481e8c0fc95a0b97fd7abf0d739eac6e0bc72a91cc3c0c0e011a5048b39c15&amp;width=100%25&amp;height=385&amp;lang=ru_RU&amp;scroll=true">
+                            src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A20711b44707a14fc28f66570bf6fe10e22a2ad2546e8b30b92d1c786a0969ba1&amp;width=100%25&amp;height=385&amp;lang=ru_RU&amp;scroll=true">
                     </script>
                 </div>
                 <?php $countries = get_field('strany');
