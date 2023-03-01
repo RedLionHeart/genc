@@ -1108,7 +1108,7 @@ function custom_paint_ajax_search()
 
 // Function to change email address
 function wpb_sender_email( $original_email_address ) {
-    return 'gencpaints@gmail.com';
+    return 'info@gencpaints.ru';
 }
 
 // Function to change sender name

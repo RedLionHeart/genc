@@ -1,6 +1,6 @@
 <?php $name = $args['name'];
 $term = $args['term'];
-$current_filter = $args['current_filter'];?>
+$current_filter = $args['current_filter'] ?? null;?>
 
 <label class="check-filter">
     <input type="checkbox" name="<?=$name.'[]';?>" value="<?=$term->name;?>" <?php if($current_filter){
